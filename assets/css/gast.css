@@ -1,0 +1,334 @@
+/* Salt & Silver im Chat (gast/bau.py, aus dem Chat des Carlton-Europe in den Farben von Salt & Silver). Nicht hier ändern. */
+.gast,.gast-knopf,.gast-buchung,.gast-dunkel{--gold:#ebdbce;--navy:#1f213b;--nacht:#0b0c10;--creme:#ebdbce;--taupe:#9e947f}
+/* Gäste-Chat (Probe) — Knopf unten rechts und Fenster. Feste Flächen ohne Weichzeichner, bewegt wird nur transform und opacity. */
+.gast-knopf{position:fixed;z-index:70;right:max(16px,calc(var(--rand)*.5));bottom:max(16px,calc(var(--rand)*.4));width:62px;height:62px;border-radius:50%;
+  display:grid;place-items:center;color:var(--gold);background:#111421;
+  box-shadow:0 0 0 1px rgba(235,219,206,.45),0 12px 24px -10px rgba(0,0,0,.6);transition:transform .5s var(--e2)}
+.gast-knopf:hover{transform:translateY(-2px)}
+.gast-knopf:active{transform:translateY(1px) scale(.97)}
+.gast-knopf>span{grid-area:1/1;display:grid;place-items:center;transition:transform .5s var(--e2),opacity .3s}
+.gast-knopf__ce svg{width:32px;height:auto}
+.gast-knopf__x{opacity:0;transform:rotate(-90deg) scale(.6)}
+.gast-knopf__x svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.3;fill:none}
+.gast-offen .gast-knopf__ce{opacity:0;transform:rotate(90deg) scale(.6)}
+.gast-offen .gast-knopf__x{opacity:1;transform:none}
+
+/* Fenster in Nachtblau: die Farbwerte gelten nur hier drin, die Buchungsmaske übernimmt sie */
+.gast{--papier:#111421;--weiss:#1f213b;--tinte:#ebdbce;--taupe:#9e947f;--creme:#2a2d4d;--hell:#f5eee6;--linie-g:rgba(235,219,206,.2);
+  position:fixed;z-index:69;right:max(16px,calc(var(--rand)*.5));bottom:calc(max(16px,calc(var(--rand)*.4)) + 80px);
+  width:min(404px,calc(100vw - 32px));height:min(628px,calc(100vh - 150px));height:min(628px,calc(100svh - 150px));
+  display:flex;flex-direction:column;overflow:hidden;border-radius:26px;-webkit-font-smoothing:antialiased;
+  background:var(--papier);color:var(--tinte);box-shadow:0 0 0 1px rgba(235,219,206,.32),0 40px 80px -30px rgba(0,0,0,.85);
+  opacity:0;transform:translateY(14px) scale(.97);transform-origin:100% 100%;pointer-events:none;visibility:hidden;
+  transition:opacity .3s,transform .55s var(--e1),visibility 0s .55s}
+.gast-offen .gast{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .25s,transform .55s var(--e1),visibility 0s}
+
+.gast__kopf{display:flex;align-items:center;gap:11px;padding:16px 12px 14px 20px;border-bottom:1px solid var(--linie-g);flex:none}
+.gast__ce{flex:none;width:30px;color:var(--gold)}
+.gast__ce svg{width:30px;height:auto;display:block}
+.gast__kopf div{flex:1;min-width:0;line-height:1.3}
+.gast__kopf b{display:block;font-family:var(--serif);font-weight:400;font-size:16.5px;color:var(--hell)}
+.gast__kopf div span{font-size:11.5px;letter-spacing:.02em;color:var(--taupe)}
+.gast__neu,.gast__zu{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#b9bcc4;transition:background .3s}
+.gast__neu:hover,.gast__zu:hover{background:rgba(255,255,255,.07)}
+.gast__neu svg,.gast__zu svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+.gast__lauf{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:22px 24px 10px;display:flex;flex-direction:column;gap:20px}
+.gast__b{max-width:100%;font-size:14.5px;line-height:1.68}
+.gast__b--gast{align-self:flex-end;max-width:80%;padding:11px 17px;border-radius:22px;line-height:1.45;background:var(--creme);color:var(--hell)}
+.gast__b--haus{align-self:stretch;color:var(--tinte)}
+.gast__b small{display:block;margin-top:8px;font-size:11.5px;letter-spacing:.02em;color:#7f8aa1}
+.gast__b--denkt{display:flex;gap:5px;padding:6px 0}
+.gast__b--denkt i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:gastDenkt 1s infinite}
+.gast__b--denkt i:nth-child(2){animation-delay:.15s}
+.gast__b--denkt i:nth-child(3){animation-delay:.3s}
+@keyframes gastDenkt{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+
+.gast__start{margin:auto 0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 0 6px}
+.gast__start-ce{color:var(--gold);margin-bottom:16px}.gast__start-ce svg{width:58px;height:auto;display:block}
+.gast__start h3{margin:0 0 6px;font-family:var(--serif);font-weight:400;font-size:25px;line-height:1.2;color:var(--hell)}
+.gast__start p{margin:0 0 24px;font-size:13.5px;line-height:1.5;color:var(--taupe)}
+.gast__karten{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%}
+.gast__karten button{display:flex;flex-direction:column;gap:3px;text-align:left;border-radius:16px;padding:12px 14px;background:var(--weiss);box-shadow:inset 0 0 0 1px var(--linie-g);transition:background .3s,transform .4s var(--e2)}
+.gast__karten button:hover{background:#1f212c;transform:translateY(-1px)}
+.gast__karten b{font-weight:500;font-size:13.5px;color:var(--hell)}
+.gast__karten span{font-size:12px;color:var(--taupe)}
+
+.gast__vor{display:flex;flex-direction:column;gap:6px;margin-top:-6px}
+.gast__vor button{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:10px 14px;border-radius:14px;font-size:14px;color:var(--tinte);
+  background:transparent;box-shadow:inset 0 0 0 1px rgba(235,219,206,.28);transition:background .3s}
+.gast__vor button:hover{background:var(--weiss)}
+.gast__vor svg{flex:none;width:14px;height:14px;stroke:var(--gold);stroke-width:1.3;fill:none}
+
+.gast__feld{flex:none;display:flex;flex-direction:column;margin:8px 14px 0;padding:14px 10px 10px 20px;border-radius:26px;background:var(--weiss);box-shadow:0 0 0 1px rgba(235,219,206,.28)}
+.gast__feld label{min-width:0}
+.gast__feld textarea{display:block;width:100%;height:calc(1.4em + 10px);max-height:132px;border:0;background:none;font:inherit;font-size:16px;line-height:1.4;color:var(--hell);padding:0 0 10px;margin:0;outline:none;resize:none;overflow-y:auto;scrollbar-width:none}
+.gast__feld textarea::-webkit-scrollbar{display:none}
+.gast__feld textarea::placeholder{color:#8692ab}
+.gast__leiste{display:flex;justify-content:space-between;align-items:center}
+.gast__plus{width:32px;height:32px;margin-left:-8px;border-radius:50%;display:grid;place-items:center;color:var(--gold);transition:background .3s}
+.gast__plus:hover{background:rgba(255,255,255,.07)}
+.gast__send{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#111421;transition:transform .4s var(--e2)}
+.gast__send:hover{transform:translateY(-1px)}
+.gast__plus svg,.gast__send svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gast__fuss{flex:none;padding:9px 16px 13px;text-align:center;font-size:11px;color:#7f8aa1}
+
+@media (max-width:560px){
+  .gast{right:8px;left:8px;width:auto;bottom:80px;top:92px;height:auto}
+  .gast-knopf{width:58px;height:58px}
+}
+@media (prefers-reduced-motion:reduce){.gast,.gast-knopf>span{transition:none}.gast__b--denkt i{animation:none}}
+
+/* ---- Absätze in der Antwort ---- */
+.gast__b ul{margin:6px 0 0;padding:0 0 0 16px;list-style:disc}
+.gast__b li{margin:2px 0}
+.gast__b p+p,.gast__b ul+p,.gast__b p+ul{margin-top:8px}
+
+/* ---- Buchungsmaske im Gespräch: das Fenster wird breiter, die Maske liegt wie ein Blatt im Lauf ---- */
+.gast--breit{width:min(560px,calc(100vw - 32px))}
+.gast__maske{align-self:stretch;margin-top:4px;padding:16px 16px 14px;border-radius:18px;background:var(--weiss);box-shadow:0 0 0 1px var(--linie-g);
+  opacity:0;transform:translateY(10px);animation:gastAuf .6s var(--e1) forwards}
+@keyframes gastAuf{to{opacity:1;transform:none}}
+.gast__m-kopf{display:flex;flex-direction:column;gap:2px;margin-bottom:12px}
+.gast__m-kopf b{font-family:var(--serif);font-weight:400;font-size:19px}
+.gast__m-kopf span{font-size:13px;color:var(--taupe)}
+.gast__m-zeile{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gast__m-zeile label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--taupe)}
+.gast__m-zeile input,.gast__m-zeile select{font:inherit;font-size:15px;color:var(--tinte);background:var(--papier);border:0;border-radius:10px;padding:9px 10px;box-shadow:inset 0 0 0 1px rgba(158,148,127,.35);-webkit-appearance:none;appearance:none;min-height:40px;color-scheme:dark}
+.gast__m-hund{flex-direction:row!important;align-items:center;gap:8px!important;text-transform:none!important;letter-spacing:0!important;font-size:15px!important;color:var(--tinte)!important;padding-top:18px}
+.gast__m-hund input{width:20px;height:20px;min-height:0;padding:0;border-radius:6px;accent-color:var(--gold);-webkit-appearance:auto;appearance:auto}
+.gast__m-zimmer{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.gast__m-z{display:flex;flex-direction:column;text-align:left;border-radius:14px;overflow:hidden;background:var(--papier);box-shadow:inset 0 0 0 1px rgba(158,148,127,.3);transition:box-shadow .3s,transform .4s var(--e2)}
+.gast__m-z:hover{transform:translateY(-2px)}
+.gast__m-z{position:relative}
+.gast__m-z::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 2px var(--gold);opacity:0;pointer-events:none;transition:opacity .3s}
+.gast__m-z[aria-pressed=true]::after{opacity:1}   /* Rahmen über dem Foto, rundum (vorher lag er unter dem Bild und hörte dort auf) */
+.gast__m-z img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gast__m-z span{display:flex;flex-direction:column;gap:2px;padding:9px 11px 11px;font-size:12.5px;line-height:1.4;color:var(--tinte)}
+.gast__m-z b{font-family:var(--serif);font-weight:400;font-size:15px}
+.gast__m-z i{font-style:normal;color:var(--taupe)}
+.gast__m-z em{font-style:normal;color:#c3c8d3}
+.gast__m-z u{text-decoration:none;color:var(--gold);font-weight:600;margin-top:3px}
+.gast__m-z:last-child:nth-child(odd){grid-column:1/-1}
+.gast__m-z:last-child:nth-child(odd) img{aspect-ratio:21/9}
+.gast__m-fuss{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;flex-wrap:wrap}
+.gast__m-summe{font-size:13px;color:var(--tinte);flex:1;min-width:160px}
+.gast__m-los{height:48px}
+.gast__maske>small{display:block;margin-top:10px;font-size:11.5px;line-height:1.45;color:var(--taupe)}
+
+/* ---- Zimmermappe: der Chat als ganze Seite ---- */
+.gast--seite{position:static;width:auto;height:auto;min-height:calc(100svh - 120px);opacity:1;transform:none;pointer-events:auto;visibility:visible;border-radius:var(--r-l);max-width:720px;margin:0 auto}
+.gast--seite .gast__lauf{min-height:50svh}
+@media (max-width:560px){
+  .gast--breit{right:8px;left:8px;width:auto}
+  .gast__m-zeile{grid-template-columns:1fr 1fr}
+  .gast__m-zimmer{grid-template-columns:1fr}
+  .gast__m-z:last-child:nth-child(odd) img{aspect-ratio:4/3}
+  .gast--seite{min-height:calc(100svh - 32px);border-radius:var(--r-m)}
+}
+
+/* Knöpfe der Seite behalten im Nachtblau ihre dunkle Schrift */
+.gast .kn{--t:#1f213b}
+@media (max-width:560px){.gast__kopf b{font-size:14.5px;white-space:nowrap}.gast__kopf{gap:9px;padding-left:16px}.gast__neu,.gast__zu{width:30px}}
+
+/* ---- Abstand zum Hintergrund: die Seite tritt beim Öffnen zurück (reine Abdunklung, kein Weichzeichner) ---- */
+.gast-dunkel{position:fixed;inset:0;z-index:68;background:#0b0c10;opacity:0;pointer-events:none;transition:opacity .45s var(--e1)}
+.gast-offen .gast-dunkel{opacity:.55;pointer-events:auto}
+.gast-offen .gast:not(.gast--seite){box-shadow:0 0 0 1px rgba(235,219,206,.35),0 40px 80px -24px rgba(0,0,0,.75),0 12px 24px -12px rgba(0,0,0,.5)}
+@media (prefers-reduced-motion:reduce){.gast-dunkel{transition:none}}
+
+/* ---- Gesicht der Rezeption im Kopf (echtes Foto von Elke Johannes, Website des Hauses) ---- */
+.gast__foto{position:relative;flex:none;width:44px;height:44px}
+.gast__foto img{width:44px;height:44px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 1.5px var(--gold),0 0 0 4px rgba(235,219,206,.12)}
+.gast__foto i{position:absolute;right:0;bottom:1px;width:11px;height:11px;border-radius:50%;background:#5fb07a;box-shadow:0 0 0 2px var(--navy)}
+
+/* ---- Startkacheln: Foto oben, Text darunter, goldene Kante beim Darüberfahren ---- */
+.gast__karten{gap:10px}
+.gast__karten button{padding:0;gap:0;overflow:hidden;border-radius:16px;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px var(--linie-g);
+  transition:box-shadow .35s,transform .5s var(--e2)}
+.gast__karten button:hover{background:rgba(255,255,255,.035);transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(235,219,206,.55),0 14px 26px -16px rgba(0,0,0,.7)}
+.gast__k-bild{display:block;width:100%;aspect-ratio:16/10;overflow:hidden}
+.gast__k-bild img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--e1)}
+.gast__karten button:hover .gast__k-bild img{transform:scale(1.04)}
+.gast__k-text{display:flex;flex-direction:column;gap:2px;padding:10px 13px 12px}
+.gast__karten .gast__k-text b{font-family:var(--serif);font-weight:400;font-size:15.5px;color:var(--hell)}
+.gast__karten .gast__k-text span{font-size:11.5px;letter-spacing:.02em;color:var(--taupe)}
+
+/* ---- Buchung im grossen Fenster (SimpleBooking eingebettet) ---- */
+.gast-buchung{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:clamp(0px,3vw,40px);background:rgba(11,12,16,.62);opacity:0;pointer-events:none;visibility:hidden;transition:opacity .35s,visibility 0s .35s}
+.gast-bucht .gast-buchung{opacity:1;pointer-events:auto;visibility:visible;transition:opacity .35s,visibility 0s}
+/* Geschlossen ist das Fenster unsichtbar UND ausgeblendet: Safari leitete sonst das Scrollen an das unsichtbare Buchungssystem weiter, der Chat liess sich nicht mehr hochscrollen (Robert 10.10.2026) */
+.gast-buchung__rahmen{width:min(1180px,100%);height:min(900px,100%);display:flex;flex-direction:column;overflow:hidden;border-radius:var(--r-l);background:var(--papier);
+  box-shadow:0 0 0 1px rgba(235,219,206,.4),0 50px 100px -40px rgba(0,0,0,.8);transform:translateY(18px) scale(.97);transition:transform .6s var(--e1)}
+.gast-bucht .gast-buchung__rahmen{transform:none}
+.gast-buchung__kopf{flex:none;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;background:var(--navy);color:#fff}
+.gast-buchung__kopf div{flex:1;min-width:0;line-height:1.3}
+.gast-buchung__kopf b{display:block;font-family:var(--serif);font-weight:400;font-size:17px}
+.gast-buchung__kopf div span{font-size:12px;color:var(--creme)}
+.gast-buchung__neu{font-size:12.5px;color:var(--creme);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.gast-buchung__zu{height:42px}
+.gast-buchung__buehne{position:relative;flex:1;min-height:0;background:#fff}
+.gast-buchung__buehne iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .4s}
+.gast-buchung.geladen iframe{opacity:1}
+.gast-buchung__lade{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:7px}
+.gast-buchung__lade i{width:8px;height:8px;border-radius:50%;background:var(--taupe);animation:gastDenkt 1s infinite}
+.gast-buchung__lade i:nth-child(2){animation-delay:.15s}.gast-buchung__lade i:nth-child(3){animation-delay:.3s}
+.gast-buchung.geladen .gast-buchung__lade{display:none}
+@media (max-width:700px){
+  .gast-buchung{padding:0}
+  .gast-buchung__rahmen{border-radius:0;height:100%}
+  .gast-buchung__kopf{flex-wrap:wrap;padding:max(10px,env(safe-area-inset-top)) 12px 10px}
+  .gast-buchung__kopf div span{display:none}
+  .gast-buchung__neu{order:3;flex-basis:100%;text-align:right}
+}
+
+/* Antworten übersichtlich: Punkte mit goldenem Punkt, Stichwort hervorgehoben (Robert 10.10.2026: «sehr textlastig») */
+.gast__b ul{list-style:none;margin:10px 0 2px;padding:0;display:grid;gap:7px}
+.gast__b li{position:relative;padding:8px 12px 8px 28px;border-radius:12px;background:rgba(255,255,255,.045);line-height:1.45}
+.gast__b li::before{content:'';position:absolute;left:12px;top:1.05em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.gast__b li b{font-weight:600;color:var(--hell,#fff)}
+.gast__b p+p,.gast__b ul+p,.gast__b p+ul{margin-top:10px}
+
+/* ======== Fassung «Fahrplan» (Robert 18.10.2026, gewählt aus 20 Fassungen, gilt für alle vier Maeder-Häuser) ========
+   Hell und sachlich: dunkles Kopfband mit Zeichen und Haus, grosses Foto fürs erste Thema und drei kleinere, Antworten geordnet
+   wie ein Fahrplan (Stichwort links, Angabe rechts, Uhrzeiten in Schreibmaschinenschrift, Listen mit Zeiten als dunkle Tafel).
+   Gilt nur, wo HAUS.fahrplan gesetzt ist (Maeder-Häuser; Salt & Silver baut aus derselben Vorlage und bleibt beim dunklen Fenster). Die Farben stehen nur in der nächsten Zeile; gast_haeuser.py hängt für jedes Haus seine eigene Zeile ans Ende. */
+.gast--fp,.gast-knopf--fp{--fp-grund:#f4ecdc;--fp-blatt:#fbf6ea;--fp-tinte:#0c1526;--fp-kopf:#1f213b;--fp-akz:#dcc68f;--fp-ruhe:#8a7545;--fp-linie:rgba(12,21,38,.14);--fp-leise:rgba(12,21,38,.6);--fp-titel:var(--serif)}
+.gast--fp{--papier:var(--fp-grund);--weiss:var(--fp-blatt);--tinte:var(--fp-tinte);--taupe:var(--fp-leise);--hell:var(--fp-tinte);--linie-g:var(--fp-linie);--creme:var(--fp-blatt);
+  border-radius:6px;background:var(--fp-grund);color:var(--fp-tinte);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.gast--fp:not(.gast--seite){bottom:calc(max(16px,calc(var(--rand)*.4)) + 64px);width:min(400px,calc(100vw - 32px));height:min(720px,calc(100vh - 130px));height:min(720px,calc(100svh - 130px))}
+.gast-offen .gast--fp:not(.gast--seite){box-shadow:0 40px 80px -24px rgba(0,0,0,.7),0 12px 24px -12px rgba(0,0,0,.45)}
+/* Knopf: dunkles Rechteck mit Zeichen und «Rezeption», offen Kreuz und «Schliessen» */
+.gast-knopf--fp{width:auto;height:50px;padding:0 19px 0 16px;border-radius:6px;background:var(--fp-kopf);color:var(--fp-akz);box-shadow:0 0 0 1px rgba(255,255,255,.12),0 14px 30px -10px rgba(0,0,0,.6)}
+.gast-knopf--fp>span{display:flex;align-items:center;gap:10px;justify-self:end}
+.gast-knopf--fp .gast-knopf__ce svg{width:auto!important;height:19px!important;flex:none}
+.gast-knopf--fp em{font-style:normal;font-family:var(--fp-titel);font-weight:600;font-size:16px;line-height:1;color:var(--fp-grund);white-space:nowrap}
+.gast-knopf--fp .gast-knopf__x svg{width:15px;height:15px}
+.gast-knopf--fp .gast-knopf__x{transform:translateY(6px)}
+/* Kopf: dunkles Band */
+.gast--fp .gast__kopf{background:var(--fp-kopf);color:var(--fp-grund);border:0;padding:13px 10px 13px 16px;gap:12px}
+.gast--fp .gast__kopf .gast__ce{width:auto;color:var(--fp-akz)}
+.gast--fp .gast__kopf .gast__ce svg{width:auto!important;height:22px!important}
+.gast--fp .gast__kopf b{font-family:var(--fp-titel);font-weight:600;font-size:16.5px;color:var(--fp-grund)}
+.gast--fp .gast__kopf div span{font-size:12px;letter-spacing:0;color:var(--fp-grund);opacity:.68}
+.gast--fp .gast__neu,.gast--fp .gast__zu{color:var(--fp-grund);border-radius:4px}
+.gast--fp .gast__neu:hover,.gast--fp .gast__zu:hover{background:rgba(255,255,255,.1)}
+/* Lauf und Start */
+.gast--fp .gast__lauf{padding:18px 16px 10px;gap:16px}
+.gast--fp .gast__start{margin:0;align-items:stretch;text-align:left;padding:0}
+.gast--fp .gast__start-ce,.gast--fp .gast__start p{display:none}
+.gast--fp .gast__start h3{font-family:var(--fp-titel);font-weight:600;font-size:25px;line-height:1.14;color:var(--fp-tinte);margin:0 0 12px}
+.gast--fp .gast__karten{grid-template-columns:repeat(3,1fr);gap:16px 10px}
+.gast--fp .gast__karten button,.gast--fp .gast__karten button:hover{border-radius:0;background:none;box-shadow:none;overflow:visible;transform:none}
+.gast--fp .gast__k-bild{aspect-ratio:5/4;border-radius:4px}
+.gast--fp .gast__karten button:hover .gast__k-bild img{transform:none}
+.gast--fp .gast__k-text{padding:7px 0 0;gap:1px}
+.gast--fp .gast__karten .gast__k-text b{font-family:var(--fp-titel);font-weight:600;font-size:15px;color:var(--fp-tinte)}
+.gast--fp .gast__karten .gast__k-text span{font-size:11.5px;line-height:1.3;color:var(--fp-leise)}
+.gast--fp .gast__karten .gast__k--gross{grid-column:1/-1}
+.gast--fp .gast__k--gross .gast__k-bild{aspect-ratio:2.3/1}
+.gast--fp .gast__k--gross .gast__k-text{display:block;padding-top:9px}
+.gast--fp .gast__karten .gast__k--gross .gast__k-text b{font-size:20px;margin-right:7px}
+.gast--fp .gast__karten .gast__k--gross .gast__k-text span{font-size:12.5px}
+.gast--fp .gast__k--gross em{display:flex;align-items:center;gap:6px;margin-top:3px;font-style:normal;font-size:14px;color:var(--fp-ruhe)}
+.gast--fp .gast__k--gross em svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.4;fill:none;flex:none;transition:transform .4s var(--e2)}
+.gast--fp .gast__k--gross:hover em svg{transform:translateX(3px)}
+/* Gespräch */
+.gast--fp .gast__b{font-size:14.5px;line-height:1.6}
+.gast--fp .gast__b--gast{border-radius:4px;background:var(--fp-kopf);color:var(--fp-grund);padding:10px 14px}
+.gast--fp .gast__b--haus{color:var(--fp-tinte)}
+.gast--fp .gast__b small{font-family:var(--mono);font-size:11px;letter-spacing:0;color:var(--fp-leise)}
+.gast--fp .gast__b--denkt i{background:var(--fp-ruhe)}
+.gast--fp .gast__b .gast__zt{font-family:var(--fp-titel);font-weight:600;font-size:15.5px;margin-top:14px}
+.gast--fp .gast__b .gast__zeit,.gast--fp .gast__b .gast__betrag{font-family:var(--mono);font-size:.94em;letter-spacing:.01em;white-space:nowrap}
+.gast--fp .gast__b ul{display:block;margin:10px 0 2px;padding:0;list-style:none}
+.gast--fp .gast__b li{display:grid;grid-template-columns:minmax(0,1fr);padding:8px 0;margin:0;border-radius:0;background:none;border-top:1px solid var(--fp-linie);line-height:1.45}
+.gast--fp .gast__b li:has(>b){grid-template-columns:112px minmax(0,1fr);column-gap:10px}
+.gast--fp .gast__b li:not(:has(>b)){display:block}   /* ohne Stichwort: Fliesstext, sonst stünde jede Uhrzeit auf eigener Zeile */
+.gast--fp .gast__b li::before{content:none}
+.gast--fp .gast__b li>b{font-weight:400;font-size:13px;color:var(--fp-leise)}
+.gast--fp .gast__b li.gast__pz{grid-template-columns:minmax(0,1fr) auto;align-items:baseline}
+.gast--fp .gast__b li.gast__pz>b{font-size:14.5px;color:var(--fp-tinte)}
+.gast--fp .gast__b li.gast__pz>span{text-align:right}
+.gast--fp .gast__b ul+p,.gast--fp .gast__b p+ul{margin-top:10px}
+/* Tafel: eine Liste mit Uhrzeiten wird zum dunklen Fahrplan */
+.gast--fp .gast__b ul.gast__tafel{background:var(--fp-kopf);color:var(--fp-grund);border-radius:4px;padding:6px 14px}
+.gast--fp .gast__b .gast__tafel li{border-top:1px solid rgba(255,255,255,.1)}
+.gast--fp .gast__b .gast__tafel li:first-child{border-top:0}
+.gast--fp .gast__b .gast__tafel li>b{color:var(--fp-grund);opacity:.7}
+.gast--fp .gast__b .gast__tafel .gast__zeit{font-size:1.18em;color:var(--fp-grund)}
+/* Vorschläge (Zimmermappe) */
+.gast--fp .gast__vor button{border-radius:4px;color:var(--fp-tinte);box-shadow:inset 0 0 0 1px var(--fp-linie)}
+.gast--fp .gast__vor button:hover{background:var(--fp-blatt)}
+.gast--fp .gast__vor svg{stroke:var(--fp-ruhe)}
+/* Feld: eine Zeile mit Rahmen, Buchen links, Senden als dunkles Rechteck */
+.gast--fp .gast__feld{flex-direction:row;align-items:flex-end;gap:4px;margin:8px 14px 0;padding:4px 4px 4px 6px;border-radius:4px;background:var(--fp-blatt);box-shadow:inset 0 0 0 1.5px var(--fp-tinte)}
+.gast--fp .gast__feld label{flex:1}
+.gast--fp .gast__leiste{display:contents}
+.gast--fp .gast__plus{order:-1;margin:0;width:36px;height:36px;border-radius:3px;color:var(--fp-ruhe)}
+.gast--fp .gast__plus:hover{background:var(--fp-linie)}
+.gast--fp .gast__feld textarea{color:var(--fp-tinte);font-size:15.5px;padding:8px 0;height:calc(1.4em + 16px)}
+.gast--fp .gast__feld textarea::placeholder{color:var(--fp-leise)}
+.gast--fp .gast__send{width:40px;height:36px;border-radius:3px;background:var(--fp-tinte);color:var(--fp-grund)}
+.gast--fp .gast__fuss{color:var(--fp-leise);padding:8px 16px 12px}
+.gast--fp .gast__fuss a{color:inherit}
+/* Buchungsmaske im hellen Fenster */
+.gast--fp .gast__maske{border-radius:4px;background:var(--fp-blatt);box-shadow:0 0 0 1px var(--fp-linie)}
+.gast--fp .gast__m-zeile input,.gast--fp .gast__m-zeile select{background:#fff;color:var(--fp-tinte);border-radius:4px;color-scheme:light;box-shadow:inset 0 0 0 1px var(--fp-linie)}
+.gast--fp .gast__m-z{border-radius:4px;background:#fff;box-shadow:inset 0 0 0 1px var(--fp-linie)}
+.gast--fp .gast__m-z::after{box-shadow:inset 0 0 0 2px var(--fp-tinte)}
+.gast--fp .gast__m-z em{color:var(--fp-leise)}
+.gast--fp .gast__m-z u{color:var(--fp-ruhe)}
+.gast--fp .gast__m-hund input{accent-color:var(--fp-tinte)}
+@media (max-width:560px){
+  .gast--fp:not(.gast--seite){bottom:76px;top:84px;height:auto;width:auto}
+  .gast-knopf--fp{height:48px;padding:0 16px 0 14px}
+  .gast--fp .gast__kopf b{font-size:15px}
+}
+.gast-offen .gast-knopf--fp .gast-knopf__ce{transform:translateY(-6px)}
+.gast-offen .gast-knopf--fp .gast-knopf__x{transform:none}
+
+
+/* ---- Robert 18.10.2026, 00:30: Foto-Kacheln als abgerundete 3D-Kacheln wie auf den Websites (liegen auf einem Schatten, heben sich unter dem Zeiger),
+   Frage unter dem grossen Foto aufrecht, Knopf rund mit dem Zeichen (Carlton, Doldenhorn) oder mit Schrift (Ruedihus, Gasterntal) ---- */
+.gast--fp .gast__karten{gap:20px 12px;padding-bottom:4px}
+.gast--fp .gast__k-bild{border-radius:14px;transform:translateZ(0);box-shadow:0 0 0 1px color-mix(in srgb,var(--fp-tinte) 7%,transparent),0 22px 26px -16px color-mix(in srgb,var(--fp-tinte) 62%,transparent);
+  transition:transform .6s var(--e2),box-shadow .6s var(--e2)}
+.gast--fp .gast__k--gross .gast__k-bild{border-radius:18px}
+.gast--fp .gast__k-bild img{transition:transform 1.4s var(--e1)}
+@media (hover:hover){
+  .gast--fp .gast__karten button:hover .gast__k-bild{transform:translateY(-4px);box-shadow:0 0 0 1px color-mix(in srgb,var(--fp-tinte) 9%,transparent),0 30px 30px -18px color-mix(in srgb,var(--fp-tinte) 70%,transparent)}
+  .gast--fp .gast__karten button:hover .gast__k-bild img{transform:scale(1.04)}
+}
+.gast--fp .gast__k-text{padding-top:10px}
+.gast--fp .gast__k--gross .gast__k-text{padding-top:12px}
+.gast--fp .gast__k--gross em i{font-style:normal}
+/* Runder Knopf mit dem Zeichen des Hauses */
+.gast-knopf--fp.gast-knopf--rund{width:62px;height:62px;padding:0;border-radius:50%;box-shadow:0 0 0 1px color-mix(in srgb,var(--fp-akz) 55%,transparent),0 14px 28px -10px rgba(0,0,0,.6)}
+.gast-knopf--rund>span{justify-self:center}
+.gast-knopf--rund em{display:none}
+.gast-knopf--fp.gast-knopf--rund .gast-knopf__ce svg{height:30px!important}
+.gast-knopf--fp.gast-knopf--rund .gast-knopf__x svg{width:18px;height:18px}
+.gast-knopf--rund .gast-knopf__x{color:var(--fp-grund)}
+.gast--fp.gast--rund:not(.gast--seite){bottom:calc(max(16px,calc(var(--rand)*.4)) + 76px)}
+@media (max-width:560px){.gast--fp.gast--rund:not(.gast--seite){bottom:86px}.gast-knopf--fp.gast-knopf--rund{width:58px;height:58px}}
+/* Carlton-Startseite: im Auftakt ragte der Knopf unten ins Bild, war aber bis zum ersten Hochscrollen gesperrt (main.css: kommt mit der Leiste).
+   Solange der Auftakt steht, ist er jetzt ganz da und anklickbar; weiter unten kommt und geht er wie bisher mit der Leiste. */
+@media (min-width:1061px){html.kopf-oben body .gast-knopf--fp{transform:none;pointer-events:auto}}
+/* Carlton-Startseite im Auftakt (Robert 18.10.2026: «Warum hast du den Button unten rechts so hochgesetzt?»): main.css?h=ca4b285405 hebt den Knopf dort auf 96 px
+   über die Menüzeile. Der Fahrplan-Knopf bleibt an seiner gewohnten Stelle unten rechts, 30 px wie auf allen anderen Carlton-Seiten. */
+@media (min-width:1081px){html.kopf-oben body .gast-knopf--fp{bottom:30px}}
+
+/* Salt & Silver */
+.gast .kn{--t:#111421;color:#111421}
+.gast__emblem{display:block;width:34px;height:34px;background:url(../logo/emblem-weiss.png?h=c819865f4e) center/contain no-repeat}
+.gast__start-ce .gast__emblem{width:64px;height:64px;margin:0 auto}
+.gast__start h3{font-family:var(--serif);text-transform:uppercase;letter-spacing:.01em}
+.gast__m-zimmer{grid-template-columns:repeat(3,minmax(0,1fr))}
+.gast__m-z:last-child:nth-child(odd){grid-column:auto}.gast__m-z:last-child:nth-child(odd) img{aspect-ratio:4/3}
+.gast__m-z::after{box-shadow:inset 0 0 0 2px #ff3132}
+@media (max-width:700px){.gast__m-z em{display:none}}
+.gast__maske--fehlt .gast__m-zimmer{animation:gast-fehlt .5s}
+.gast__maske--fehlt .gast__m-summe{color:#ff3132}
+@keyframes gast-fehlt{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+@media (max-width:520px){.gast__m-zimmer{grid-template-columns:1fr;gap:6px}.gast__m-z{flex-direction:row;align-items:center}.gast__m-z img,.gast__m-z:last-child:nth-child(odd) img{width:76px;flex:none;aspect-ratio:1/1}.gast__m-z span{padding:8px 12px}.gast__m-z em{display:none}}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio · Salt & Silver</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/assets/logo/emblem.png">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="studio.css?v=14">
+</head>
+<body>
+<style>.probehinweis{position:fixed;z-index:99;top:10px;left:calc(50% + 131px);transform:translateX(-50%);padding:7px 14px;border-radius:999px;background:#ff3132;color:#fff;font:500 11px/1.2 'DM Mono',monospace;letter-spacing:.14em;text-transform:uppercase;box-shadow:0 8px 18px -8px rgba(0,0,0,.6);pointer-events:none;white-space:nowrap;max-width:calc(100vw - 300px);overflow:hidden;text-overflow:ellipsis}@media(max-width:860px){.probehinweis{left:50%;top:auto;bottom:84px;max-width:calc(100vw - 24px)}}</style><div class="probehinweis">Probe-Fassung · eure Änderungen bleiben in diesem Browser</div>
+<p id="notausgang" style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;padding:18px 24px;max-width:calc(100vw - 32px);color:#ebdbce;font:15px/1.5 system-ui,sans-serif;text-align:center">Das Studio lädt …<br>Bleibt es hier stehen: <a href="pruefung.html" style="color:#fff">Prüfung öffnen</a></p>
+<div id="tor" class="tor" hidden></div>
+<div id="app" class="app" hidden>
+  <aside class="rand" id="rand"></aside>
+  <div class="haupt">
+    <main class="flaeche" id="sicht" tabindex="-1"></main>
+    <div class="leiste" id="leiste" aria-live="polite"></div>
+  </div>
+</div>
+<div id="lade" class="lade" hidden></div>
+<div id="vergleich" class="vgl" hidden></div>
+<div id="fenster" class="fenster" hidden></div>
+<div id="meldung" class="meldung" aria-live="polite"></div>
+<input type="file" id="datei" accept="image/jpeg,image/png,image/webp" hidden>
+<script src="studio.js?v=14"></script>
+</body>
+</html>

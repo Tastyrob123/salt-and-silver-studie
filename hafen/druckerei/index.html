@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Druckerei · Salt &amp; Silver</title>
+<meta name="description" content="Die Druckerei von Salt &amp; Silver: Gutscheine, Karten, Aushänge und Sticker in eurem Stil, zum Anpassen und Drucken.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5eee6">
+<link rel="preload" href="../../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/main.css?h=ca4b285405">
+<link rel="stylesheet" href="../../hafen/wz.css?v=15">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="druckerei.css?v=5">
+</head>
+<body class="wz wz-t dr" data-wurzel="../../">
+<header class="t-oben">
+  <a class="t-marke" href="../"><img src="../../assets/logo/wortmarke-weiss.png?h=31603a5105" alt="Salt &amp; Silver"><b>Druckerei</b></a>
+  <div class="t-mitte"><b id="t-titel">Alle Drucksachen</b><span id="t-unter">21 Vorlagen</span></div>
+  <div class="t-rechts"><a class="t-taste" href="../" title="Zum Hafen" aria-label="Zum Hafen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7.5 8 3l5.5 4.5V13h-4V9.5h-3V13h-4z"/></svg></a><a class="t-taste" href="../../werkbank/anleitung/druckerei/" title="Anleitung" aria-label="Anleitung"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3.5h4a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 0 7 11.5H3zM13 3.5H9.5A1.5 1.5 0 0 0 8 5v8a1.5 1.5 0 0 1 1.5-1.5H13z"/></svg></a><a class="kn kn--klein kn--hell" href="../../sticker/index.html" target="_blank" rel="noopener">Sticker<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+</header>
+<main class="dr-haupt">
+  <section class="t-ansicht" data-ansicht="atelier">
+    <div class="t-gruss"><img src="../z/brett-tinte.svg" alt=""><h1>Was braucht ihr <em>auf Papier?</em></h1>
+      <p>Sucht euch ein Blatt aus. Ihr klickt auf den Text und schreibt ihn neu, tauscht ein Foto aus eurem Bildarchiv und speichert das Ganze als PDF für die Druckerei.</p></div>
+    <div class="dr-leiste"><div class="t-wahl" id="gruppen"></div><input class="t-feld m-suche" id="suche" type="search" placeholder="Suchen, zum Beispiel Gutschein" aria-label="Drucksachen suchen"></div>
+    <div class="dr-atelier" id="atelier"></div>
+  </section>
+  <section class="t-ansicht dr-werk" data-ansicht="werk" hidden>
+    <aside class="w-platte dr-seite">
+      <button class="t-nav" id="zurueck"><span>← Alle Drucksachen</span></button>
+      <span class="w-klein" id="w-format">&nbsp;</span><h2 id="w-name">&nbsp;</h2><p id="w-wozu">&nbsp;</p>
+      <dl><dt>Papier</dt><dd id="w-papier">&nbsp;</dd><dt>Seiten</dt><dd id="w-seiten">&nbsp;</dd></dl>
+      <div class="dr-hilfe w-kuhle"><b>So geht’s</b><p>Auf einen Text klicken und schreiben.</p><p>Auf ein Foto klicken und ein anderes wählen.</p><p>Unten als PDF speichern.</p></div>
+    </aside>
+    <div class="dr-buehne"><iframe id="blatt" title="Das Blatt" loading="eager"></iframe></div>
+  </section>
+</main>
+<div class="t-fussleiste dr-fuss" id="fuss" hidden><p><b id="f-titel">Nichts geändert</b><span id="f-text">Das Blatt steht so da, wie es angelegt ist.</span></p>
+  <button class="t-pille" id="vorher">Vorher ansehen</button><button class="t-pille" id="zurueckstellen">Zurücksetzen</button>
+  <a class="kn kn--klein kn--hell" id="original" download>Fertige PDF<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a><button class="kn kn--klein kn--hell" id="drucken">Als PDF speichern<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button></div>
+<dialog class="t-fenster" id="fotos"><div class="t-fenster__in w-platte dr-fotos"><button class="t-taste t-zu" id="fotos-zu" aria-label="Schließen"><svg viewBox="0 0 16 16"><path d="m4 4 8 8M12 4l-8 8"/></svg></button>
+  <h3>Ein Foto <em>wählen</em></h3><div class="t-wahl" id="f-bereiche"></div><div class="dr-fraster" id="f-raster"></div></div></dialog>
+<div class="m-kopiert" id="kopiert" aria-live="polite"></div>
+<script src="../wz.js?v=15"></script>
+<script src="druckerei.js?v=5"></script>
+</body>
+</html>

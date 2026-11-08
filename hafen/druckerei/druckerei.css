@@ -1,0 +1,48 @@
+/* Salt & Silver · Druckerei. Rahmen und Töne: ../wz.css. Blätter stehen frei auf dem hellen Grund, drei je Reihe. */
+.dr-haupt{padding:calc(70px + clamp(14px,1.6vw,24px)) clamp(14px,2.4vw,40px) 130px;max-width:1760px;margin:0 auto}
+.m-suche{max-width:340px}
+.m-kopiert{position:fixed;z-index:60;left:50%;bottom:104px;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:12px 22px;border-radius:999px;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  background:linear-gradient(180deg,#2d3250,#151929);box-shadow:0 18px 26px -14px rgba(17,20,33,.8);transition:opacity .4s var(--e2),transform .5s var(--e2)}
+.m-kopiert.da{opacity:1;transform:translate(-50%,0)}
+.dr-leiste{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:clamp(26px,3.4vw,54px)}
+.dr-atelier{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(34px,4.6vw,80px) clamp(20px,3vw,56px);align-items:end}
+.dr-stueck{display:grid;justify-items:center;gap:22px;text-align:center;color:var(--tinte);padding:0;width:100%}
+.dr-stueck__b{position:relative;display:flex;align-items:flex-end;justify-content:center;width:100%;height:clamp(210px,22vw,450px)}
+.dr-stueck__b img{display:block;flex:none;width:auto;height:auto;max-width:none;border-radius:3px;
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 0 0 1px rgba(60,44,30,.1),0 30px 40px -24px rgba(60,44,30,.75),0 8px 14px -8px rgba(60,44,30,.4);
+  transform:rotate(var(--dreh,-1.4deg));transition:transform 1.1s var(--e1)}
+.dr-stueck:nth-child(3n+2) .dr-stueck__b img{--dreh:1deg}.dr-stueck:nth-child(3n) .dr-stueck__b img{--dreh:-.6deg}
+@media (hover:hover){.dr-stueck:hover .dr-stueck__b img{transform:rotate(0deg) translateY(-8px)}}
+.dr-stueck b{display:block;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.5rem,2.3vw,2.2rem);line-height:1.04}
+.dr-stueck small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:#7a705e;margin-top:6px}
+.js .dr-stueck{opacity:0;transform:translateX(70px);transition:opacity 1s var(--e1),transform 1.5s cubic-bezier(.19,1,.22,1);transition-delay:calc(var(--i,0)*110ms)}
+.js .dr-stueck.da{opacity:1;transform:none}
+.dr-leer{grid-column:1/-1;text-align:center;padding:60px 0;font-size:17px;color:rgba(11,12,16,.66)}
+
+.dr-werk{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(16px,2vw,34px);align-items:start}
+.dr-werk[hidden]{display:none}
+.dr-seite{position:sticky;top:calc(70px + clamp(14px,1.6vw,24px));display:grid;gap:10px;padding:14px 18px 20px;border-radius:var(--r-xl)}
+.dr-seite .t-nav{margin:0 -6px 8px;width:calc(100% + 12px)}
+.dr-seite h2{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:2.1rem;line-height:1.02}
+.dr-seite p{font-size:15.5px;line-height:1.5;color:rgba(11,12,16,.72)}
+.dr-seite dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14.5px;line-height:1.45;margin:6px 0}
+.dr-seite dt{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7a705e;padding-top:3px}
+.dr-hilfe{padding:16px 18px;display:grid;gap:6px}
+.dr-hilfe b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:1.15rem}
+.dr-hilfe p{font-size:14.5px}
+.dr-buehne{border-radius:var(--r-xl);background:rgba(104,80,58,.1);box-shadow:inset 0 2px 6px rgba(60,44,30,.16);padding:clamp(10px,1.4vw,22px);min-height:60vh}
+.dr-buehne iframe{display:block;width:100%;height:70vh;border:0;background:transparent}
+.dr-fuss{left:clamp(14px,2.4vw,40px)!important}
+.dr-fuss[hidden]{display:none}
+.dr-fuss .t-pille{background:linear-gradient(180deg,#3a4064,#1b1f33);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -2px 0 rgba(0,0,0,.45)}
+.dr-fuss .t-pille.an{background:linear-gradient(180deg,#fffaf4,#eddfd0);color:var(--tinte)}
+.dr-fotos{position:relative}
+.dr-fotos h3{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:2.2rem;margin-bottom:14px}
+.dr-fotos h3 em{font-style:normal;color:var(--taupe)}
+.dr-fraster{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}
+.dr-fraster button{display:block;padding:0;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:var(--duene)}
+.dr-fraster img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e1)}
+@media (hover:hover){.dr-fraster button:hover img{transform:scale(1.07)}}
+@media (max-width:1000px){.dr-atelier{grid-template-columns:1fr 1fr}.dr-werk{grid-template-columns:1fr}.dr-seite{position:static}.dr-stueck__b{height:clamp(200px,40vw,340px)}}
+@media (max-width:560px){.dr-atelier{grid-template-columns:1fr}.dr-stueck__b{height:clamp(200px,62vw,300px)}}
+@media (prefers-reduced-motion:reduce){.js .dr-stueck{opacity:1;transform:none;transition:none}}

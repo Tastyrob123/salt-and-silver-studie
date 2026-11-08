@@ -1,0 +1,45 @@
+/* Salt & Silver · Material. Rahmen, Töne, Kopf: ../hafen/wz.css */
+.ma-auf{position:relative;display:grid;justify-items:center;gap:18px;padding:clamp(120px,15vh,170px) var(--w-rand) clamp(70px,8vw,120px);background:var(--papier);isolation:isolate;text-align:center}
+.ma-auf::before{content:'';position:absolute;z-index:-1;inset:0;background:url(img/sand.webp) center/cover;opacity:.55}
+.ma-auf__s{margin:0 auto}
+.js .ma-auf__s{opacity:0;transform:translateY(22px);transition:opacity 1s var(--e1) .3s,transform 1.2s var(--e1) .3s}
+.js .ma-auf.da .ma-auf__s{opacity:1;transform:none}
+.an .w-saal{border-radius:clamp(26px,3vw,46px) clamp(26px,3vw,46px) 0 0;margin-top:calc(clamp(26px,3vw,46px)*-1)}
+.ma-liste{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.8vw,26px)}
+.ma-o{display:grid;grid-template-columns:minmax(150px,.8fr) minmax(0,1.2fr);gap:clamp(14px,2vw,30px);align-items:center;padding:12px;border-radius:var(--r-xl)}
+.ma-o__t{display:grid;gap:10px;justify-items:start;padding:14px 12px 14px 0}
+.ma-o__t h2{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.7rem,2.6vw,2.6rem);line-height:1.02}
+.ma-o__t p{font-size:16px;line-height:1.5;color:rgba(11,12,16,.72)}
+.ma-o__t .t-wahl{gap:6px;margin:2px 0 6px}
+.ma-o__t .t-pille{display:inline-flex;align-items:center;height:34px;padding:0 13px;font-size:9.5px;letter-spacing:.13em}
+.ma-f{position:relative;display:block;aspect-ratio:1;border-radius:calc(var(--r-xl) - 12px);background:rgba(104,80,58,.08);box-shadow:inset 0 2px 5px rgba(60,44,30,.14);overflow:hidden}
+.ma-f--z{display:grid;place-items:center}.ma-f--z img{width:46%;height:auto;opacity:.9}
+.ma-f__b{position:absolute;left:50%;top:50%;width:52%;aspect-ratio:3/4;margin:-35% 0 0 -26%;border:5px solid #fbf5ee;border-radius:6px;overflow:hidden;background:#fbf5ee;box-shadow:0 14px 22px -12px rgba(60,44,30,.75);
+  transform:translateX(calc((var(--n) - 1)*52%)) rotate(calc((var(--n) - 1)*7deg));transition:transform 1.3s var(--e1)}
+.ma-f__b:nth-child(2){z-index:1;transform:translateY(-5%) rotate(1deg)}
+.ma-f__b img{display:block;width:100%;height:100%;object-fit:cover}
+.ma-f__b--z img{object-fit:contain;padding:16%}
+@media (hover:hover){.ma-o:hover .ma-f__b:nth-child(1){transform:translateX(-60%) rotate(-10deg)}.ma-o:hover .ma-f__b:nth-child(3){transform:translateX(60%) rotate(10deg)}}
+.ma-ende{display:grid;justify-items:center;gap:22px;text-align:center;padding-bottom:clamp(100px,11vw,170px)}
+.ma-ende__s{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.7rem,3.4vw,3.2rem);line-height:1.08;max-width:22ch}
+.ma-ende .kn-reihe{justify-content:center}
+.an .w-fuss{position:relative;border-radius:clamp(26px,3vw,46px) clamp(26px,3vw,46px) 0 0;margin-top:calc(clamp(26px,3vw,46px)*-1)}
+.ma-liste--drei{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ma-liste--drei .ma-o{grid-template-columns:1fr;align-items:start}
+.ma-liste--drei .ma-o__t{padding:4px 12px 14px}
+.ma-liste--drei .ma-f{aspect-ratio:16/11}
+@media (max-width:1100px){.ma-liste,.ma-liste--drei{grid-template-columns:1fr}}
+@media (max-width:560px){.ma-o{grid-template-columns:1fr}.ma-o__t{padding:4px 10px 14px}.ma-f{aspect-ratio:16/11}}
+
+/* Anleitungen zu den Werkzeugen */
+.an-liste{display:grid;gap:clamp(60px,8vw,130px)}
+.an-k{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,3.6vw,64px);align-items:center;scroll-margin-top:110px}
+.an-k--um{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+.an-k--um .h-schirm{order:2}
+.an-k__t{padding:clamp(22px,2.6vw,40px);border-radius:var(--r-xl);display:grid;gap:12px}
+.an-k__t h2{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.7rem,2.7vw,2.7rem);line-height:1.04}
+.an-k__t p{font-size:16.5px;line-height:1.58;color:rgba(11,12,16,.76)}
+.an-schluss{font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.55;max-width:60ch;color:rgba(11,12,16,.78)}
+.an-andere{display:grid;justify-items:center;gap:12px;margin-top:14px}
+.an-andere .t-pille{display:inline-flex;align-items:center}
+@media (max-width:900px){.an-k,.an-k--um{grid-template-columns:1fr}.an-k--um .h-schirm{order:0}}

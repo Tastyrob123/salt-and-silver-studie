@@ -1,0 +1,42 @@
+[
+ {
+  "name": "Papier",
+  "wert": "#f5eee6",
+  "rolle": "Helle Flächen, Seiten zum Lesen"
+ },
+ {
+  "name": "Creme",
+  "wert": "#ebdbce",
+  "rolle": "Knöpfe auf Dunkel, betonte Worte"
+ },
+ {
+  "name": "Taupe",
+  "wert": "#9e947f",
+  "rolle": "Zweite Zeile im Titel, kleine Schrift"
+ },
+ {
+  "name": "Navy",
+  "wert": "#1f213b",
+  "rolle": "Dunkle Flächen im Wechsel"
+ },
+ {
+  "name": "Knopf-Blau",
+  "wert": "#151929",
+  "rolle": "Knöpfe, Leiste, dunkle Felder"
+ },
+ {
+  "name": "Nacht",
+  "wert": "#111421",
+  "rolle": "Grundfläche der Website"
+ },
+ {
+  "name": "Tinte",
+  "wert": "#0b0c10",
+  "rolle": "Schrift auf Hell"
+ },
+ {
+  "name": "Rot",
+  "wert": "#ff3132",
+  "rolle": "Ein einzelner Punkt, nie eine Fläche"
+ }
+]

@@ -1,0 +1,393 @@
+{
+ "_": "Festes Antwortbuch des Chats, Salt & Silver (Durchgang 23.10.2026). Wortlaut aus «Gut zu wissen», gebaut von gast/antwortbuch.py. Antwortet, wenn die KI nicht antwortet. warten_ms: so lange wartet das Fenster auf die Funktion.",
+ "warten_ms": 1200,
+ "oft": [
+  "reservieren",
+  "zeiten",
+  "unterschied"
+ ],
+ "themen": [
+  {
+   "id": "reservieren",
+   "s2": [
+    "reservier",
+    "tisch",
+    "reservation",
+    "book a table",
+    "opentable",
+    "platz frei",
+    "buchen"
+   ],
+   "s": [
+    "heute abend",
+    "morgen",
+    "table",
+    "book"
+   ],
+   "q": {
+    "de": "Wie kann ich reservieren?",
+    "en": "How can I make a reservation?"
+   },
+   "a": {
+    "de": "Wir bieten mit OpenTable eine Echtzeit-Online Reservierung an. Du kannst hier bequem an deinem Wunschtag online reservieren und erhältst direkt die Bestätigung. Eine Reservierung per E-Mail (zentrale@saltandsilver.de) ist ebenfalls möglich.",
+    "en": "With OpenTable we offer real-time online reservation. You can conveniently reserve online for the day you want and receive the confirmation right away. A reservation by e-mail (zentrale@saltandsilver.de) is also possible."
+   },
+   "maske": true
+  },
+  {
+   "id": "gruppe",
+   "s2": [
+    "10 personen",
+    "mehr als 10",
+    "gruppe",
+    "grosse gruppe",
+    "group",
+    "10 people",
+    "more than 10"
+   ],
+   "s": [
+    "personen",
+    "people",
+    "firma",
+    "team"
+   ],
+   "q": {
+    "de": "Wie kann ich für mehr als 10 Personen reservieren?",
+    "en": "How can I reserve for more than 10 people?"
+   },
+   "a": {
+    "de": "Für Reservierungen ab 10 Personen, schreib uns gerne eine Mail an zentrale@saltandsilver.de.",
+    "en": "For reservations of 10 or more, feel free to send us an e-mail at zentrale@saltandsilver.de."
+   }
+  },
+  {
+   "id": "exklusiv",
+   "s2": [
+    "exklusiv",
+    "mieten",
+    "exclusive",
+    "hire",
+    "event",
+    "veranstaltung",
+    "feier",
+    "hochzeit",
+    "geburtstag"
+   ],
+   "s": [
+    "ganze restaurant",
+    "private"
+   ],
+   "q": {
+    "de": "Ein Restaurant exklusiv mieten?",
+    "en": "Hire a restaurant exclusively?"
+   },
+   "a": {
+    "de": "Die Restaurants können exklusiv für Events / Veranstaltungen gemietet werden. Anfragen an: zentrale@saltandsilver.de.",
+    "en": "The restaurants can be hired exclusively for events. Enquiries to: zentrale@saltandsilver.de."
+   }
+  },
+  {
+   "id": "unterschied",
+   "s2": [
+    "unterschied",
+    "difference",
+    "welches restaurant",
+    "which restaurant",
+    "drei restaurants",
+    "three restaurants"
+   ],
+   "s": [
+    "crudo",
+    "am meer",
+    "konzept"
+   ],
+   "q": {
+    "de": "Wo liegt der Unterschied der drei Restaurants?",
+    "en": "What is the difference between the three restaurants?"
+   },
+   "a": {
+    "de": "Salt & Silver Restaurant: Hier servieren wir unseren Gästen ein kreative Karte. Die Küche im Restaurant ist geprägt von kräftigen Feuer-Aromen, komplexer Würzigkeit und erfrischendem Säure-Schärfe Spiel. Unser Menü ändert und entwickelt sich ständig weiter. Wir sind immer auf der Suche nach den besten Zutaten der Saison und dem frischesten Fang des Tages – mit den dazu passenden Getränken. Wir bitten Sie also, uns zu vertrauen und sich für die Überraschungen zu öffnen, die wir für Sie vorbereitet haben. Bistro Crudo: Hier servieren wir Tacos, die wir gut finden, Ceviches, auf die wir stolz sein können und Bar-Food, das glücklich und durstig macht. Egal ob ein kurzer Snack oder ein voller Tisch mit vielen Freunden – das Bistro Crudo ist euer Wochenende-Bistro für kulinarische Weltreisen im Salt & Silver Style. Salt & Silver am Meer: In St. Peter-Ording arbeiten wir mit Rindern & Lämmern, die auf den hiesigen Salzwiesen grasen, Muscheln & Austern aus der Nordsee und Fisch, den man mit gutem Gewissen genießen kann. Außerdem simple und dennoch raffinierte vegetarische Köstlichkeiten von den Höfen im Umland – knusprig & rauchig über offenem Feuer gegrillt. Jeder bestellt à la carte, Menüs bieten wir nicht an. Da wir sehr saisonal und regional arbeiten, kann sich die Karte, bei einer Reservierung die weit im Voraus liegt, noch ändern.",
+    "en": "Salt & Silver Restaurant: Here we serve our guests a creative menu. The cooking in the restaurant is shaped by bold fire flavours, complex spice and a refreshing play of acidity and heat. Our menu changes and evolves constantly. We are always looking for the best ingredients of the season and the freshest catch of the day, with drinks to match. So we ask you to trust us and open yourself to the surprises we have prepared for you. Bistro Crudo: Here we serve tacos we like, ceviches we can be proud of, and bar food that makes you happy and thirsty. Whether a quick snack or a full table with lots of friends – Bistro Crudo is your weekend bistro for culinary trips around the world, Salt & Silver style. Salt & Silver am Meer: In St. Peter-Ording we work with cattle & lambs that graze on the local salt marshes, mussels & oysters from the North Sea, and fish you can enjoy with a clear conscience. Plus simple yet refined vegetarian treats from the farms nearby – grilled crisp & smoky over an open fire. Everyone orders à la carte, we do not offer set menus. As we work very seasonally and regionally, the menu may still change if your reservation is far in advance."
+   }
+  },
+  {
+   "id": "wo",
+   "s2": [
+    "wo liegt",
+    "wo befind",
+    "adresse",
+    "address",
+    "where are",
+    "where is",
+    "anfahrt",
+    "hafenstrasse",
+    "bohler strand",
+    "boehler strand"
+   ],
+   "s": [
+    "wo ",
+    "where",
+    "location",
+    "standort"
+   ],
+   "q": {
+    "de": "Wo befinden sich die Restaurants?",
+    "en": "Where are the restaurants?"
+   },
+   "a": {
+    "de": "Das Hamburger Restaurant & Bistro Crudo hat seinen Standort in der St. Pauli Hafenstraße 136-140 in Hamburg. Das Salt & Silver am Meer befindet sich am Böhler Strand in St. Peter-Ording.",
+    "en": "The Hamburg restaurant & Bistro Crudo are located at St. Pauli Hafenstraße 136-140 in Hamburg. Salt & Silver am Meer is located on Böhler Strand in St. Peter-Ording."
+   }
+  },
+  {
+   "id": "zeiten",
+   "s2": [
+    "offnungszeit",
+    "oeffnungszeit",
+    "geoffnet",
+    "geoeffnet",
+    "offen",
+    "geschlossen",
+    "opening hours",
+    "open on",
+    "closed",
+    "ruhetag",
+    "wann habt ihr",
+    "when are you open"
+   ],
+   "s": [
+    "uhr",
+    "heute",
+    "montag",
+    "dienstag",
+    "mittwoch",
+    "donnerstag",
+    "freitag",
+    "samstag",
+    "sonntag",
+    "kuche",
+    "kitchen",
+    "open",
+    "saison",
+    "season"
+   ],
+   "q": {
+    "de": "Wie sind die Öffnungszeiten?",
+    "en": "What are the opening hours?"
+   },
+   "a": {
+    "de": "Salt & Silver Hamburg: Montag bis Samstag: 18 – 24 Uhr Die Küche schließt um 21:30 Uhr. Bistro Crudo: Freitag & Samstag: 18 – 24 Uhr Die Küche schließt um 21:30 Uhr. Salt & Silver am Meer: April bis Oktober, Mittwoch Ruhetag. 12 – 22 Uhr geöffnet Küchenpause von 15:30 – 17 Uhr Letzte Küchenbestellung 21 Uhr",
+    "en": "Salt & Silver Hamburg: Monday to Saturday: 6 pm – midnight The kitchen closes at 9:30 pm. Bistro Crudo: Friday & Saturday: 6 pm – midnight The kitchen closes at 9:30 pm. Salt & Silver am Meer: April to October, closed on Wednesdays. open 12 – 10 pm kitchen break 3:30 – 5 pm last kitchen orders 9 pm"
+   }
+  },
+  {
+   "id": "kiosk",
+   "s2": [
+    "kiosk",
+    "take-away",
+    "takeaway",
+    "take away",
+    "strandwetter"
+   ],
+   "s": [
+    "beach"
+   ],
+   "q": {
+    "de": "Wann hat der Kiosk in St. Peter-Ording geöffnet?",
+    "en": "When is the kiosk in St. Peter-Ording open?"
+   },
+   "a": {
+    "de": "Der Kiosk hat bei Strandwetter von 12 – 17 Uhr geöffnet. An den anderen Tagen gibt es die Möglichkeit kleine Speisen und Getränke als Take-away oben im Restaurant zu erwerben.",
+    "en": "The kiosk is open from 12 – 5 pm in beach weather. On other days you can buy small dishes and drinks as take-away upstairs in the restaurant."
+   }
+  },
+  {
+   "id": "zahlung",
+   "s2": [
+    "kartenzahlung",
+    "bar zahlen",
+    "bargeld",
+    "cash",
+    "visa",
+    "mastercard",
+    "ec-karte",
+    "card payment",
+    "pay by card"
+   ],
+   "s": [
+    "zahlen",
+    "pay",
+    "karte zahlen"
+   ],
+   "q": {
+    "de": "Kartenzahlung? Kein Problem!",
+    "en": "Card payment? No problem!"
+   },
+   "a": {
+    "de": "Du kannst bei uns mit folgenden Karten bezahlen: MasterCard/Visa/EC-Karte. ACHTUNG: In den beiden Hamburger Restaurants ist keine Bargeldzahlung möglich.",
+    "en": "You can pay with the following cards: MasterCard/Visa/EC card. PLEASE NOTE: cash payment is not possible in the two Hamburg restaurants."
+   }
+  },
+  {
+   "id": "karte",
+   "s2": [
+    "speisekarte",
+    "menu",
+    "menue",
+    "karte sehen",
+    "was gibt es zu essen",
+    "gerichte"
+   ],
+   "s": [
+    "essen",
+    "food",
+    "karte",
+    "dishes"
+   ],
+   "q": {
+    "de": "Wo kann ich eure Speisekarte sehen?",
+    "en": "Where can I see your menu?"
+   },
+   "a": {
+    "de": "Unsere Speisekarten findest du auf unserer Website: saltandsilver.de/restaurants",
+    "en": "You will find our menus on our website: saltandsilver.de/restaurants"
+   }
+  },
+  {
+   "id": "vegan",
+   "s2": [
+    "vegetarisch",
+    "vegan",
+    "vegetarian",
+    "fleischlos"
+   ],
+   "s": [
+    "veggie",
+    "pflanzlich"
+   ],
+   "q": {
+    "de": "Gibt es vegetarische/vegane Speisen?",
+    "en": "Are there vegetarian/vegan dishes?"
+   },
+   "a": {
+    "de": "Wir bieten eine Vielzahl an vegetarischen Speisen und einigen veganen an. Isst du jedoch ausschließlich vegan, gib uns doch gerne bei deiner Reservierung vorab Bescheid, damit sich die Küche optimal auf deine Wünsche vorbereiten kann.",
+    "en": "We offer a wide range of vegetarian dishes and a few vegan ones. If you eat exclusively vegan, please let us know in advance with your reservation so the kitchen can prepare for your wishes in the best possible way."
+   }
+  },
+  {
+   "id": "allergie",
+   "s2": [
+    "allergie",
+    "allergy",
+    "allergies",
+    "unvertrag",
+    "gluten",
+    "laktose",
+    "lactose",
+    "dietary"
+   ],
+   "s": [
+    "nuss",
+    "nut"
+   ],
+   "q": {
+    "de": "Ich habe eine Allergie/Einschränkungen im Essverhalten. Kann ich bei euch essen?",
+    "en": "I have an allergy/dietary restrictions. Can I eat at your place?"
+   },
+   "a": {
+    "de": "Schreibe uns gerne eine Mail an (zentrale@saltandsilver.de) oder füge deine Allergien direkt bei deiner Buchung hinzu.",
+    "en": "Feel free to send us an e-mail (zentrale@saltandsilver.de) or add your allergies directly to your booking."
+   }
+  },
+  {
+   "id": "gutschein",
+   "s2": [
+    "gutschein",
+    "voucher",
+    "gift card",
+    "geschenk"
+   ],
+   "s": [
+    "schenken",
+    "gift"
+   ],
+   "q": {
+    "de": "Gibt es Gutscheine?",
+    "en": "Do you have vouchers?"
+   },
+   "a": {
+    "de": "Unsere Gutscheine für Hamburg und St. Peter-Ording kannst du über unseren Onlineshop erwerben. Du entscheidest: Direktversand per PDF oder eine Gutscheinkarte per Post. ACHTUNG: Die Gutscheine gelten jeweils für unsere Restaurants in Hamburg ODER St. Peter-Ording.",
+    "en": "You can buy our vouchers for Hamburg and St. Peter-Ording in our online shop. You decide: sent directly as a PDF or as a voucher card by post. PLEASE NOTE: the vouchers are valid either for our restaurants in Hamburg OR in St. Peter-Ording."
+   }
+  },
+  {
+   "id": "hund",
+   "s2": [
+    "hund",
+    "dog",
+    "haustier",
+    "pet"
+   ],
+   "s": [
+    "vierbeiner"
+   ],
+   "q": {
+    "de": "Können wir unseren Hund mitbringen?",
+    "en": "Can we bring our dog?"
+   },
+   "a": {
+    "de": "In St. Peter-Ording und in den Hamburger Restaurants sind Hunde gern gesehen. Teile uns aber bitte vorher per Reservierung mit, wenn du einen Hund mitbringst. Bitte hab Verständnis dafür, dass wir im Falle eines vollen Restaurants und eines sehr großen Hundes nicht immer einen Tisch im Innenraum anbieten können.",
+    "en": "Dogs are welcome in St. Peter-Ording and in the Hamburg restaurants. But please let us know beforehand with your reservation if you are bringing a dog. Please understand that with a full restaurant and a very large dog we cannot always offer a table inside."
+   }
+  },
+  {
+   "id": "barrierefrei",
+   "s2": [
+    "barrierefrei",
+    "rollstuhl",
+    "wheelchair",
+    "accessible",
+    "accessibility"
+   ],
+   "s": [
+    "stufen",
+    "steps",
+    "toilette"
+   ],
+   "q": {
+    "de": "Ist das Restaurant Barrierefrei?",
+    "en": "Is the restaurant accessible?"
+   },
+   "a": {
+    "de": "In Hamburg ist die Terrasse Barrierefrei. Jedoch nicht die Toiletten.",
+    "en": "In Hamburg the terrace is accessible. The toilets, however, are not."
+   }
+  },
+  {
+   "id": "beleg",
+   "s2": [
+    "bewirtungsbeleg",
+    "rechnung",
+    "invoice",
+    "receipt",
+    "beleg"
+   ],
+   "s": [
+    "firma",
+    "company"
+   ],
+   "q": {
+    "de": "Wie fordere ich Bewirtungsbelege an?",
+    "en": "How do I request a hospitality receipt?"
+   },
+   "a": {
+    "de": "Um einen Bewirtungsbeleg/ eine Rechnung zu erhalten, sende bitte eine Mail an mail@saltandsilver.de. Füge bitte Deinen Rechnungsbeleg aus dem Restaurant, sowie die Rechnungsadresse Deiner Firma der E-Mail hinzu. Unser Team sendet dir die Rechnung als PDF zu.",
+    "en": "To receive a hospitality receipt/an invoice, please send an e-mail to mail@saltandsilver.de. Please attach your receipt from the restaurant and your company's billing address to the e-mail. Our team will send you the invoice as a PDF."
+   }
+  }
+ ],
+ "ohne": {
+  "de": "Dazu habe ich gerade keine sichere Antwort. Schreib dem Team gern an mail@saltandsilver.de. Oft gefragt wird auch:",
+  "en": "I have no reliable answer to that right now. Feel free to write to the team at mail@saltandsilver.de. Guests often ask about:"
+ }
+}

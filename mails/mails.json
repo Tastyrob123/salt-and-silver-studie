@@ -1,0 +1,82 @@
+[
+ {
+  "nr": "01",
+  "ordner": "01-tisch",
+  "name": "Tisch reserviert",
+  "betreff": "Euer Tisch ist reserviert · {{datum}}, {{uhrzeit}} Uhr",
+  "von": "zentrale@saltandsilver.de",
+  "wann": "Direkt nach der Reservierung über OpenTable oder am Telefon. OpenTable verschickt heute eine eigene Bestätigung."
+ },
+ {
+  "nr": "02",
+  "ordner": "02-morgen",
+  "name": "Vor eurem Besuch",
+  "betreff": "Morgen bei uns · {{uhrzeit}} Uhr im {{haus}}",
+  "von": "zentrale@saltandsilver.de",
+  "wann": "Am Tag vor dem Besuch (den Zeitpunkt wählt ihr)."
+ },
+ {
+  "nr": "03",
+  "ordner": "03-danke",
+  "name": "Nach dem Besuch",
+  "betreff": "Schön, dass ihr da wart",
+  "von": "mail@saltandsilver.de",
+  "wann": "Am Tag nach dem Besuch."
+ },
+ {
+  "nr": "04",
+  "ordner": "04-gruppe",
+  "name": "Anfrage für Gruppen",
+  "betreff": "Eure Anfrage ist bei uns · {{personen}} Personen am {{datum}}",
+  "von": "zentrale@saltandsilver.de",
+  "wann": "Nach dem Absenden der Anfrage für Gruppen ab zehn Personen auf der Kontaktseite."
+ },
+ {
+  "nr": "05",
+  "ordner": "05-gutschein",
+  "name": "Gutschein erhalten",
+  "betreff": "Ein Geschenk für dich, von {{von_name}}",
+  "von": "mail@saltandsilver.de",
+  "wann": "Wenn ein Gutschein aus dem Shop per E-Mail an die beschenkte Person geht."
+ },
+ {
+  "nr": "06",
+  "ordner": "06-bestellung",
+  "name": "Bestellung im Shop",
+  "betreff": "Danke für deine Bestellung · Nr. {{bestellnummer}}",
+  "von": "mail@saltandsilver.de",
+  "wann": "Direkt nach der Bestellung im Shop."
+ },
+ {
+  "nr": "07",
+  "ordner": "07-versand",
+  "name": "Paket unterwegs",
+  "betreff": "Dein Paket ist unterwegs · Nr. {{bestellnummer}}",
+  "von": "mail@saltandsilver.de",
+  "wann": "Sobald die Bestellung verschickt ist."
+ },
+ {
+  "nr": "08",
+  "ordner": "08-willkommen",
+  "name": "Willkommen im Newsletter",
+  "betreff": "Willkommen an Bord",
+  "von": "mail@saltandsilver.de",
+  "wann": "Nach der Anmeldung zum Newsletter."
+ },
+ {
+  "nr": "09",
+  "ordner": "09-saison",
+  "name": "Die Saison am Meer",
+  "betreff": "Die Saison am Meer beginnt",
+  "von": "mail@saltandsilver.de",
+  "wann": "Nachricht an alle, die den Newsletter abonniert haben, im Frühjahr."
+ },
+ {
+  "nr": "10",
+  "ordner": "10-bewerbung",
+  "name": "Bewerbung eingegangen",
+  "betreff": "Deine Bewerbung ist bei uns",
+  "von": "jobs@saltandsilver.de",
+  "wann": "Nach dem Absenden einer Bewerbung auf der Jobs-Seite."
+ }
+]

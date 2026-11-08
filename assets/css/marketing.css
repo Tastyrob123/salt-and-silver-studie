@@ -1,0 +1,130 @@
+/* Stickerset und Drucksachen Salt & Silver. Baut auf werkbank.css auf (Farben, Schrift, Knöpfe, Einblenden).
+   Bewegt wird nur über transform und opacity. Schatten liegen nur auf Dingen, die still stehen. */
+
+.auftakt--haufen .in,.auftakt--druck .in{align-items:center}
+/* Zeilen brauchen Luft: Versalhöhe .86 em, das Komma hängt .17 em darunter */
+.t1{line-height:1.06}.t2{line-height:1.1}
+.auftakt--haufen .t1{font-size:clamp(3.4rem,8.6vw,9.4rem)}
+.auftakt--druck .t1{font-size:clamp(3rem,6.6vw,7.4rem)}
+
+/* ---------- Der Haufen: ein Quadrat, jeder Sticker mit Lage, Breite und Drehung ---------- */
+.haufen{position:relative;width:100%;max-width:700px;aspect-ratio:1;justify-self:end}
+.haufen i{position:absolute;left:var(--x);top:var(--y);width:var(--w);translate:-50% -50%;rotate:var(--r)}
+.haufen img{width:100%;height:auto;opacity:0;transform:translate3d(0,110px,0) scale(.86) rotate(calc(var(--r) * -1.4));
+  transition:opacity .6s linear,transform 1.15s var(--e1);transition-delay:calc(var(--i) * 60ms + 150ms)}
+.los .haufen img{opacity:1;transform:none}
+@media(max-width:1079px){.haufen{max-width:560px;justify-self:center;margin-top:16px}}
+@media(prefers-reduced-motion:reduce){.haufen img{opacity:1;transform:none;transition:none}}
+
+/* ---------- Laufband mit allen Stickern (läuft nur, solange es zu sehen ist) ---------- */
+.zugband{background:var(--navy);overflow:hidden;padding:clamp(26px,3.4vw,46px) 0}
+.zug2{display:flex;align-items:center;width:max-content;animation:zug2 70s linear infinite;animation-play-state:paused}
+.zugband.sichtbar .zug2{animation-play-state:running}
+.zug2 i{flex:none;height:clamp(64px,7vw,104px);aspect-ratio:var(--b);margin-right:clamp(26px,3.4vw,52px)}
+.zug2 img{width:100%;height:100%}
+@keyframes zug2{to{transform:translate3d(-50%,0,0)}}
+@media(prefers-reduced-motion:reduce){.zug2{animation:none}}
+
+/* ---------- Sticker-Karten: Größe im Verhältnis zueinander (100 mm = volle Breite) ---------- */
+.sticks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.4vw,22px)}
+@media(min-width:760px){.sticks{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:1180px){.sticks{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.stick__b{aspect-ratio:1/1;border-radius:26px;display:grid;place-items:center;background:#e2d6c7;box-shadow:inset 0 2px 5px rgba(60,44,30,.22),inset 0 -1px 0 rgba(255,255,255,.7)}
+.fl--creme .stick__b{background:#d9cbba}
+.stick__b i{display:block;width:var(--w);transition:transform .6s var(--e2)}
+.stick__b img{width:100%;height:auto;filter:drop-shadow(0 9px 10px rgba(46,34,22,.3))}
+.stick:hover .stick__b i{transform:rotate(-4deg) scale(1.06)}
+.stick figcaption{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:baseline;padding:14px 4px 0}
+.stick figcaption b{font-family:var(--titel);font-weight:700;font-size:1.3rem;line-height:1}
+.stick figcaption span{font-size:.93rem;line-height:1.32}
+.stick figcaption em{grid-column:2;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6f6757;margin-top:4px}
+
+/* ---------- Maßblatt einer Druckdatei ---------- */
+.massblatt{max-width:1180px;margin:0 auto;border-radius:22px;overflow:hidden;box-shadow:0 40px 60px -40px rgba(0,0,0,.9)}
+.massblatt img{width:100%}
+
+/* ---------- Korrekturabzüge: Blatt mit roter Markierung, darunter ein Satz ---------- */
+.abzuege{display:grid;gap:clamp(30px,3.4vw,56px) clamp(20px,2.6vw,44px);align-items:start}
+@media(min-width:860px){.abzuege{grid-template-columns:repeat(2,minmax(0,1fr))}.abzug--breit{grid-column:1 / -1}}
+.abzug__b{position:relative;display:block;box-shadow:0 34px 44px -32px rgba(0,0,0,.85)}
+.abzug__b img{width:100%}
+.abzug__b svg{position:absolute;overflow:visible;opacity:0;transition:opacity .45s linear .9s}
+.abzug.da .abzug__b svg{opacity:1}
+.abzug__b path{fill:none;stroke:var(--rot);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.abzug figcaption{margin-top:clamp(16px,1.8vw,24px);color:rgba(255,255,255,.8);font-size:1.02rem;line-height:1.56;max-width:42ch}
+@media(max-width:859px){.abzug{max-width:440px}}
+
+/* ---------- Drucksachen: Auslage im Auftakt, zehn Stücke ---------- */
+.auslage{position:relative;width:100%;max-width:880px;aspect-ratio:1/.96;justify-self:end}
+.auslage .au{position:absolute;display:block;left:var(--x);top:var(--y);width:var(--w);box-shadow:0 30px 40px -28px rgba(0,0,0,.95)}
+.auslage .au--rund{box-shadow:none}
+.auslage img{width:100%;height:auto}
+@media(max-width:1079px){.auslage{max-width:620px;justify-self:center;margin-top:16px}}
+
+/* ---------- Ein Stück: Text neben den Blättern ---------- */
+.stueck{display:grid;gap:clamp(34px,5vw,84px);align-items:center}
+@media(min-width:1000px){.stueck{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}.stueck--dreh{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}.stueck--dreh .stueck__t{order:2}}
+.t2--lang{font-size:clamp(2.1rem,4.3vw,4.5rem)}
+.stueck__t .lauf{margin-top:clamp(18px,2vw,28px)}
+.angaben{margin:clamp(22px,2.6vw,34px) 0;border-top:1px solid currentColor;opacity:.92}
+.angaben div{display:grid;grid-template-columns:7.5em 1fr;gap:12px;padding:11px 0;border-bottom:1px solid rgba(128,120,104,.45)}
+.angaben dt{opacity:.6}
+.angaben dd{margin:0;letter-spacing:.1em}
+/* Unterlage: ein matter Karton in Taupe, damit helle wie dunkle Blätter einen Rand haben */
+.blaetter{display:grid;gap:clamp(14px,1.6vw,26px);align-items:center;justify-content:center;background:#a79c87;border-radius:30px;padding:clamp(22px,3.6vw,56px);box-shadow:inset 0 3px 8px rgba(34,26,16,.42),inset 0 -1px 0 rgba(255,255,255,.22)}
+.blaetter i>.mono{color:#1b1d2c}
+.blaetter i{display:block;transition:transform .7s var(--e2)}
+.blaetter img{width:100%;height:auto;box-shadow:0 34px 44px -32px rgba(0,0,0,.75)}
+.blaetter i>.mono{display:block;margin-top:14px;font-size:10.5px;opacity:.72}
+.blaetter--hoch.blaetter--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(min-width:1000px){.stueck.stueck--breit{grid-template-columns:minmax(0,1fr)}.stueck--breit .stueck__t{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);column-gap:clamp(34px,5vw,84px);align-items:end}
+  .stueck--breit .stueck__t .kap,.stueck--breit .stueck__t h2{grid-column:1}.stueck--breit .stueck__t h2{grid-row:2}.stueck--breit .stueck__t .lauf{grid-column:2;grid-row:2;margin:0}
+  .stueck--breit .angaben{grid-column:1 / -1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:28px}.stueck--breit .kn-reihe{grid-column:1 / -1}
+  .stueck--breit .blaetter--rund{max-width:1100px;margin:0 auto;width:100%}}
+.blaetter--hoch.blaetter--2{grid-template-columns:repeat(2,minmax(0,280px))}
+.blaetter--hoch.blaetter--1{grid-template-columns:minmax(0,430px)}
+.blaetter--quer{grid-template-columns:repeat(2,minmax(0,1fr))}
+.blaetter--rund{grid-template-columns:repeat(4,minmax(0,1fr))}
+.blaetter--rund img{box-shadow:none;filter:drop-shadow(0 22px 20px rgba(0,0,0,.4))}
+.blaetter i:nth-child(odd){transform:rotate(-1.2deg)}
+.blaetter i:nth-child(even){transform:rotate(1.4deg) translateY(10px)}
+.blaetter--1 i{transform:rotate(-1.6deg)}
+.blaetter i:hover{transform:rotate(0) translateY(-8px)}
+@media(max-width:700px){.blaetter--hoch.blaetter--4,.blaetter--rund{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Faltplakat groß, Geschenkkarte mit runden Ecken, Etui mit eingesteckter Karte ---------- */
+.stueck--breit .blaetter--hoch.blaetter--2{grid-template-columns:repeat(2,minmax(0,540px))}
+.blaetter--geschenkkarte{gap:clamp(22px,2.6vw,40px) clamp(14px,1.8vw,28px)}
+.blaetter--geschenkkarte img,.blaetter .mock__k{border-radius:3.6% / 5.7%}
+.blaetter--etui{align-items:start}
+.mock{display:grid;gap:clamp(40px,5vw,72px)}
+.mock__i{position:relative}
+.blaetter .mock__k{position:absolute;left:52.6%;top:-21%;width:45%;transform:rotate(-4deg);box-shadow:0 18px 22px -14px rgba(0,0,0,.7)}
+.blaetter--gutschein,.blaetter--events-catering{grid-template-columns:minmax(0,1fr)}
+.blaetter--gutschein i:nth-child(n),.blaetter--events-catering i:nth-child(n){transform:rotate(-.5deg)}
+.blaetter--gutschein i:nth-child(2),.blaetter--events-catering i:nth-child(2){transform:rotate(.6deg)}
+.blaetter--etui{padding-top:clamp(40px,5vw,84px)}
+.blaetter--jobs.blaetter--1,.blaetter--popup-crudo.blaetter--1,.blaetter--tischaufsteller.blaetter--1{grid-template-columns:minmax(0,470px)}
+.stueck--breit .blaetter--etui{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,64px);margin-top:clamp(20px,3vw,44px)}
+@media(max-width:700px){.stueck--breit .blaetter--etui{grid-template-columns:minmax(0,1fr)}}
+.blaetter--popup-crudo{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* Neue Stücke 10.10.2026 */
+.blaetter--hoch.blaetter--3{grid-template-columns:repeat(3,minmax(0,240px))}
+.blaetter--quer.blaetter--1{grid-template-columns:minmax(0,1fr)}
+@media(max-width:700px){.blaetter--hoch.blaetter--3{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}}
+.blaetter i:hover{transform:none}
+.blaetter i:nth-child(odd):hover{transform:rotate(-1.2deg)}
+.blaetter i:nth-child(even):hover{transform:rotate(1.4deg) translateY(10px)}
+.blaetter--1 i:hover{transform:rotate(-1.6deg)}
+/* Kleinigkeiten als Galerie */
+.klein{display:grid;gap:clamp(14px,1.6vw,22px);grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));margin-top:clamp(30px,3.6vw,56px)}
+.kl{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#fbf7f1;color:var(--tinte);box-shadow:inset 0 0 0 1px rgba(11,12,16,.09),0 30px 40px -32px rgba(60,44,30,.55)}
+.kl__b{display:flex;align-items:center;justify-content:center;height:clamp(230px,19vw,290px);background:#a79c87;padding:22px;box-shadow:inset 0 3px 8px rgba(34,26,16,.35)}
+.kl__b img{max-height:100%;max-width:100%;width:auto;height:auto;box-shadow:0 22px 26px -20px rgba(0,0,0,.7)}
+.kl__t{display:grid;gap:6px;padding:20px 22px 8px}
+.kl__t b{font-family:var(--titel,'Antonio'),sans-serif;font-weight:700;text-transform:uppercase;font-size:1.45rem;line-height:1.08}
+.kl__t .mono{font-size:10.5px;color:#6f6757}
+.kl__x{font-size:.95rem;line-height:1.5;color:rgba(11,12,16,.74)}
+.kl__p{display:inline-flex;align-items:center;gap:8px;margin:auto 22px 20px;padding-top:12px;font-size:10.5px;color:var(--tinte)}
+.kl__p svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.4}

@@ -1,0 +1,153 @@
+/* Werkbank Salt & Silver · Einschübe vom 13./14.10.2026: Werkzeuge im Laptop, Mails, Feed mit Handy aus Blender, Markenbuch, neue Ziele im Fuss,
+   und das Scrollgefühl der ganzen Werkbank. Farben und Schrift aus werkbank.css. Bewegt wird nur über transform, translate und opacity. */
+
+/* ================= Scrollgefühl (Robert 14.10.2026: «so ähnlich wie beim Rivage») =================
+   Was hereinkommt, steigt mit dem Scrollen an seinen Platz und wartet nicht auf einen Auslöser: langer weicher Weg von unten, von Anfang an deckend.
+   Scrollt man zurück, sinkt es wieder. Der Browser rechnet das selbst (animation-timeline:view()), es läuft kein Skript mit.
+   Ausgenommen: der Auftakt (steht beim Laden), Wort-für-Wort-Texte und alles in Bändern zum Blättern (dort gibt es keine senkrechte Strecke).
+   Gekoppelt sind immer nur die Abschnitte nahe am Bild (Klasse sf-nah, setzt mehr.js): jede gekoppelte Bewegung hält eine eigene Ebene, und rund
+   150 Ebenen auf einmal haben die Werkbank beim Messen deutlich langsamer gemacht (6-fach gedrosselt p95 25 → 34 ms).
+   Browser ohne animation-timeline behalten die bisherigen Auftritte. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :is(.fl, .schluss, .fuss).sf-nah :is([data-a="auf"], [data-a="kipp"], [data-a="schweb"], [data-a="gross"], [data-a="links"], [data-a="rechts"]):not(:is(.band, .brett-scroll, .wahl, .schritte, .mm-band) *) {
+      opacity: 1; transition: none;
+      animation: sf-auf linear both; animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 3%) cover calc(27% + var(--i, 0) * 3%);
+    }
+    :is(.fl, .schluss, .fuss).sf-nah [data-a="kipp"]:not(:is(.band, .brett-scroll, .wahl, .schritte, .mm-band) *) { animation-name: sf-kipp; transform-origin: 50% 100% }
+    :is(.fl, .schluss, .fuss).sf-nah [data-a="schweb"]:not(:is(.band, .brett-scroll, .wahl, .schritte, .mm-band) *) { animation-name: sf-schweb; animation-range: entry calc(var(--i, 0) * 4%) cover calc(32% + var(--i, 0) * 4%) }
+    :is(.fl, .schluss, .fuss).sf-nah [data-a="gross"]:not(:is(.band, .brett-scroll, .wahl, .schritte, .mm-band) *) { animation-name: sf-gross }
+    :is(.fl, .schluss, .fuss).sf-nah [data-a="links"]:not(:is(.band, .brett-scroll, .wahl, .schritte, .mm-band) *) { animation-name: sf-links }
+    :is(.fl, .schluss, .fuss).sf-nah [data-a="rechts"]:not(:is(.band, .brett-scroll, .wahl, .schritte, .mm-band) *) { animation-name: sf-rechts }
+    /* Fotos gleiten leise in ihrem Rahmen, solange sie durchs Bild ziehen (eigene Eigenschaft translate, verträgt sich mit jedem transform) */
+    .sf-nah .gabe__b, .sf-nah .mb-b img { animation: sf-gleit linear both; animation-timeline: view(); animation-range: cover 0% cover 100% }
+    .mb-b img { scale: 1.07 }
+  }
+}
+@keyframes sf-auf { 0% { transform: translate3d(0, 124px, 0) } 55% { transform: translate3d(0, 26px, 0) } 100% { transform: none } }
+@keyframes sf-kipp { 0% { transform: perspective(1300px) rotateX(15deg) translate3d(0, 130px, 0) } 55% { transform: perspective(1300px) rotateX(4deg) translate3d(0, 28px, 0) } 100% { transform: none } }
+@keyframes sf-schweb { 0% { transform: translate3d(0, 170px, 0) rotate(var(--r0, 0deg)) scale(.93) } 55% { transform: translate3d(0, 36px, 0) rotate(calc(var(--r0, 0deg) * .3 + var(--r, 0deg) * .7)) scale(.985) } 100% { transform: rotate(var(--r, 0deg)) } }
+@keyframes sf-gross { 0% { transform: translate3d(0, 90px, 0) scale(.92) } 100% { transform: none } }
+@keyframes sf-links { 0% { transform: translate3d(-80px, 40px, 0) } 100% { transform: none } }
+@keyframes sf-rechts { 0% { transform: translate3d(80px, 40px, 0) } 100% { transform: none } }
+@keyframes sf-gleit { from { translate: 0 22px } to { translate: 0 -22px } }
+/* Bei Maus bewegt sich nur das Bild im Rahmen, lang und weich. Nichts hebt sich an. */
+.zielk__b { transition: none }
+.zielk:hover .zielk__b { transform: none }
+.gabe__b, .idee__b img, .befund__b img, .zielk__b img, .cz__b img, .mm-k__b img { transition: transform 2.2s var(--e1) }
+@media (hover: hover) {
+  .gabe:hover .gabe__b { transform: scale(1.085); transition-duration: 2.8s }
+  .idee.da:hover .idee__b img, .befund.da:hover .befund__b img, a.cz:hover .cz__b img { transition-duration: 2.8s }
+  .zielk:hover .zielk__b img { transform: scale(1.06); transition-duration: 2.8s }
+}
+
+/* ================= Werkzeuge: Reiter, Laptop aus Blender mit dem echten Werkzeug im Bildschirm, Text daneben ================= */
+.mw { margin-top: clamp(34px, 4vw, 64px) }
+.mw-leiste { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: clamp(20px, 2.4vw, 36px) }
+.mw-reihe { display: flex; flex-wrap: wrap; gap: 8px }
+.mw-pf { display: flex; gap: 10px; flex: none }
+.mw-pf button { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; color: var(--tinte);
+  background: linear-gradient(180deg, #fffaf4, #f1e5d7 46%, #d9c7b5); box-shadow: inset 0 1px 0 #fff, inset 0 -3px 0 rgba(104,80,58,.3), 0 14px 22px -14px rgba(0,0,0,.8); transition: transform .5s var(--e2) }
+.mw-pf svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round }
+.mw-pf button:active { transform: translateY(2px) }
+.mw-reiter { display: grid; gap: 3px; text-align: left; padding: 11px 24px 12px; border-radius: 22px; color: #fff;
+  background: linear-gradient(180deg, #343a5e, #1a1d31); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -3px 0 rgba(0,0,0,.45), 0 14px 22px -14px rgba(0,0,0,.8); transition: transform .5s var(--e2) }
+.mw-reiter small { font-family: var(--mono); font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; opacity: .62 }
+.mw-reiter span { font-family: var(--titel); font-weight: 700; text-transform: uppercase; font-size: 1.3rem; letter-spacing: .03em; line-height: 1 }
+.mw-reiter:active { transform: translateY(1px) }
+.mw-reiter.an { color: var(--tinte); background: linear-gradient(180deg, #fffaf4, #f1e5d7 46%, #d9c7b5); box-shadow: inset 0 1px 0 #fff, inset 0 -3px 0 rgba(104,80,58,.3), 0 14px 22px -14px rgba(0,0,0,.8) }
+.mw-buehne { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(20px, 2.6vw, 48px); align-items: center }
+.ml { --r: 0deg; --r0: 0deg }
+.ml-dev { position: relative; width: 100% }
+.ml-g { position: absolute; z-index: 2; left: 0; top: 0; width: 100%; height: auto; display: block; pointer-events: none; max-width: none }
+.ml-e { position: absolute; z-index: 1; overflow: hidden; background: #efe4d6; cursor: pointer }
+.ml-b { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transition: opacity .6s var(--e1) }
+.ml-b.an { opacity: 1 }
+.ml-e iframe { position: absolute; left: 0; top: 0; border: 0; background: #efe4d6; transform-origin: 0 0; max-width: none; opacity: 0; pointer-events: none; z-index: 3; transition: opacity .35s linear }
+.ml-e iframe.da { opacity: 1; pointer-events: auto }
+.ml-k { position: absolute; z-index: 4; right: 2.4%; bottom: 3.6%; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 6px 0 16px; border-radius: 999px; color: #fff;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap;
+  background: linear-gradient(180deg, #2d3250, #151929); box-shadow: inset 0 1px 0 rgba(255,255,255,.24), inset 0 -2px 0 rgba(0,0,0,.5), 0 12px 20px -10px rgba(17,20,33,.8); transition: opacity .4s var(--e1) }
+.ml-k i { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #f8eee4, #d6c2b1) }
+.ml-k svg { width: 13px; height: 13px; fill: none; stroke: var(--tinte); stroke-width: 1.7; stroke-linejoin: round }
+.ml-kb, .ml-kc { display: none }
+.ml-e.laedt { cursor: progress } .ml-e.laedt .ml-ka { display: none } .ml-e.laedt .ml-kb { display: inline }
+.ml-e.neu .ml-ka { display: none } .ml-e.neu .ml-kc { display: inline }
+.ml-e.live { cursor: auto } .ml-e.live .ml-k { opacity: 0; pointer-events: none }
+/* Rechts eine helle Tafel: was das Werkzeug ist, drei Handgriffe, die Knöpfe. Alle Tafeln liegen im selben Feld, die höchste gibt die Höhe vor. */
+.mw-texte { display: grid; color: var(--tinte); border-radius: clamp(26px, 2.4vw, 40px); padding: clamp(24px, 2.6vw, 46px);
+  background: linear-gradient(180deg, #fffaf4, #f3e8dc); box-shadow: inset 0 1px 0 #fff, inset 0 -4px 0 rgba(104,80,58,.22), 0 44px 60px -36px rgba(0,0,0,.85) }
+.mw-text { grid-area: 1 / 1; display: grid; gap: clamp(12px, 1.2vw, 20px); align-content: start; justify-items: start; opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity .6s var(--e1), transform .8s var(--e1) }
+.mw-text.an { opacity: 1; transform: none; pointer-events: auto }
+.mw-klein { font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #7a705e }
+.mw-text h3 { font-family: var(--titel); font-weight: 700; text-transform: uppercase; font-size: clamp(2.6rem, 4.4vw, 5.4rem); line-height: .98; letter-spacing: -.01em; margin-top: -4px }
+.mw-satz { font-size: clamp(1.05rem, 1.25vw, 1.4rem); line-height: 1.5; color: rgba(11,12,16,.8); max-width: 34ch }
+.mw-punkte { display: grid; gap: clamp(12px, 1.2vw, 20px); width: 100%; margin: clamp(4px, .8vw, 12px) 0; padding: clamp(14px, 1.5vw, 24px) 0; border-block: 1px solid rgba(11,12,16,.12) }
+.mw-punkte li { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 16px; align-items: start }
+.mw-punkte i { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; color: var(--creme); background: linear-gradient(180deg, #2b3049, #0a0c15); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), inset 0 -2px 0 rgba(0,0,0,.3), 0 4px 8px rgba(17,20,33,.3) }
+.mw-punkte svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round }
+.mw-punkte p { font-size: clamp(.98rem, 1.05vw, 1.12rem); line-height: 1.5; color: rgba(11,12,16,.72) }
+.mw-punkte b { display: block; font-family: var(--titel); font-weight: 700; text-transform: uppercase; font-size: clamp(1.2rem, 1.5vw, 1.6rem); line-height: 1.12; letter-spacing: .01em; color: var(--tinte); margin-bottom: 2px }
+.mw-kn { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px }
+.mw-kn .pfeil { color: var(--tinte) }
+/* Solange ein Werkzeug im Laptop läuft, ruhen die Dauerläufe der anderen Abschnitte */
+html.mw-live .fl:not(#werkzeuge) *, html.mw-live .fuss *, html.mw-live .schluss * { animation-play-state: paused !important }
+@media (max-width: 980px) { .mw-buehne { grid-template-columns: 1fr } .mw-pf button { width: 46px; height: 46px } .mw-leiste { align-items: flex-end } .mw-reiter { padding: 9px 16px 10px } .mw-reiter span { font-size: 1.05rem } .ml-k { height: 32px; font-size: 8.5px; padding-left: 11px } .ml-k i { width: 22px; height: 22px } }
+
+/* ================= Mails: Band zum Blättern ================= */
+.mm-band { display: flex; gap: clamp(12px, 1.4vw, 22px); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; padding: clamp(26px, 3vw, 46px) var(--rand) 26px; scrollbar-width: thin; overscroll-behavior-x: contain }
+.mm-k { flex: none; width: clamp(230px, 23vw, 330px); scroll-snap-align: start; color: var(--tinte) }
+.mm-k__b { display: block; padding: 7px; border-radius: 26px; overflow: hidden; background: linear-gradient(180deg, #fffaf4, #efe2d3); box-shadow: inset 0 1px 0 #fff, inset 0 -3px 0 rgba(104,80,58,.18), 0 30px 42px -30px rgba(60,44,30,.7) }
+.mm-k__b img { display: block; width: 100%; height: auto; border-radius: 20px }
+@media (hover: hover) { .mm-k:hover .mm-k__b img { transform: scale(1.03); transition-duration: 2.8s } }
+.mm-k__z { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; padding: 0 6px }
+.mm-k__z b { font-family: var(--titel); font-weight: 700; text-transform: uppercase; font-size: 1.3rem; line-height: 1.1; letter-spacing: .01em }
+.mm-k__z i { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; color: var(--creme); background: linear-gradient(180deg, #2b3049, #0a0c15); box-shadow: inset 0 1px 0 rgba(255,255,255,.22), 0 6px 10px -6px rgba(17,20,33,.6) }
+.mm-k__z svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.5 }
+
+/* ================= Feed: das Handy aus Blender in der Mitte, acht Beiträge als Abzüge ringsum (wie beim Grand Beau-Rivage) ================= */
+.mfb { position: relative; aspect-ratio: 1 / .62; width: 100%; max-width: 1280px; margin: clamp(26px, 3.4vw, 60px) auto 0 }
+.mfb > * { position: absolute }
+.mfb__h { left: 36%; top: 0; width: 28%; z-index: 2 }
+.mfh { position: relative; width: 100% }
+.mfh img { position: absolute; display: block; height: auto; max-width: none }
+.mfh__g { left: 0; top: 0; width: 100%; z-index: 2; pointer-events: none }
+.mfh__s { z-index: 1 }
+.mfh__e { position: absolute; z-index: 1; overflow: hidden; border-radius: 4.5% / 2.1%; cursor: pointer }
+.mfh__e iframe { position: absolute; left: 0; top: 0; width: 393px; height: 851px; max-width: none; border: 0; background: #fff; transform-origin: 0 0; opacity: 0; pointer-events: none; z-index: 3; transition: opacity .3s linear }
+.mfh__e iframe.da { opacity: 1; pointer-events: auto }
+.mfh__k { position: absolute; left: 50%; bottom: 6%; z-index: 2; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 4px 4px 4px 14px; border-radius: 999px; pointer-events: none; white-space: nowrap; color: #fff;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; background: linear-gradient(180deg, #2d3250, #151929); box-shadow: inset 0 1px 0 rgba(255,255,255,.24), 0 10px 18px -8px rgba(17,20,33,.8); transition: opacity .4s var(--e1) }
+.mfh__k i { flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #f8eee4, #d6c2b1) }
+.mfh__k svg { width: 12px; height: 12px; fill: none; stroke: var(--tinte); stroke-width: 1.7; stroke-linejoin: round }
+.mfh__kb { display: none } .mfh__e.laedt .mfh__ka { display: none } .mfh__e.laedt .mfh__kb { display: inline }
+.mfh__e.laedt { cursor: progress } .mfh__e.live { cursor: auto } .mfh__e.live .mfh__k { opacity: 0 }
+.mfb__k { width: 13.5%; padding: 6px 6px 28px; z-index: 1 }
+.mfb__k img { aspect-ratio: 4 / 5; width: 100%; height: auto; display: block }
+.mfb__k span { left: 8px; right: 8px; bottom: 8px; font-size: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.mfb__k--1 { left: 1%; top: 4% } .mfb__k--2 { left: 17.5%; top: 17% } .mfb__k--3 { left: 2.5%; top: 52% } .mfb__k--4 { left: 19%; top: 62% }
+.mfb__k--5 { left: 67.5%; top: 9% } .mfb__k--6 { left: 84.5%; top: 1% } .mfb__k--7 { left: 66.5%; top: 58% } .mfb__k--8 { left: 83.5%; top: 47% }
+html.mfh-live .fl:not(#feed) *, html.mfh-live .fuss *, html.mfh-live .schluss * { animation-play-state: paused !important }
+@media (max-width: 900px) {
+  .mfb { aspect-ratio: 1 / 1.34 }
+  .mfb__h { left: 21%; width: 58%; top: 2% }
+  .mfb__k { width: 22%; padding: 4px 4px 20px } .mfb__k span { font-size: 7px; bottom: 5px }
+  .mfb__k--1 { left: 0; top: 3% } .mfb__k--2 { left: 1%; top: 35% } .mfb__k--3 { left: 0; top: 67% } .mfb__k--5 { left: 78%; top: 7% } .mfb__k--6 { left: 77%; top: 39% } .mfb__k--7 { left: 78%; top: 70% }
+  .mfb__k--4, .mfb__k--8 { display: none } .mfh__k { display: none }
+}
+
+/* ================= Markenbuch im Abschnitt Handschrift ================= */
+.mb { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(20px, 3.4vw, 60px); align-items: center; margin-top: clamp(40px, 5vw, 84px) }
+.mb-b { display: block; padding: 8px; border-radius: 24px; background: linear-gradient(180deg, #30365a, #171b2e); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 -3px 0 rgba(0,0,0,.5), 0 44px 60px -34px rgba(0,0,0,.9) }
+.mb-b__k { display: block; overflow: hidden; border-radius: 17px }
+.mb-b img { display: block; width: 100%; height: auto }
+.mb-t { display: grid; gap: 16px; justify-items: start }
+.mb-t p { font-size: clamp(1.02rem, 1.2vw, 1.18rem); line-height: 1.6; color: rgba(255,255,255,.76); max-width: 44ch }
+@media (max-width: 900px) { .mb { grid-template-columns: 1fr } }
+
+/* ================= Fuss: volle Reihen ================= */
+.wege__r { grid-template-columns: repeat(7, minmax(0, 1fr)) }
+@media (max-width: 1100px) { .wege__r { grid-template-columns: repeat(4, minmax(0, 1fr)) } }
+@media (max-width: 620px) { .wege__r { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (prefers-reduced-motion: reduce) { .ml-b, .mw-text { transition: none } }

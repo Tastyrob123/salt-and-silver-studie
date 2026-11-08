@@ -1,0 +1,116 @@
+/* Salt & Silver · Markenbuch. Rahmen, Töne, Kopf: ../../hafen/wz.css */
+.bu{background:var(--papier)}
+.bu .w-insel__p{font-size:10.5px}
+.bu .w-saal{border-radius:clamp(26px,3vw,46px) clamp(26px,3vw,46px) 0 0;margin-top:calc(clamp(26px,3vw,46px)*-1)}
+.bu .w-klein{letter-spacing:.24em}
+.bu-h3{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1.05;text-align:center}
+
+/* Auftakt: Welle im Abendlicht, Dunkel ist ins Bild gerechnet (Fläche unter dem Foto, Foto mit Deckkraft) */
+.bu-auf{position:relative;min-height:100svh;display:grid;place-items:center;padding:120px var(--w-rand) clamp(90px,10vw,150px);overflow:hidden;isolation:isolate;background:#0d0f1a}
+.bu-auf__b{position:absolute;z-index:-1;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}
+.bu-auf__in{display:grid;justify-items:center;text-align:center;gap:clamp(18px,2.4vw,30px);max-width:920px}
+.bu-auf__z{height:clamp(86px,11vw,150px);width:auto}
+.bu-auf__w{width:min(86vw,760px);height:auto}
+.bu-auf__s{font-size:clamp(1.05rem,1.4vw,1.3rem);line-height:1.6;color:rgba(255,255,255,.82);max-width:54ch}
+.bu-auf .kn-reihe{justify-content:center}
+.js .bu-auf__in>*{opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--e1),transform 1.4s var(--e1);transition-delay:calc(.2s + var(--i)*130ms)}
+.js .bu-auf.da .bu-auf__in>*{opacity:1;transform:none}
+
+/* Auftritte */
+[data-r="schweb"]{opacity:0;transform:translateY(110px) scale(.93);transition:opacity .9s var(--e1),transform 1.25s var(--e1);transition-delay:calc(var(--i,0)*120ms)}
+[data-r="schweb"].da{opacity:1;transform:none}
+[data-r="fach"]{opacity:1;transform:none}
+[data-r="fach"] i{transform:scaleX(0);transform-origin:left;transition:transform 1s var(--e1);transition-delay:calc(var(--i,0)*80ms)}
+[data-r="fach"].da i{transform:none}
+
+/* 1 Haltung: drei Bögen */
+.bu-drei{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.2vw,36px);align-items:start}
+.bu-drei .bu-bogen:nth-child(2){margin-top:clamp(20px,4vw,64px)}
+.bu-bogen{display:grid;gap:18px}
+.bu-bogen__b{display:block;padding:7px;border-radius:999px 999px 26px 26px;background:linear-gradient(180deg,#fffaf4,#efe2d3);
+  box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.18),0 34px 46px -30px rgba(60,44,30,.6)}
+.bu-bogen__b img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 20px 20px}
+.bu-bogen figcaption{font-size:16.5px;line-height:1.55;color:rgba(11,12,16,.74);padding:0 8px;text-align:center}
+.bu-bogen figcaption b{display:block;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.5rem,2.2vw,2.1rem);line-height:1.1;color:var(--tinte);margin-bottom:6px}
+
+/* 2 Wortmarke */
+.bu-wm{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(12px,1.6vw,22px)}
+.bu-tafel{position:relative;display:grid;place-items:center;min-height:clamp(200px,24vw,340px);padding:clamp(34px,5vw,80px);border-radius:var(--r-xl)}
+.bu-tafel--hell{background:linear-gradient(180deg,#fffaf4,#f4e9dc);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.16),0 30px 44px -32px rgba(60,44,30,.6)}
+.bu-tafel--nacht{background:linear-gradient(180deg,#262b45,#131627);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -3px 0 rgba(0,0,0,.45),0 30px 44px -32px rgba(17,20,33,.8)}
+.bu-tafel img{max-width:100%;height:auto;width:min(100%,560px)}
+.bu-tafel--emblem img{width:min(60%,210px)}
+.bu-tafel .w-klein{position:absolute;left:22px;bottom:18px}
+.bu-tafel--nacht .w-klein{color:rgba(235,219,206,.7)}
+.bu-raum{display:block;padding:clamp(18px,2.4vw,34px);border:1px dashed rgba(235,219,206,.45);border-radius:6px;width:min(100%,400px)}
+.bu-raum img{display:block;width:100%}
+.bu-regeln{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,40px);margin-top:clamp(28px,3.6vw,54px);font-size:16.5px;line-height:1.55;color:rgba(11,12,16,.74)}
+.bu-regeln li{padding-top:16px;border-top:1px solid var(--linie)}
+.bu-regeln b{display:block;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:1.35rem;line-height:1.15;color:var(--tinte);margin-bottom:4px}
+.bu-regeln--hell{color:rgba(255,255,255,.76)}.bu-regeln--hell li{border-color:var(--linie-h)}.bu-regeln--hell b{color:var(--creme)}
+
+/* 3 Zeichnungen */
+.bu-zraster{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:clamp(8px,1.1vw,16px)}
+@media (max-width:1200px){.bu-zraster{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media (max-width:640px){.bu-zraster{grid-template-columns:repeat(4,minmax(0,1fr))}.bu-z figcaption{font-size:8.5px;letter-spacing:.1em}}
+.bu-z.bu-z--mehr span{display:grid;place-items:center;background:linear-gradient(180deg,#fffaf4,#e9dccd);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.3),0 22px 34px -26px rgba(0,0,0,.9)}
+.bu-z.bu-z--mehr .h-k__p{position:static;width:44%;height:auto;aspect-ratio:1;max-width:54px;grid-column:auto;grid-row:auto;align-self:center;justify-self:center}
+.bu-z--mehr{color:inherit}
+.bu-z{display:grid;gap:10px;text-align:center}
+.bu-z span{position:relative;display:block;aspect-ratio:1;border-radius:var(--r-l);background:linear-gradient(180deg,#262b45,#161a2c);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -3px 0 rgba(0,0,0,.45),0 22px 34px -26px rgba(0,0,0,.9)}
+.bu-z img{position:absolute;inset:22%;width:56%;height:56%;object-fit:contain}
+.bu-z figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(235,219,206,.72)}
+
+/* 4 Farben */
+.bu-farben{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px)}
+.bu-farbe{padding:8px;border-radius:var(--r-l);background:linear-gradient(180deg,#fffaf4,#f2e6d8);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.16),0 26px 40px -30px rgba(60,44,30,.6)}
+.bu-farbe i{display:block;aspect-ratio:4/3;border-radius:calc(var(--r-l) - 8px);background:var(--c);box-shadow:inset 0 0 0 1px rgba(11,12,16,.08)}
+.bu-farbe b{display:block;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,1.9vw,1.75rem);padding:14px 10px 0;line-height:1.1}
+.bu-farbe span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7a705e;padding:3px 10px 0}
+.bu-farbe small{display:block;font-size:14.5px;line-height:1.45;color:rgba(11,12,16,.66);padding:6px 10px 12px}
+.bu-herkunft{margin-top:clamp(56px,7vw,110px);display:grid;justify-items:center;gap:12px}
+.bu-her-reihe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);width:100%;margin-top:22px}
+.bu-her{display:grid;gap:0}
+.bu-her img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:var(--r-l) var(--r-l) 0 0}
+.bu-her__t{display:flex;height:54px;border-radius:0 0 var(--r-l) var(--r-l);overflow:hidden;box-shadow:0 22px 34px -26px rgba(60,44,30,.7)}
+.bu-her__t i{flex:1}
+.bu-her figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#7a705e;text-align:center;padding-top:12px}
+
+/* 5 Schrift */
+.bu-schriften{display:grid;gap:clamp(12px,1.5vw,20px)}
+.bu-schrift{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,1fr);align-items:center;gap:clamp(16px,3vw,50px);padding:clamp(22px,3vw,46px);border-radius:var(--r-xl);
+  background:linear-gradient(180deg,#fffaf4,#f6ecdf);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.16),0 28px 42px -32px rgba(60,44,30,.6)}
+.bu-schrift__m{font-size:clamp(1.9rem,5vw,4.8rem);line-height:1.08;letter-spacing:-.01em;overflow-wrap:anywhere}
+.bu-schrift:nth-child(2) .bu-schrift__m{font-size:clamp(1.4rem,3vw,2.7rem);letter-spacing:0}
+.bu-schrift__t b{display:block;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:1.5rem;margin-bottom:4px}
+.bu-schrift__t span{font-size:16px;line-height:1.55;color:rgba(11,12,16,.72)}
+
+/* 6 Bilder */
+.bu-bilder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,28px)}
+.bu-bild{position:relative}
+.bu-bild .bu-bogen__b{background:linear-gradient(180deg,#2b3049,#161a2c);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 0 -3px 0 rgba(0,0,0,.45),0 34px 46px -30px rgba(0,0,0,.9)}
+.bu-kerbe{position:absolute;left:0;bottom:0;padding:12px 20px 10px 14px;border-radius:0 22px 0 26px;background:var(--nacht);font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:1.15rem;letter-spacing:.03em;color:var(--creme)}
+
+/* 7 Bausteine */
+.bu-bau{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,1.6vw,24px)}
+.bu-stein{padding:10px 10px 22px;border-radius:var(--r-xl);display:grid;gap:8px;align-content:start}
+.bu-stein__b{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;min-height:clamp(180px,20vw,270px);padding:24px;border-radius:calc(var(--r-xl) - 10px);background:rgba(104,80,58,.07);box-shadow:inset 0 2px 5px rgba(60,44,30,.14);overflow:hidden}
+.bu-stein__b--band{padding:0}.bu-stein__b--band .w-band{width:100%}
+.bu-stein>b{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:1.6rem;padding:10px 14px 0}
+.bu-stein>p{font-size:16px;line-height:1.5;color:rgba(11,12,16,.72);padding:0 14px}
+.bu-mini-bogen{display:block;width:150px;padding:5px;border-radius:999px 999px 16px 16px;background:#fffaf4;box-shadow:0 18px 26px -18px rgba(60,44,30,.7)}
+.bu-mini-bogen img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:999px 999px 12px 12px}
+.bu-mini-rahmen{position:relative;display:block;width:min(100%,330px);padding:6px;border-radius:24px;background:rgba(11,12,16,.05);box-shadow:inset 0 0 0 1px rgba(11,12,16,.1)}
+.bu-mini-rahmen img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:18px}
+.bu-mini-rahmen em{position:absolute;left:6px;bottom:6px;font-style:normal;padding:9px 16px 7px 12px;border-radius:0 16px 0 18px;background:#f3e8dc;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:.95rem;letter-spacing:.04em}
+.bu-mitte{justify-content:center}
+.bu-ende{padding-bottom:clamp(90px,10vw,160px)}
+.bu .w-fuss{position:relative;border-radius:clamp(26px,3vw,46px) clamp(26px,3vw,46px) 0 0;margin-top:calc(clamp(26px,3vw,46px)*-1)}
+
+@media (max-width:900px){
+  .bu-drei,.bu-bilder{grid-template-columns:1fr 1fr}.bu-drei .bu-bogen:nth-child(2){margin-top:0}.bu-drei .bu-bogen:last-child{grid-column:1/-1;max-width:420px;justify-self:center}
+  .bu-wm,.bu-bau,.bu-regeln{grid-template-columns:1fr}.bu-farben,.bu-her-reihe{grid-template-columns:1fr 1fr}
+  .bu-schrift{grid-template-columns:1fr}
+}
+@media (max-width:480px){.bu-drei,.bu-bilder{grid-template-columns:1fr}.bu-kerbe{font-size:1rem}}
+@media (prefers-reduced-motion:reduce){[data-r="schweb"],.js .bu-auf__in>*{opacity:1;transform:none;transition:none}[data-r="fach"] i{transform:none}}

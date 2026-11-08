@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Karte · Salt &amp; Silver</title>
+<meta name="description" content="Die drei Speisekarten von Salt &amp; Silver zum Ändern: Gerichte, Preise und Weine, mit Probe-PDF.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5eee6">
+<link rel="preload" href="../../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/main.css?h=ca4b285405">
+<link rel="stylesheet" href="../../hafen/wz.css?v=15">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="karte.css?v=4">
+</head>
+<body class="wz wz-t ka" data-wurzel="../../">
+<header class="t-oben">
+  <a class="t-marke" href="../"><img src="../../assets/logo/wortmarke-weiss.png?h=31603a5105" alt="Salt &amp; Silver"><b>Karte</b></a>
+  <div class="t-mitte"><b id="t-titel">Karte</b><span id="t-unter">&nbsp;</span></div>
+  <div class="t-rechts"><a class="t-taste" href="../" title="Zum Hafen" aria-label="Zum Hafen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7.5 8 3l5.5 4.5V13h-4V9.5h-3V13h-4z"/></svg></a><a class="t-taste" href="../../werkbank/anleitung/karte/" title="Anleitung" aria-label="Anleitung"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3.5h4a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 0 7 11.5H3zM13 3.5H9.5A1.5 1.5 0 0 0 8 5v8a1.5 1.5 0 0 1 1.5-1.5H13z"/></svg></a><a class="kn kn--klein kn--hell" href="../../karten/index.html" target="_blank" rel="noopener">Karten ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+</header>
+<div class="ka-raum">
+  <aside class="w-platte ka-seite">
+    <p class="w-klein">Eure Karten</p>
+    <div id="karten"></div>
+    <p class="w-klein">Seite</p>
+    <div class="t-wahl ka-seiten" id="seiten"></div>
+    <p class="w-klein">Wege</p>
+    <a class="t-nav" href="../../studio/#/karte">Karte auf der Website<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+    <a class="t-nav" href="../../karten/index.html" target="_blank" rel="noopener">Alle Karten ansehen<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+    <a class="t-nav" href="../">Hafen<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+    <p class="ka-klein">Hier ändert ihr die gedruckten Karten. Die Karte auf der Website pflegt ihr im Studio unter «Speisekarte».</p>
+  </aside>
+  <main class="ka-liste">
+    <div class="ka-kopf"><img src="../z/taco-tinte.svg" alt=""><h1 class="t-h1" id="k-name">Karte</h1><p id="k-satz">Ein Klick auf einen Eintrag öffnet ihn zum Schreiben. Rechts seht ihr sofort die Karte, so wie sie gedruckt wird.</p></div>
+    <div class="ka-voll w-platte" id="voll" hidden><b>Diese Seite ist voll.</b><span id="voll-text">&nbsp;</span></div>
+    <div id="eintraege"></div>
+  </main>
+  <section class="ka-blatt">
+    <div class="ka-blatt__leiste w-platte"><span class="w-klein" id="b-seite">Seite 1</span><div class="ka-zoom"><button class="t-taste" id="kleiner" aria-label="Kleiner"><svg viewBox="0 0 16 16"><path d="M3 8h10"/></svg></button><button class="t-taste" id="groesser" aria-label="Größer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button></div></div>
+    <div class="ka-buehne" id="buehne"><iframe id="blatt" title="Die Karte, wie sie gedruckt wird"></iframe></div>
+  </section>
+</div>
+<div class="t-fussleiste ka-fuss"><p><b id="f-titel">Nichts geändert</b><span id="f-text">Die Karte steht so da, wie sie gesetzt ist.</span></p>
+  <button class="t-pille" id="vorher" disabled>Vorher ansehen</button><button class="t-pille" id="zurueckstellen" disabled>Zurücksetzen</button>
+  <a class="kn kn--klein kn--hell" id="original" download>Fertige PDF<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a><button class="kn kn--klein kn--hell" id="drucken">Probe-PDF<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button></div>
+<div class="m-kopiert" id="kopiert" aria-live="polite"></div>
+<script src="../wz.js?v=15"></script>
+<script src="karte.js?v=4"></script>
+</body>
+</html>

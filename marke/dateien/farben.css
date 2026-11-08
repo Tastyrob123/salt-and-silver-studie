@@ -1,0 +1,10 @@
+:root{
+  --papier:#f5eee6; /* Papier: Helle Flächen, Seiten zum Lesen */
+  --creme:#ebdbce; /* Creme: Knöpfe auf Dunkel, betonte Worte */
+  --taupe:#9e947f; /* Taupe: Zweite Zeile im Titel, kleine Schrift */
+  --navy:#1f213b; /* Navy: Dunkle Flächen im Wechsel */
+  --knopf:#151929; /* Knopf-Blau: Knöpfe, Leiste, dunkle Felder */
+  --nacht:#111421; /* Nacht: Grundfläche der Website */
+  --tinte:#0b0c10; /* Tinte: Schrift auf Hell */
+  --rot:#ff3132; /* Rot: Ein einzelner Punkt, nie eine Fläche */
+}

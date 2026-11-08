@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prüfung · Studio · Salt & Silver</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="/assets/logo/emblem.png">
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="pruefung.css?v=1">
+<!-- Die Prüfung braucht nichts vom Studio: eigene Datei, eigene Gestaltung. Fehlt pruefung.css, bleibt die Seite lesbar; fehlt pruefung.js, steht unten, was zu tun ist. -->
+</head>
+<body>
+<main class="pr" id="pr">
+  <header class="pr__kopf">
+    <a class="pr__zurueck" href="./">Zum Studio</a>
+    <h1>Prüfung<em>.</em></h1>
+    <p class="pr__lead">Prüft das Studio von Grund auf: Verbindung, Server, gespeicherte Inhalte, Werkbank und Website. Läuft auch dann, wenn das Studio selbst nicht mehr startet.</p>
+  </header>
+  <section class="pr__ampel" id="ampel" aria-live="polite">
+    <p class="pr__ohne">Die Prüfung startet …</p>
+    <noscript><p class="pr__ohne">Für die Prüfung muss JavaScript an sein. Das Lexikon unten ist trotzdem lesbar, sobald die Seite es laden kann.</p></noscript>
+  </section>
+  <div id="inhalt"></div>
+  <p class="pr__ohne" id="ohne-js" hidden>Die Prüfung selbst ließ sich nicht laden (pruefung.js fehlt). Bitte die Seite neu laden. Hilft das nicht, schreibt an robert@tasty-studios.de.</p>
+</main>
+<script src="pruefung.js?v=1"></script>
+<script src="pruefung-start.js?v=1"></script>
+</body>
+</html>

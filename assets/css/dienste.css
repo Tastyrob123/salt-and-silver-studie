@@ -1,0 +1,365 @@
+/* Salt & Silver — Gäste-Funktionen (Tasty Studios, 10.10.2026, Vorlage: die Hotel-Websites der Familie Maeder, Farben und Schrift von Salt & Silver).
+   Eigene Datei neben main.css. Bewegung nur transform und opacity, einmal beim Auftritt. Keine Punkte in Tasten und Kärtchen. */
+:root{--dn-platte:linear-gradient(180deg,#2d3250,#151929 55%,#080a12)}
+
+/* ---------- Buchen-Fenster: Treffer ---------- */
+dialog.buchen.dn-breit{width:min(1080px,calc(100% - 24px))}
+dialog.buchen.dn-breit .buchen__in{grid-template-columns:minmax(0,3fr) minmax(0,8fr)}
+.dn-treffer{display:grid;gap:12px;margin-top:6px}
+.dn-treffer[hidden],dialog.buchen form[hidden],dialog.buchen .buchen__klein[hidden]{display:none!important}
+.dn-treffer > *{min-width:0}
+.buchen__t{min-width:0}
+.dn-treffer__kopf{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:.92rem;opacity:.86;padding-bottom:12px;border-bottom:1px solid rgba(var(--lh),.16)}
+.dn-zurueck{background:none;border:0;color:var(--creme);font:600 .82rem var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:inset 0 -1px 0 currentColor}
+.dn-hinweis{font-size:.98rem;line-height:1.55;opacity:.86}
+.dn-treffer__mehr{margin-top:14px;color:var(--creme)}
+.dn-zi{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(var(--lh),.12)}
+.dn-zi h3{font-family:var(--titel,var(--serif));font-weight:700;font-size:1.25rem;line-height:1.2}
+.dn-zi p{margin-top:6px;font-size:.93rem;line-height:1.5;opacity:.84}
+.dn-zi small{display:block;margin-top:6px;font-size:.8rem;opacity:.6}
+.dn-zi__raten{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:8px}
+.dn-rate{display:flex;gap:8px;align-items:baseline}
+.dn-rate i{font-style:normal;font-size:.8rem;opacity:.66}
+.dn-rate b{font-family:var(--titel,var(--serif));font-weight:700;font-size:1.15rem;color:var(--creme)}
+.dn-zi--oben{grid-template-columns:minmax(0,2fr) minmax(0,3fr);align-items:stretch;padding:0;border:0;border-radius:var(--r-m);overflow:hidden;background:rgba(0,0,0,.35);box-shadow:inset 0 0 0 1px rgba(235,219,206,.34)}
+.dn-zi--oben .dn-zi__b{position:relative;min-height:220px}
+.dn-zi--oben .dn-zi__b img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.dn-zi--oben .dn-zi__t{padding:20px 22px 0}
+.dn-zi--oben .mono{display:block;margin:0 0 6px;color:var(--creme)}
+.dn-zi--oben h3{font-size:1.7rem}
+.dn-zi--oben .dn-rate b{font-size:1.45rem}
+.dn-zi--oben > .kn{grid-column:2;margin:14px 22px 20px;justify-self:start}
+
+/* ---------- Preisvergleich und Wetter: dunkle Karte mit doppelter Goldlinie ---------- */
+.dn-pv,.dn-rw{position:relative;padding:26px 28px 22px;border-radius:var(--r-m);background:var(--nacht);color:var(--papier);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 50px -32px rgba(0,0,0,.85);overflow:hidden}
+.dn-pv::before,.dn-rw::before{content:'';position:absolute;inset:8px;border:1px solid rgba(235,219,206,.34);border-radius:calc(var(--r-m) - 8px);pointer-events:none}
+.dn-pv::after,.dn-rw::after{content:'';position:absolute;inset:12px;border:1px solid rgba(235,219,206,.12);border-radius:calc(var(--r-m) - 12px);pointer-events:none}
+.dn-edel__kopf{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:20px}
+.dn-edel__kopf .mono{margin:0;color:var(--creme)}
+.dn-edel__kopf em{font-family:var(--titel,var(--serif));font-style:italic;font-size:.95rem;opacity:.62}
+.dn-edel__satz{position:relative;margin-top:16px;padding-top:12px;border-top:1px solid rgba(235,219,206,.16);font-size:.8rem;line-height:1.55;opacity:.6}
+.dn-pv__liste{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.dn-pv__z{display:grid;grid-template-columns:minmax(0,9.4rem) minmax(0,1fr) 11rem;gap:14px;align-items:center}
+.dn-pv__n{font-size:.98rem;line-height:1.2;opacity:.86}
+.dn-pv__n small{display:block;margin-top:4px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--creme);opacity:.85}
+.dn-pv__z--wir .dn-pv__n{font-weight:600;opacity:1}
+.dn-pv__spur{position:relative;height:9px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 1px 2px rgba(0,0,0,.55);overflow:hidden}
+.dn-pv__spur i{position:absolute;inset:0;border-radius:inherit;transform-origin:0 50%;transform:scaleX(var(--w));background:rgba(255,255,255,.3)}
+.dn-pv__z--wir .dn-pv__spur i{background:var(--creme)}
+.dn-pv__z--wir .dn-pv__spur::after{content:'';position:absolute;top:0;bottom:0;left:0;width:34%;background:linear-gradient(90deg,transparent,rgba(255,250,244,.85),transparent);transform:translateX(-120%);opacity:0}
+.dn-pv__preis{display:grid;justify-items:end;gap:3px;text-align:right}
+.dn-pv__preis b{font-family:var(--titel,var(--serif));font-weight:700;font-size:1.3rem;white-space:nowrap;font-variant-numeric:tabular-nums;opacity:.82}
+.dn-pv__z--wir .dn-pv__preis b{font-size:1.5rem;color:var(--creme);opacity:1}
+.dn-pv__weniger{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--creme);white-space:nowrap}
+.dn-pv__weniger span{font-family:var(--titel,var(--serif));font-size:1.02rem;letter-spacing:0;text-transform:none}
+.dn-rw__reihe{position:relative;display:flex;gap:14px;overflow-x:auto;padding:2px 2px 6px;scrollbar-width:thin}
+.dn-rw__tag{flex:0 0 128px;position:relative;display:grid;justify-items:center;text-align:center;gap:5px;padding:18px 10px 16px;border-radius:14px;background:#0b0d16;box-shadow:inset 0 0 0 1px rgba(235,219,206,.34)}
+.dn-rw__tag::before{content:'';position:absolute;inset:5px;border:1px solid rgba(235,219,206,.12);border-radius:10px;pointer-events:none}
+.dn-rw__wt{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--creme)}
+.dn-rw__dt{font-family:var(--titel,var(--serif));font-size:1rem;opacity:.86}
+.dn-rw__ic{display:grid;place-items:center;height:40px;margin:2px 0}
+.dn-rw__ic svg{width:36px;height:36px;fill:none;stroke:var(--creme);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.dn-rw__oe{font-style:normal;font-family:var(--titel,var(--serif));font-size:1.7rem;color:var(--creme)}
+.dn-rw__max{font-family:var(--titel,var(--serif));font-weight:700;font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.dn-rw__min{font-size:.86rem;opacity:.6}
+.dn-rw__nass{position:relative;display:block;width:64px;height:4px;margin-top:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.dn-rw__nass i{position:absolute;inset:0;border-radius:inherit;transform-origin:0 50%;transform:scaleX(var(--h));background:rgba(235,219,206,.8)}
+.dn-rw__tag em{font-style:normal;font-size:.72rem;opacity:.58}
+
+/* Auftritt */
+.dn-pv[data-anim]:not(.dn-ruhig) .dn-pv__z,.dn-rw[data-anim]:not(.dn-ruhig) .dn-rw__tag{opacity:0;transform:translateY(16px)}
+.dn-pv[data-anim]:not(.dn-ruhig) .dn-pv__spur i,.dn-rw[data-anim]:not(.dn-ruhig) .dn-rw__nass i{transform:scaleX(0)}
+.dn-pv[data-anim]:not(.dn-ruhig) .dn-pv__weniger{opacity:0;transform:translateY(6px)}
+.dn-rw[data-anim]:not(.dn-ruhig) .dn-rw__ic{opacity:0;transform:scale(.7)}
+.dn-los:not(.dn-ruhig) .dn-pv__z,.dn-los:not(.dn-ruhig) .dn-rw__tag{animation:dnAuf .95s var(--e1) forwards;animation-delay:calc(.08s + var(--i,0) * .13s)}
+.dn-los:not(.dn-ruhig) .dn-pv__spur i{animation:dnBalken 1.5s var(--e1) forwards;animation-delay:calc(.3s + var(--i,0) * .14s)}
+.dn-los:not(.dn-ruhig) .dn-pv__z--wir .dn-pv__spur::after{animation:dnGlanz 1.3s cubic-bezier(.45,0,.2,1) 1.6s forwards}
+.dn-los:not(.dn-ruhig) .dn-pv__weniger{animation:dnAuf .8s var(--e1) 1.2s forwards}
+.dn-los:not(.dn-ruhig) .dn-rw__ic{animation:dnIc .8s cubic-bezier(.2,1.3,.4,1) forwards;animation-delay:calc(.35s + var(--i,0) * .13s)}
+.dn-los:not(.dn-ruhig) .dn-rw__nass i{animation:dnNass 1.2s var(--e1) forwards;animation-delay:calc(.5s + var(--i,0) * .13s)}
+@keyframes dnAuf{to{opacity:1;transform:none}}
+@keyframes dnBalken{to{transform:scaleX(var(--w))}}
+@keyframes dnNass{to{transform:scaleX(var(--h))}}
+@keyframes dnGlanz{0%{opacity:1;transform:translateX(-120%)}100%{opacity:1;transform:translateX(320%)}}
+@keyframes dnIc{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.dn-pv *,.dn-rw *{animation:none!important}}
+
+/* ---------- Tisch-Reiter ---------- */
+.dn-tisch .felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dn-tisch .feld--ganz,.dn-tisch__zeit{grid-column:1/-1}
+.dn-tisch__zeit{margin:-4px 2px 2px;font-size:.86rem;line-height:1.45;color:var(--creme)}
+.dn-tisch .knoepfe{margin-top:18px}
+.dn-tisch textarea{resize:vertical}
+
+@media (max-width:900px){
+  dialog.buchen.dn-breit .buchen__in{grid-template-columns:minmax(0,1fr)}
+  dialog.buchen.dn-breit .buchen__b{display:none}
+  .dn-zi--oben{grid-template-columns:minmax(0,1fr)}
+  .dn-zi--oben > .kn{grid-column:1}
+  .dn-zi--oben .dn-zi__b{min-height:170px}
+}
+@media (max-width:640px){
+  .dn-pv,.dn-rw{padding:22px 18px 18px}
+  .dn-pv__z{grid-template-columns:minmax(0,1fr) auto;gap:8px 12px}
+  .dn-pv__spur{grid-column:1/-1;grid-row:2}
+  .dn-rw__tag{flex-basis:112px}
+  .dn-tisch .felder{grid-template-columns:minmax(0,1fr)}
+  .dn-zi{grid-template-columns:minmax(0,1fr)}
+}
+
+.dn-tisch textarea{width:100%;min-width:0;border:0;background:transparent;color:inherit;font:500 1.04rem var(--sans);padding:0;resize:vertical;color-scheme:dark}
+
+/* ---------- Anfrage-Rechner (Feste) ---------- */
+.dn-rechner{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(16px,2.4vw,40px);align-items:start}
+.dn-rechner [hidden]{display:none!important}
+.dn-rechner__wahl .felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.dn-rechner__wahl .feld--ganz{grid-column:1/-1}
+.tabs--rechner{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 6px}
+.tabs--rechner .tab{min-height:46px;padding:0 24px;border-radius:999px;border:1px solid rgba(11,12,16,.3);background:rgba(255,255,255,.35);color:var(--tinte);font:500 .82rem var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s}
+.tabs--rechner .tab[aria-pressed="true"]{background:var(--dn-platte);color:var(--creme);border-color:var(--taupe)}
+.fl--holz .tabs--rechner .tab,.fl--russ .tabs--rechner .tab,.dn-gs-form .tabs--rechner .tab{background:transparent;color:var(--papier);border-color:rgba(235,219,206,.4)}
+.fl--holz .tabs--rechner .tab[aria-pressed="true"],.fl--russ .tabs--rechner .tab[aria-pressed="true"],.dn-gs-form .tabs--rechner .tab[aria-pressed="true"]{background:var(--creme);color:var(--tinte);border-color:var(--creme)}
+.fl--creme .dn-rechner .feld{background:rgba(255,255,255,.55);box-shadow:inset 0 1px 3px rgba(74,58,26,.22),inset 0 0 0 1px rgba(110,88,44,.2)}
+.fl--creme .dn-rechner .feld span{color:var(--taupe)}
+.fl--creme .dn-rechner .feld input,.fl--creme .dn-rechner .feld select,.fl--creme .dn-rechner .feld textarea{color:var(--tinte);color-scheme:light;background:transparent;border:0;width:100%;font:500 1.04rem var(--sans);padding:0}
+.dn-haken{display:flex;align-items:center;gap:10px;font-weight:600;cursor:pointer;padding:6px 2px}
+.dn-haken input{width:20px;height:20px;accent-color:var(--creme)}
+.dn-rechner__ergebnis{position:relative;padding:clamp(26px,3vw,42px);border-radius:var(--r-l);background:var(--dn-platte);color:var(--papier)}
+.dn-rechner__ergebnis::before{content:'';position:absolute;inset:10px;border:1px solid rgba(235,219,206,.3);border-radius:calc(var(--r-l) - 10px);pointer-events:none}
+.dn-rechner__ergebnis .mono{color:var(--creme)}
+.dn-rechner__summe{display:flex;align-items:baseline;gap:10px;margin-top:6px}
+.dn-rechner__summe small{font-family:var(--mono);font-size:.9rem;letter-spacing:.12em;opacity:.7}
+.dn-rechner__summe b{font-family:var(--titel,var(--serif));font-weight:700;font-size:clamp(2.8rem,4.6vw,4.4rem);line-height:1}
+.dn-rechner__entwurf{margin-top:14px;padding:12px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(235,219,206,.32);font-size:.88rem;line-height:1.55;opacity:.9}
+.dn-rechner__entwurf b{display:block;margin-bottom:2px;font-family:var(--titel,var(--serif));font-weight:700;font-size:1.05rem;color:var(--creme)}
+.dn-rechner__zeilen{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:6px;font-size:.92rem;opacity:.86}
+.dn-rechner__zeilen li{display:flex;justify-content:space-between;gap:12px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.1)}
+.dn-rechner__saal{margin-top:14px}
+.dn-rechner__saal b{color:var(--creme)}
+.dn-rechner__hinweis{margin-top:8px;font-size:.86rem;line-height:1.5;opacity:.66}
+.dn-rechner__ergebnis .knoepfe{margin-top:20px}
+
+/* ---------- Gutschein online ---------- */
+.dn-gs-form{position:relative;padding:clamp(24px,3vw,40px);border-radius:var(--r-l);background:var(--nacht);box-shadow:inset 0 0 0 1px rgba(235,219,206,.3),0 30px 60px -30px rgba(0,0,0,.8)}
+.dn-gs-form [hidden]{display:none!important}
+.dn-gs-form .felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.dn-gs-form .feld--ganz{grid-column:1/-1}
+.dn-gs-form textarea,.dn-gs-form input,.dn-gs-form select{width:100%;min-width:0;border:0;background:transparent;color:inherit;font:500 1.04rem var(--sans);padding:0;color-scheme:dark}
+.dn-betraege{display:flex;flex-wrap:wrap;gap:8px}
+.dn-betraege .taste{min-height:40px;padding:0 18px;border-radius:999px;border:1px solid rgba(235,219,206,.4);background:transparent;color:var(--papier);font:500 .95rem var(--sans);cursor:pointer}
+.dn-betraege .taste::before{content:none!important}
+.dn-betraege .taste[aria-pressed="true"]{background:var(--creme);color:var(--tinte);border-color:var(--creme)}
+.dn-gs-summe{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;padding-top:14px;border-top:1px solid rgba(235,219,206,.2)}
+.dn-gs-summe .mono{color:var(--creme)}
+.dn-gs-summe b{font-family:var(--titel,var(--serif));font-weight:700;font-size:2rem;color:var(--creme)}
+.dn-gs-form .knoepfe{margin-top:18px}
+.dn-gs__ok{font-family:var(--titel,var(--serif));font-weight:700;font-size:2rem;color:var(--creme);margin-bottom:14px}
+.dn-gs__satz{margin-top:16px;font-size:.92rem;line-height:1.55;opacity:.76}
+.dn-gk{position:relative;display:grid;justify-items:center;text-align:center;gap:6px;padding:clamp(26px,3vw,38px) 20px;border-radius:var(--r-m);background:var(--dn-platte);box-shadow:inset 0 0 0 1px rgba(235,219,206,.5)}
+.dn-gk::before{content:'';position:absolute;inset:7px;border:1px solid rgba(235,219,206,.24);border-radius:calc(var(--r-m) - 7px);pointer-events:none}
+.dn-gk__z{width:46px;height:auto;margin-bottom:4px}
+.dn-gk .mono{color:var(--creme)}
+.dn-gk__wert{font-family:var(--titel,var(--serif));font-weight:700;font-size:clamp(2.2rem,3.4vw,3rem);line-height:1.05;color:var(--papier)}
+.dn-gk__was{font-size:.95rem;opacity:.86;max-width:36ch}
+.dn-gk__fuer{font-family:var(--titel,var(--serif));font-size:1.25rem;margin-top:6px}
+.dn-gk__widmung{font-family:var(--titel,var(--serif));font-style:italic;opacity:.86;max-width:34ch}
+.dn-gk__von,.dn-gk__nr{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;opacity:.66}
+
+@media (max-width:900px){.dn-rechner{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.dn-rechner__wahl .felder,.dn-gs-form .felder{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Druck: Entwurf und Gutschein, sonst nichts ---------- */
+#dn-druck{display:none}
+@media print{
+  html.dn-druckt body > *:not(#dn-druck){display:none!important}
+  html.dn-druckt #dn-druck{display:block!important}
+  html.dn-druckt,html.dn-druckt body{background:#fff!important}
+  #dn-druck{color:#0b0c10;font-family:var(--sans);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .dn-blatt-druck{padding:12mm 4mm}
+  .dn-blatt-druck > img{display:block;margin:0 auto 6mm}
+  .dn-blatt-druck h1{font-family:var(--titel,var(--serif));font-weight:700;font-size:26pt;margin:8mm 0 2mm}
+  .dn-blatt-druck h1 em{color:#9e947f;font-style:normal}
+  .dn-blatt-druck table{width:100%;border-collapse:collapse;margin:8mm 0 5mm;font-size:11pt}
+  .dn-blatt-druck td{padding:2.6mm 0;border-bottom:.3mm solid #d6c2b1}
+  .dn-blatt-druck td:last-child{text-align:right;white-space:nowrap}
+  .dn-blatt-druck .dn-d-summe td{font-family:var(--titel,var(--serif));font-weight:700;font-size:15pt;border-bottom:0;padding-top:4mm}
+  .dn-blatt-druck p{font-size:10.5pt;line-height:1.5;margin:2mm 0}
+  .dn-d-kl{font-size:8.5pt!important;color:#6f6757;text-align:center}
+  .dn-gutschein-druck{padding:20mm 10mm}
+  .dn-gutschein-druck .dn-gk{background:#1f213b;color:#f7ecdc;padding:16mm 10mm;border-radius:6mm}
+  .dn-gutschein-druck .dn-d-kl{margin-top:8mm}
+  @page{size:A4;margin:12mm}
+}
+
+.dn-gs-form input[type=checkbox]{width:20px;height:20px;flex:none;accent-color:var(--creme)}
+.dn-gs-form .dn-haken{grid-column:1/-1;justify-content:flex-start}
+.dn-gk__z{width:42px;height:auto;color:var(--creme)}
+@media print{.dn-gutschein-druck .dn-gk__z{color:#9e947f}}
+
+/* ---------- Vor Ihrer Anreise ---------- */
+.dn-karte-dunkel{position:relative;padding:clamp(22px,2.6vw,34px);border-radius:var(--r-l);background:var(--nacht);color:var(--papier);box-shadow:inset 0 0 0 1px rgba(235,219,206,.3),0 30px 60px -32px rgba(0,0,0,.7)}
+.dn-karte-dunkel .felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.dn-karte-dunkel .feld--ganz,.dn-karte-dunkel .dn-tisch__zeit{grid-column:1/-1}
+.dn-karte-dunkel input,.dn-karte-dunkel select{width:100%;min-width:0;border:0;background:transparent;color:inherit;font:500 1.04rem var(--sans);padding:0;color-scheme:dark}
+.dn-zeile{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px 16px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(235,219,206,.16)}
+.dn-zeile:last-child{border-bottom:0}
+.dn-zeile b{font-family:var(--titel,var(--serif));font-weight:700;font-size:1.08rem;line-height:1.3}
+.dn-zeile i{font-style:normal;font-weight:600;white-space:nowrap;color:var(--creme)}
+.dn-zaehler{display:inline-flex;align-items:center;gap:4px}
+.dn-zaehler button{width:34px;height:34px;border-radius:50%;border:1px solid rgba(235,219,206,.4);background:transparent;color:var(--papier);font:500 1.1rem/1 var(--sans);cursor:pointer}
+.dn-zaehler input{width:40px!important;text-align:center;border:0;background:transparent;color:var(--papier);font:600 1.05rem var(--sans);-moz-appearance:textfield}
+.dn-zaehler input::-webkit-outer-spin-button,.dn-zaehler input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.dn-summe{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:clamp(20px,3vw,48px);padding:clamp(28px,3.4vw,52px);border-radius:var(--r-l);box-shadow:inset 0 0 0 1px rgba(235,219,206,.34);color:var(--papier)}
+.dn-summe .mono{color:var(--creme)}
+.dn-summe ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;line-height:1.45}
+.dn-summe ul li{padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1)}
+.dn-summe__klein{margin:8px 0 18px;font-size:.86rem;opacity:.66}
+.dn-vorschlag{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,2.4vw,36px);align-items:start;margin-top:18px;padding:clamp(26px,3vw,44px);border-radius:var(--r-l);background:var(--dn-platte);color:var(--papier)}
+.dn-vorschlag[hidden]{display:none!important}
+.dn-vorschlag::before{content:'';position:absolute;inset:10px;border:1px solid rgba(235,219,206,.3);border-radius:calc(var(--r-l) - 10px);pointer-events:none}
+.dn-vorschlag__z svg{width:clamp(44px,4vw,60px);height:auto;color:var(--creme)}
+.dn-vorschlag p{margin-top:10px;opacity:.86;max-width:62ch}
+.dn-vorschlag .knoepfe{margin-top:18px}
+.dn-rw__tag--ort{flex-basis:220px}
+@media (max-width:900px){.dn-summe,.dn-vorschlag{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.dn-karte-dunkel .felder{grid-template-columns:minmax(0,1fr)}.dn-zeile{grid-template-columns:minmax(0,1fr) auto}.dn-zeile .dn-zaehler{grid-column:1/-1;justify-self:end}}
+.dn-vorschlag .gold,.dn-vorschlag h3 span{color:var(--creme)}
+
+/* ---------- Runde 2 (Robert 10.10.2026, 05:15) ---------- */
+/* Buchen-Fenster: scharfes Foto je Reiter, in der Trefferansicht kein Foto (mehr Platz, kein vergrössertes Bild) */
+dialog.buchen .buchen__b img.dn-fb{opacity:0;transition:opacity .45s}
+dialog.buchen:not([data-tab="tisch"]) .buchen__b img.dn-fb--zimmer,dialog.buchen[data-tab="tisch"] .buchen__b img.dn-fb--tisch{opacity:1}
+dialog.buchen.dn-breit{width:min(860px,calc(100% - 24px))}
+dialog.buchen.dn-breit .buchen__in{grid-template-columns:minmax(0,1fr)!important}
+dialog.buchen.dn-breit .buchen__b{display:none}
+/* Auswahl- und Eingabefelder: kein Rahmen, der nach der Wahl stehen bleibt; nur mit Tastatur ein feiner Ring */
+.dn-karte-dunkel :is(input,select,textarea):focus,.dn-tisch :is(input,select,textarea):focus,.dn-gs-form :is(input,select,textarea):focus,.dn-rechner :is(input,select,textarea):focus,dialog.buchen :is(input,select):focus{outline:none;box-shadow:none}
+.dn-karte-dunkel .feld:has(:focus-visible),.dn-tisch .feld:has(:focus-visible),.dn-gs-form .feld:has(:focus-visible){box-shadow:inset 0 0 0 1px rgba(235,219,206,.6)}
+/* Wetter und Vorschlag: bis drei Tage nebeneinander, sonst untereinander */
+.dn-wv{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+.dn-wv .dn-vorschlag{margin-top:0}
+.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]){grid-template-columns:auto minmax(0,1fr);align-items:stretch}
+.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]) > div:first-child > .dn-rw{height:100%}
+.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]) .dn-vorschlag{grid-template-columns:minmax(0,1fr);align-content:center;gap:14px}
+.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]) .dn-vorschlag__z svg{width:42px}
+.dn-wv .dn-rw__reihe{flex-wrap:nowrap}
+.dn-rw__tag--ort{flex-basis:200px;padding:22px 14px 18px}
+.dn-heute{padding-top:clamp(28px,3.4vw,56px)!important}
+@media (max-width:900px){.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]){grid-template-columns:minmax(0,1fr)}}
+/* Massage-Auswahl: eigene Liste nach Gruppen */
+.dn-wahl{position:relative}
+.dn-wahl__knopf{display:grid;grid-template-columns:minmax(0,1fr) auto auto 16px;gap:14px;align-items:center;width:100%;padding:4px 0 0;border:0;background:none;color:var(--papier);text-align:left;cursor:pointer}
+.dn-wahl__knopf small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.dn-wahl__knopf b{font-family:var(--titel,var(--serif));font-weight:700;font-size:1.12rem}
+.dn-wahl__knopf i,.dn-wahl__z i{font-style:normal;font-size:.85rem;opacity:.66;white-space:nowrap}
+.dn-wahl__knopf em,.dn-wahl__z em{font-style:normal;font-family:var(--titel,var(--serif));font-weight:700;color:var(--creme);white-space:nowrap}
+.dn-wahl__knopf svg{width:16px;height:16px;fill:none;stroke:var(--creme);stroke-width:1.5;transition:transform .3s var(--e1)}
+.dn-wahl__knopf[aria-expanded="true"] svg{transform:rotate(180deg)}
+.dn-wahl__liste{position:absolute;z-index:20;left:-1px;right:-1px;top:calc(100% + 8px);max-height:min(60vh,420px);overflow:auto;padding:8px;border-radius:16px;background:#111421;box-shadow:inset 0 0 0 1px rgba(235,219,206,.34),0 30px 60px -20px rgba(0,0,0,.9)}
+.dn-wahl__liste[hidden]{display:none!important}
+.dn-wahl__gruppe{padding:8px 6px 6px}
+.dn-wahl__gruppe + .dn-wahl__gruppe{border-top:1px solid rgba(235,219,206,.14)}
+.dn-wahl__gruppe .mono{display:block;padding:6px 10px 8px;color:var(--creme);font-size:.66rem}
+.dn-wahl__z{display:grid;grid-template-columns:minmax(0,1fr) auto 6.5rem;gap:14px;align-items:baseline;width:100%;padding:10px 12px;border:0;border-radius:10px;background:none;color:var(--papier);text-align:left;cursor:pointer;transition:background .2s}
+.dn-wahl__z b{font-weight:500;font-size:.98rem}
+.dn-wahl__z em{text-align:right}
+.dn-wahl__z:hover{background:rgba(235,219,206,.08)}
+.dn-wahl__z[aria-selected="true"]{background:rgba(235,219,206,.16)}
+@media (max-width:560px){.dn-wahl__z{grid-template-columns:minmax(0,1fr) auto}.dn-wahl__z i{grid-column:1;grid-row:2}.dn-wahl__knopf{grid-template-columns:minmax(0,1fr) auto 16px}.dn-wahl__knopf i{display:none}}
+.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]){grid-template-columns:max-content minmax(0,1fr)}
+.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]) .dn-rw__reihe{overflow:visible}
+.dn-wahl__knopf span{display:block;font-family:var(--sans);font-size:inherit;letter-spacing:0;text-transform:none;color:inherit}
+.dn-wahl__knopf span small{color:var(--creme);opacity:.75}
+.dn-wahl__knopf b{text-transform:none;letter-spacing:0;color:var(--papier)}
+.dn-rw__tag{flex:none;width:128px}
+.dn-rw__tag--ort{width:200px}
+@media (max-width:640px){.dn-rw__tag{width:112px}.dn-rw__tag--ort{width:150px}}
+.dn-wv:not([data-tage="1"]):not([data-tage="2"]):not([data-tage="3"]) .dn-rw__tag{flex:1 1 0;width:auto;min-width:112px}
+
+/* ---------- Ruedihus: eigene Teile ---------- */
+.dn-tisch textarea,.dn-rechner textarea,.dn-gs-form textarea{width:100%;min-width:0;border:0;background:transparent;color:inherit;font:500 1.04rem var(--sans);padding:0;resize:vertical;color-scheme:dark}
+.dn-rechner .feld input,.dn-rechner .feld select{color:var(--papier)}
+.dn-rechner__ergebnis{color:var(--creme);box-shadow:inset 0 1px 0 rgba(255,245,236,.18),0 40px 60px -36px #000}
+.dn-rechner__ergebnis .dn-rechner__summe b{color:#fff6e6}
+/* Stube wählen: drei Platten, gewählt = helle Fläche mit Goldrahmen (keine Punkte) */
+.dn-stuben{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dn-stube{display:grid;gap:4px;align-content:start;text-align:left;padding:16px 16px 14px;border-radius:16px;background:rgba(0,0,0,.35);box-shadow:inset 0 1px 3px rgba(0,0,0,.6),inset 0 0 0 1px rgba(var(--lh),.12);color:var(--papier);transition:background .3s,box-shadow .3s}
+.dn-stube b{font-family:var(--titel,var(--serif));font-weight:700;font-size:1.12rem;line-height:1.2}
+.dn-stube span{font-size:.84rem;line-height:1.4;opacity:.72}
+.dn-stube i{font-style:normal;margin-top:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--creme)}
+.dn-stube:hover{background:rgba(255,245,236,.06)}
+.dn-stube[aria-pressed="true"]{background:var(--dn-platte);box-shadow:inset 0 0 0 1px rgba(235,219,206,.6),0 18px 30px -20px #000}
+.dn-stube[aria-pressed="true"] span{opacity:.9}
+.dn-rechner__wahl .felder{margin-top:14px}
+@media (max-width:640px){.dn-stuben{grid-template-columns:minmax(0,1fr)}}
+/* Gutschein online unter der Platte */
+.dn-gs-reihe{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,72px);align-items:start;margin-top:clamp(56px,6vw,96px)}
+.dn-gs-text p{margin-top:16px;max-width:44ch}
+.dn-gs-form{color:var(--papier);background:var(--navy);box-shadow:inset 0 0 0 1px rgba(235,219,206,.3),0 40px 60px -34px rgba(42,26,14,.8)}
+.dn-gs-zeilen{margin:2px 2px 0;font-family:var(--titel,var(--serif));font-size:1.02rem;line-height:1.5;color:var(--creme)}
+.dn-betraege .taste[aria-pressed="true"]{color:var(--tinte)}
+.dn-gk{color:var(--creme)}
+@media (max-width:900px){.dn-gs-reihe{grid-template-columns:minmax(0,1fr)}}
+/* Vor Ihrer Anreise: Wünsche ohne Summe */
+.dn-summe--eins{grid-template-columns:minmax(0,3fr) minmax(0,2fr);align-items:end}
+.dn-summe--eins .dn-summe__klein{margin-top:0}
+.dn-karte-dunkel{background:var(--navy)}
+.fl--creme .dn-karte-dunkel{background:var(--nacht)}
+.dn-vorschlag{color:var(--creme)}
+.dn-vorschlag__z svg{color:var(--creme)}
+/* Druck: Marke statt Wortmarke */
+.dn-d-marke{display:flex;align-items:center;justify-content:center;gap:3mm;margin:0 0 4mm;font-family:var(--titel,var(--serif));font-size:20pt;letter-spacing:.08em;color:#0b0c10}
+.dn-d-marke svg{width:12mm;height:auto;color:#9e947f}
+/* Treffer: Foto über die ganze Höhe der Karte, Wettertage füllen die Breite */
+.dn-zi--oben .dn-zi__b{grid-row:1 / span 2}
+.dn-treffer .dn-rw__tag{flex:1 1 0;width:auto;min-width:104px}
+/* Gutschein: Felder ohne Lücke je nach Art */
+.dn-gs-form[data-art="wert"] label:has([name=betrag]),.dn-gs-form[data-art="gourmet"] label:has([name=pers]){grid-column:1/-1}
+.dn-gs-form .dn-haken input,.dn-rechner .dn-haken input{accent-color:var(--creme)}
+.dn-rechner .dn-haken{grid-column:1/-1}
+/* Handy: Wettertage teilen sich die Breite, nichts wird abgeschnitten */
+@media (max-width:640px){.dn-rw__reihe{gap:8px}.dn-rw__tag,.dn-rw__tag--ort,.dn-wv .dn-rw__tag{flex:1 1 0;width:auto;min-width:0;padding-inline:6px}.dn-rw__tag em{font-size:.66rem}.dn-rw__max{font-size:1.9rem}}
+@media (max-width:900px){.dn-wv:is([data-tage="1"],[data-tage="2"],[data-tage="3"]){grid-template-columns:minmax(0,1fr)}}
+@media (max-width:640px){.dn-treffer .dn-rw__tag,.dn-wv:not([data-tage="1"]):not([data-tage="2"]):not([data-tage="3"]) .dn-rw__tag{min-width:0}}
+@media (max-width:640px){.dn-wv:not([data-tage="1"]):not([data-tage="2"]):not([data-tage="3"]) .dn-rw__reihe{overflow-x:auto;scroll-snap-type:x mandatory}.dn-wv:not([data-tage="1"]):not([data-tage="2"]):not([data-tage="3"]) .dn-rw__tag{flex:0 0 96px;scroll-snap-align:start}}
+/* Trefferansicht: «Ihr Zimmer.» mittig, das Zeichen mittig darüber, Reiter darunter mittig (Robert 10.10.2026) */
+dialog.buchen.dn-breit .buchen__t > svg.zier{display:block;margin-inline:auto}
+dialog.buchen.dn-breit .buchen__t > h2{text-align:center}
+dialog.buchen.dn-breit .buchen__t > .reiter{display:flex;width:max-content;margin-inline:auto}
+
+/* ---------- Salt & Silver: eigene Teile ---------- */
+.dn-edel__kopf .kopf,.dn-rw .kopf{margin:0;color:var(--creme)}
+.dn-rw,.dn-vorschlag{color:#fff}
+.dn-rw__max,.dn-rw__dt,.dn-vorschlag h3{font-family:var(--titel,var(--serif));text-transform:uppercase}
+.dn-rw__max{font-weight:700}
+.dn-vorschlag .d3{color:#fff}
+.dn-vorschlag .d3 em.w{color:var(--creme);font-style:normal}
+.dn-vorschlag .lauf{color:rgba(255,255,255,.78);margin-top:10px}
+.dn-vorschlag .kn-reihe{margin-top:18px}
+.dn-vorschlag{grid-template-columns:minmax(0,1fr)}
+.dn-vorschlag .kn{background:var(--creme);color:var(--tinte)}
+.dn-vorschlag .kn i{background:rgba(11,12,16,.08)}
+.dn-vorschlag .kn--linie{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.26)}
+.dn-heute .in{padding-top:0;padding-bottom:0}
+.dn-quelle{margin-top:12px;font-size:.85rem;color:#6f6757}
+.dn-hinweis{color:inherit}
+/* Tisch: Datum, Uhrzeit, Gäste über der Hauswahl */
+.dn-tischfelder{margin:0 0 18px}
+.dn-tischfelder .felder{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+dialog.tisch .feld>span{color:var(--creme)}
+dialog.tisch .feld input,dialog.tisch .feld select{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);color-scheme:dark;height:50px}
+dialog.tisch .feld select{background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%)}
+/* Anfrage ab zehn Personen */
+.dn-gruppe{padding:clamp(22px,2.8vw,36px);border-radius:28px;background:#fff;box-shadow:inset 0 0 0 1px rgba(11,12,16,.08),0 30px 50px -36px rgba(11,12,16,.5)}
+.dn-gruppe .felder{grid-template-columns:repeat(2,minmax(0,1fr))}
+.dn-gruppe textarea{width:100%;padding:14px 18px;border:0;border-radius:14px;background:rgba(11,12,16,.045);box-shadow:inset 0 0 0 1px rgba(11,12,16,.1);font:inherit;font-size:1rem;resize:vertical}
+.dn-gruppe .dn-haken{display:flex;align-items:center;gap:10px;font-weight:600;padding:6px 2px}
+.dn-gruppe .dn-haken input{width:20px;height:20px;accent-color:var(--navy)}
+.dn-schalter{display:flex;gap:6px;width:100%;margin-top:2px}
+.dn-schalter button{flex:1 1 0;height:46px;border-radius:14px;font:inherit;font-size:1rem;color:var(--tinte);background:rgba(11,12,16,.045);box-shadow:inset 0 0 0 1px rgba(11,12,16,.1);cursor:pointer;transition:background .3s,color .3s}
+.dn-schalter button[aria-pressed="true"]{background:var(--nacht);color:#fff;box-shadow:none}
+.dn-klein{margin-top:14px;font-size:.88rem;color:#6f6757}
+@media (max-width:640px){.dn-tischfelder .felder,.dn-gruppe .felder{grid-template-columns:minmax(0,1fr)}.dn-rw__tag{flex:1 1 0;width:auto}}
+/* Nachzug 10.10.2026: Gäste-Feld im Tisch-Fenster lesbar (dunkles Feld, eigener Pfeil) */
+dialog.tisch .feld select{background-color:rgba(255,255,255,.08);background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);background-position:calc(100% - 23px) 22px,calc(100% - 18px) 22px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;color:#fff;appearance:none;-webkit-appearance:none}
+dialog.tisch .feld select option{color:#000}

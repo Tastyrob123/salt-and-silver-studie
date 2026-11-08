@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tresen · Salt &amp; Silver</title>
+<meta name="description" content="Der Tresen von Salt &amp; Silver: was Gäste im Chat fragen, und Antworten auf Anfragen als Entwurf.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5eee6">
+<link rel="preload" href="../../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/main.css?h=ca4b285405">
+<link rel="stylesheet" href="../../hafen/wz.css?v=15">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="tresen.css?v=2">
+</head>
+<body class="wz wz-t tr" data-wurzel="../../">
+<header class="t-oben">
+  <a class="t-marke" href="../"><img src="../../assets/logo/wortmarke-weiss.png?h=31603a5105" alt="Salt &amp; Silver"><b>Tresen</b></a>
+  <div class="t-mitte"><b id="t-titel">Übersicht</b><span id="t-unter">Chat und Anfragen</span></div>
+  <div class="t-rechts"><a class="t-taste" href="../" title="Zum Hafen" aria-label="Zum Hafen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7.5 8 3l5.5 4.5V13h-4V9.5h-3V13h-4z"/></svg></a><a class="t-taste" href="../../werkbank/anleitung/tresen/" title="Anleitung" aria-label="Anleitung"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3.5h4a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 0 7 11.5H3zM13 3.5H9.5A1.5 1.5 0 0 0 8 5v8a1.5 1.5 0 0 1 1.5-1.5H13z"/></svg></a><a class="kn kn--klein kn--hell" href="../../im-chat/" target="_blank" rel="noopener">Chat ansehen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+</header>
+<div class="t-raum">
+  <aside class="t-seite w-platte" aria-label="Bereiche">
+    <button class="t-nav an" data-zu="uebersicht">Übersicht</button>
+    <p class="w-klein">Gäste</p>
+    <button class="t-nav" data-zu="gefragt">Das wurde gefragt<small id="n-fragen">&nbsp;</small></button>
+    <button class="t-nav" data-zu="luecken">Steht nicht auf der Website<small id="n-luecken">&nbsp;</small></button>
+    <button class="t-nav" data-zu="anfragen">Anfragen beantworten</button>
+    <p class="w-klein">Nachschlagen</p>
+    <a class="t-nav" href="../../im-chat/" target="_blank" rel="noopener">Was der Chat kann<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+    <a class="t-nav" href="../../studio/#/eingang">Eingang im Studio<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+    <a class="t-nav" href="../">Hafen<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+  </aside>
+  <main class="t-haupt">
+    <section class="t-ansicht" data-ansicht="uebersicht" data-name="Übersicht">
+      <div class="t-gruss"><img src="../z/wein-tinte.svg" alt=""><h1><span id="gruss">Guten Tag.</span> <em>Was war los am Tresen?</em></h1>
+        <p>Der Chat unten rechts auf eurer Website antwortet Gästen Tag und Nacht. Hier lest ihr, was gefragt wurde, seht, was auf der Website noch fehlt, und lasst euch Antworten auf Anfragen vorschreiben.</p></div>
+      <div class="tr-zahlen w-platte"><div><b id="z-alle">–</b><span>Fragen gesamt</span></div><div><b id="z-luecken">–</b><span>nicht auf der Website</span></div><div><b id="z-tisch">–</b><span>mit Tischwunsch</span></div><div><b id="z-sprachen">–</b><span>in anderer Sprache</span></div></div>
+      <div class="tr-drei">
+        <button class="tr-tuer w-platte" data-zu="gefragt"><img src="../z/sonne-tinte.svg" alt=""><b>Das wurde gefragt</b><small>Alle Fragen der Gäste, Woche für Woche, mit der Antwort des Chats.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
+        <button class="tr-tuer w-platte" data-zu="luecken"><img src="../z/wal-tinte.svg" alt=""><b>Lücken schließen</b><small>Fragen, auf die eure Website keine Antwort hat. Daraus wird mit einem Klick eine häufige Frage.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
+        <button class="tr-tuer w-platte" data-zu="anfragen"><img src="../z/herz-tinte.svg" alt=""><b>Anfragen beantworten</b><small>Anfrage einfügen, Entwurf in eurem Ton bekommen, lesen, ändern, selbst schicken.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
+      </div>
+    </section>
+    <section class="t-ansicht" data-ansicht="gefragt" data-name="Das wurde gefragt" hidden>
+      <div class="m-kopfzeile"><h2 class="t-h1">Das wurde <em>gefragt</em></h2><input class="t-feld m-suche" id="suche" type="search" placeholder="Suchen, zum Beispiel Hund" aria-label="Fragen suchen"></div>
+      <div class="t-wahl" id="filter"></div>
+      <div id="liste"></div>
+    </section>
+    <section class="t-ansicht" data-ansicht="luecken" data-name="Steht nicht auf der Website" hidden>
+      <div class="m-kopfzeile"><h2 class="t-h1">Steht nicht <em>auf der Website</em></h2></div>
+      <p class="tr-satz">Diese Fragen konnte der Chat nicht aus eurer Website beantworten. Schreibt die Antwort einmal im Studio als häufige Frage, dann kennt sie ab dem nächsten Veröffentlichen auch der Chat.</p>
+      <div id="luecken"></div>
+    </section>
+    <section class="t-ansicht" data-ansicht="anfragen" data-name="Anfragen beantworten" hidden>
+      <div class="m-kopfzeile"><h2 class="t-h1">Anfragen <em>beantworten</em></h2></div>
+      <div class="tr-zwei">
+        <div class="w-platte tr-blatt"><span class="w-klein">Die Anfrage</span><textarea class="t-feld" id="anfrage" rows="10" placeholder="Fügt hier die Mail oder Nachricht ein, auf die ihr antworten möchtet."></textarea>
+          <span class="w-klein">Was die Antwort sagen soll (wenn ihr mögt)</span><textarea class="t-feld" id="hinweis" rows="3" placeholder="Zum Beispiel: Der 12. Dezember ist frei, langer Tisch geht bis 16 Personen."></textarea>
+          <div class="kn-reihe"><button class="kn" id="entwerfen">Entwurf schreiben<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button><button class="kn kn--hell kn--klein" id="beispiel">Beispiel einsetzen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button></div></div>
+        <div class="w-platte tr-blatt tr-blatt--antwort"><span class="w-klein">Der Entwurf</span><div class="w-kuhle tr-entwurf" id="entwurf"><p class="tr-leer">Hier steht gleich der Entwurf. Ihr lest ihn, ändert, was nicht passt, und schickt ihn selbst aus eurem Mailprogramm.</p></div>
+          <div class="kn-reihe"><button class="kn kn--klein" id="kopieren" disabled>Kopieren<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button><a class="kn kn--klein kn--hell" id="mailen" aria-disabled="true">Im Mailprogramm öffnen<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a></div>
+          <p class="tr-klein">Der Tresen verschickt nichts. Jede Antwort geht erst raus, wenn ihr sie selbst abschickt.</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="t-fussleiste"><p><b id="f-titel">Stand</b><span id="f-text">Die Fragen werden geladen.</span></p><button class="kn kn--klein kn--hell" id="neu">Neu laden<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button></div>
+<div class="m-kopiert" id="kopiert" aria-live="polite"></div>
+<script src="../wz.js?v=15"></script>
+<script src="tresen.js?v=2"></script>
+</body>
+</html>

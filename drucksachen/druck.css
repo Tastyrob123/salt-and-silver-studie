@@ -1,0 +1,409 @@
+/* Drucksachen Salt & Silver. Jede Seite ist ein .blatt mit 3 mm Beschnitt ringsum; --u ist ein Hundertstel der Blattbreite. */
+:root{--nacht:#111421;--navy:#1f213b;--papier:#f5eee6;--creme:#ebdbce;--taupe:#9e947f;--rot:#ff3132;--tinte:#0b0c10;--u:calc(var(--w) / 100);--rand:calc(var(--u) * 7)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:#3a3d4a;font-family:'Instrument Sans',system-ui,sans-serif;color:var(--tinte);-webkit-font-smoothing:antialiased}
+ol,ul{list-style:none}
+.blatt{position:relative;width:calc(var(--w) + 6mm);height:calc(var(--h) + 6mm);overflow:hidden;break-after:page;break-inside:avoid}
+@media screen{.blatt{margin:8mm auto}}
+.satz{position:absolute;inset:3mm;padding:var(--rand);display:flex;flex-direction:column}
+.satz>*{position:relative}
+.b-papier{background:var(--papier)} .b-creme{background:var(--creme)}
+.b-nacht,.b-foto{background:var(--nacht);color:var(--papier)}
+.satz>.f,.satz>.dunkel{position:absolute;inset:-3mm;width:calc(100% + 6mm);height:calc(100% + 6mm)}
+.f{object-fit:cover;display:block}
+.du--unten{background:linear-gradient(to top,rgba(17,20,33,.94) 0%,rgba(17,20,33,.62) 34%,rgba(17,20,33,.08) 66%,rgba(17,20,33,.42) 100%)}
+.du--oben{background:linear-gradient(to bottom,rgba(17,20,33,.9) 0%,rgba(17,20,33,.5) 30%,rgba(17,20,33,0) 56%,rgba(17,20,33,.3) 100%)}
+.oben .mono{margin-top:calc(var(--u) * 2.6)}
+.du--links{background:linear-gradient(to right,rgba(17,20,33,.9) 0%,rgba(17,20,33,.5) 42%,rgba(17,20,33,0) 72%)}
+
+/* Schrift */
+.t{font-family:'Antonio','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;line-height:1.1;letter-spacing:-.008em}  /* Versalhöhe .86 + Komma .17: darunter stoßen Zeilen aneinander */
+.t em{font-style:normal;color:var(--taupe)}
+.b-nacht .t em,.b-foto .t em,.ruf .t em{color:var(--creme)}
+.t--riesig{font-size:calc(var(--u) * 20)} .t--xl{font-size:calc(var(--u) * 14.5)} .t--l{font-size:calc(var(--u) * 9.2)}
+.t--m{font-size:calc(var(--u) * 5.2)} .t--s{font-size:calc(var(--u) * 4)}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-weight:400;font-size:calc(var(--u) * 1.72);letter-spacing:.13em;text-transform:uppercase;line-height:1.55}
+.hell{color:var(--creme)}
+.lauf{font-size:calc(var(--u) * 2.5);line-height:1.5;max-width:calc(var(--u) * 74)}
+.lauf.klein{font-size:calc(var(--u) * 2.05)}
+.kap{display:flex;align-items:center;gap:calc(var(--u) * 1.8);font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 2.5);letter-spacing:.1em;margin-bottom:calc(var(--u) * 3.4)}
+.kap b{font-weight:700;color:var(--taupe)}
+.kap::after{content:"";flex:1;height:.25mm;background:currentColor;opacity:.3}
+.kap--klein{margin-bottom:calc(var(--u) * 2.2)}
+h2.t{margin-bottom:calc(var(--u) * 3.6)}
+
+/* Zeichen */
+svg.wm{height:calc(var(--u) * 3.3);width:auto;display:block;flex:none}
+svg.z{display:block;flex:none}
+.z--kopf{width:calc(var(--u) * 21);margin-bottom:calc(var(--u) * 6)}
+.kopf{display:flex;justify-content:space-between;align-items:center;gap:calc(var(--u) * 4)}
+.unten{margin-top:auto}
+.unten .mono{margin-top:calc(var(--u) * 3.4)}
+.fuss{display:flex;justify-content:space-between;align-items:center;margin-top:calc(var(--u) * 4.5)}
+
+/* Ruf: Kontakt mit Code */
+.ruf{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:calc(var(--u) * 4);background:var(--nacht);color:var(--papier);border-radius:calc(var(--u) * 2.2);padding:calc(var(--u) * 3.6) calc(var(--u) * 4.2)}
+.ruf .mail{font-weight:600;font-size:calc(var(--u) * 3.1);margin:calc(var(--u) * .8) 0 calc(var(--u) * 1.2)}
+.ruf .mono{color:var(--taupe)}
+svg.qr{width:calc(var(--u) * 17);height:auto;flex:none;display:block}
+.ruf--offen,.ruf--hoch{background:none;color:inherit;padding:0;border-radius:0;justify-content:flex-start}
+.ruf--hoch{flex-direction:column;align-items:flex-start;gap:calc(var(--u) * 3)}
+.ruf--offen .mono,.ruf--hoch .mono{color:inherit;opacity:.7;margin-top:calc(var(--u) * 1)}
+
+/* Bilder im Satz */
+.bildband,.bildkopf{position:relative;overflow:hidden}
+.bildband .f,.bildkopf .f,.bildkopf .dunkel{position:absolute;inset:0;width:100%;height:100%}
+.bildband{flex:1;min-height:0;margin:calc(var(--u) * 5) calc((var(--rand) + 3mm) * -1)}
+.b-kopfbild .satz{padding:0}
+.b-kopfbild .bildkopf{flex:none;height:43%;margin:-3mm -3mm 0}
+.b-kopfbild .rest{flex:1;min-height:0;display:flex;flex-direction:column;padding:calc(var(--rand) * .85) var(--rand) var(--rand)}
+
+/* ---------- Events & Catering: Leporello, vier Felder DIN lang ---------- */
+.arten{display:grid;grid-template-columns:1fr 1fr;column-gap:calc(var(--u) * 6)}
+.arten li{display:flex;align-items:baseline;gap:calc(var(--u) * 2.4);font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 5.4);line-height:1;padding:calc(var(--u) * 2) 0;border-top:.25mm solid rgba(11,12,16,.22)}
+.arten i,.wege i,.titel i{font-family:'DM Mono',monospace;font-style:normal;font-weight:400;font-size:calc(var(--u) * 1.7);letter-spacing:.1em;color:var(--taupe)}
+.zitat{margin-top:auto;display:grid;grid-template-columns:calc(var(--u) * 22) 1fr;gap:calc(var(--u) * 4);align-items:center;padding-top:calc(var(--u) * 4.5);border-top:.25mm solid rgba(11,12,16,.22)}
+.zitat .f{width:100%;aspect-ratio:1;border-radius:50%}
+.zitat p{font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 3.3);line-height:1.16}
+.haeuser{margin-top:calc(var(--u) * 3.6)}
+.haeuser li{display:grid;grid-template-columns:1fr;padding:calc(var(--u) * 2.4) 0;border-top:.25mm solid rgba(11,12,16,.22)}
+.haeuser b{font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 4.2);line-height:1.02}
+.haeuser .mono{font-size:calc(var(--u) * 1.5);color:#6f6858;margin-top:calc(var(--u) * .8)}
+.haeuser p{font-size:calc(var(--u) * 2.25);line-height:1.42;margin-top:calc(var(--u) * 1.2)}
+.fragen{display:grid;font-size:calc(var(--u) * 2.3);line-height:1.4;margin-top:auto}
+.fragen div{padding:calc(var(--u) * 2.4) 0;border-top:.25mm solid rgba(245,238,230,.25)}
+.fragen dt{font-weight:600;margin-bottom:calc(var(--u) * .5)}
+.fragen dd{color:var(--creme)}
+.s-events-catering{--u:1.2mm;--rand:8.5mm}
+.s-events-catering .satz{padding:0}
+.lp{display:grid;grid-template-columns:repeat(4,1fr);height:100%}
+.lp>div{position:relative;padding:var(--rand);display:flex;flex-direction:column;color:var(--papier)}
+.lp>div>*{position:relative;z-index:1}
+.lp>.lp-hell{color:var(--tinte)}
+.lp>.lp-hell .t em{color:var(--taupe)}
+.lp>.lp-hell::before{content:"";position:absolute;inset:-3mm 0;background:var(--papier);z-index:0}
+.lp>.lp-hell:first-child::before{left:-3mm}
+.lp .t--l{font-size:13.4mm}
+.lp .lauf{font-size:3.25mm}
+.lp .lauf.klein{font-size:2.9mm}
+.lp .arten{grid-template-columns:1fr;margin-top:1mm}
+.lp .arten li{font-size:10mm;padding:3mm 0;border-top-color:rgba(245,238,230,.25)}
+.lp h2.t{margin-bottom:5mm}
+.lp .arten li:last-child{border-bottom:.25mm solid rgba(245,238,230,.25)}
+/* je Seite ein eigenes Foto, bis an Rand und Falz */
+.lp-bild{position:relative;overflow:hidden;flex:none;height:86mm;margin-left:calc(var(--rand) * -1);margin-right:calc(var(--rand) * -1)}
+.lp-bild .f{position:absolute;inset:0;width:100%;height:100%}
+.lp-bild--oben{margin-top:calc((var(--rand) + 3mm) * -1);margin-bottom:7mm;height:89mm}
+.lp-bild--unten{margin-top:auto;margin-bottom:calc((var(--rand) + 3mm) * -1);height:89mm}
+.lp>div:first-child .lp-bild{margin-left:calc((var(--rand) + 3mm) * -1)}
+.lp>div:last-child .lp-bild{margin-right:calc((var(--rand) + 3mm) * -1)}
+.lp-ruf{display:grid;justify-items:start;gap:2.4mm;margin-top:2mm}
+.lp-ruf svg.qr{width:34mm}
+.lp-ruf .mail{font-weight:600;font-size:3.6mm;margin-top:2mm}
+.lp-ruf .mono{font-size:1.8mm;color:var(--taupe)}
+/* außen */
+.lp-rueck{justify-content:flex-end;gap:7mm}
+.lp-rueck .wm{height:5mm;align-self:flex-start}
+.lp-adr{display:grid;gap:3.4mm;font-size:2.8mm;line-height:1.4;color:var(--creme)}
+.lp-adr b{display:block;font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:4.6mm;line-height:1.1;color:var(--papier)}
+.lp-rueck .mono{font-size:2mm;color:var(--taupe)}
+.lp-mitte{justify-content:center;gap:8mm}
+.lp-rund{position:relative;width:46mm;height:46mm;border-radius:50%;overflow:hidden}
+.lp-rund .f{position:absolute;inset:0;width:100%;height:100%}
+.lp-zitat{font-size:7.6mm;line-height:1.14}
+.lp-feuer{width:15mm;color:var(--nacht)}
+.lp>div>.lp-voll{position:absolute;inset:-3mm 0;z-index:0;overflow:hidden}
+.lp>div:last-child>.lp-voll{right:-3mm}
+.lp-voll .f,.lp-voll .dunkel{position:absolute;inset:0;width:100%;height:100%}
+.lp-voll .dunkel{background:linear-gradient(to top,rgba(17,20,33,.95) 0%,rgba(17,20,33,.6) 36%,rgba(17,20,33,.05) 66%,rgba(17,20,33,.5) 100%)}
+.lp-vorn .kopf .wm{height:4.4mm}
+.lp-titel{margin-top:auto;display:grid;gap:4mm}
+.lp-titel h1{font-size:15.6mm;line-height:1.08}
+.lp-titel .mono{font-size:2.1mm}
+
+/* ---------- Gutschein: Karte quer, zwei Seiten ---------- */
+.s-gutschein .satz{padding:0}
+.gs-v{position:relative;display:flex;align-items:center;gap:11mm;height:100%;padding:10mm 14mm}
+.gs-herz{height:70mm;width:auto;color:var(--rot);flex:none}
+.gs-v h1.t{font-size:23mm;color:var(--nacht);line-height:1.06}
+.gs-text{font-size:3.7mm;line-height:1.5;margin-top:4mm}
+.gs-v .wm{position:absolute;right:14mm;bottom:11mm;height:5mm;color:var(--nacht)}
+.gs-h{display:grid;grid-template-columns:1fr 42mm;gap:16mm;align-items:center;height:100%;padding:11mm 15mm}
+.gs-h h2.t{font-size:19mm;margin:0;line-height:1.06}
+.gs-h .gs-text{color:var(--papier);font-size:4mm;max-width:none}
+.gs-klein{font-size:3mm;line-height:1.5;margin-top:5mm;color:var(--taupe)}
+.gs-code{display:grid;justify-items:center;gap:3mm;text-align:center}
+.gs-code svg.qr{width:42mm}
+.gs-code p{font-size:3mm;line-height:1.45;color:var(--creme)}
+
+/* ---------- Geschenkkarte (85,6 × 54 mm) ---------- */
+.s-geschenkkarte .satz{padding:5.2mm}
+.s-geschenkkarte .wm{height:3.1mm}
+.gk-titel{font-size:9.6mm;line-height:1}
+.s-geschenkkarte .unten .mono{font-size:1.75mm;margin-top:1.6mm;line-height:1.5}
+.gk-a .unten .mono{color:var(--creme)}
+.gk-b .unten .mono{color:#6f6858}
+.satz>.gk-sonne{position:absolute;right:-22mm;top:-17mm;width:64mm;height:auto;color:var(--creme)}
+.satz>.gk-skelett{position:absolute;right:5mm;top:4mm;height:46mm;width:auto;color:var(--rot)}
+.gk-h{display:grid;grid-template-columns:1fr 25mm;gap:5mm;align-items:start}
+.gk-l{display:grid;gap:3.2mm}
+.gk-feld,.et-name div{display:grid;grid-template-columns:7.5mm 1fr;gap:1.5mm;align-items:end}
+.gk-feld .mono,.gk-ort .mono,.et-name .mono,.gk-code .mono{font-size:1.7mm;opacity:.7}
+.gk-feld i,.et-name i{display:block;height:5.4mm;border-bottom:.3mm solid currentColor;opacity:.55}
+.gk-ort{margin-top:1.2mm;font-size:2.35mm}
+.gk-ort p{display:flex;gap:3.4mm;margin-top:1.4mm}
+.gk-ort b{display:flex;align-items:center;gap:1.4mm;font-weight:500;white-space:nowrap}
+.gk-ort b i{display:block;width:2.8mm;height:2.8mm;border:.3mm solid currentColor;border-radius:.5mm}
+.gk-code{display:grid;justify-items:center;gap:1.2mm}
+.gk-code svg.qr{width:25mm}
+.gk-fuss{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+.gk-fuss .mono{font-size:1.7mm;opacity:.75}
+
+/* ---------- Etui (offen 190 × 62 mm, Bruch in der Mitte) ---------- */
+.s-etui .satz{padding:0}
+.et{display:grid;grid-template-columns:1fr 1fr;height:100%}
+.et-h{position:relative;padding:7mm;display:flex;flex-direction:column}
+.et-rueck{justify-content:flex-end;gap:3mm}
+.et-rueck .wm{height:3.6mm;align-self:flex-start}
+.et-rueck .mono{font-size:1.5mm;opacity:.65;line-height:1.6}
+.et-vorn{flex-direction:row;align-items:center;gap:6mm}
+.et-zeichen{height:40mm;width:auto}
+.et-zeichen--rot{color:var(--rot);height:46mm}
+.et-titel{font-size:10.6mm;line-height:1.08}
+.et-links{justify-content:space-between}
+.et-name{display:grid;gap:2.5mm}
+.et-rechts{align-items:center;justify-content:center;padding:0}
+.et-tasche{position:relative;width:85.6mm}
+.et-tasche svg{display:block;width:100%;height:auto;overflow:visible}
+.et-tasche .mono{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:1.7mm;opacity:.5}
+
+/* ---------- Pop-up-Plakate, zwei Motive ---------- */
+.s-popup-crudo{--rand:calc(var(--u) * 8)}
+.z--crudo{width:calc(var(--u) * 17);color:var(--papier)}
+.s-popup-crudo .kopf{align-items:flex-start}
+.pp-ort{font-size:calc(var(--u) * 1.9);line-height:1.4;text-align:right;color:var(--creme)}
+.du--plakat{background:linear-gradient(to top,rgba(17,20,33,.95) 0%,rgba(17,20,33,.72) 30%,rgba(17,20,33,.12) 58%,rgba(17,20,33,.5) 100%)}
+.pp-zeile{display:grid;grid-template-columns:1.2fr 1fr;gap:calc(var(--u) * 7);align-items:end;margin-top:calc(var(--u) * 5)}
+.pp-zeile .lauf{font-size:calc(var(--u) * 2.4);color:var(--creme)}
+.pp-code{display:grid;grid-template-columns:auto 1fr;gap:calc(var(--u) * 3);align-items:center}
+.pp-code svg.qr{width:calc(var(--u) * 13)}
+.pp-code p{font-size:calc(var(--u) * 1.7);line-height:1.42;color:var(--creme)}
+.pp-b .bildkopf{height:47.6%}
+.pp-b .rest{position:relative;padding-top:calc(var(--u) * 7)}
+.pp-satz{font-size:calc(var(--u) * 14.4);line-height:1.06}
+.pp-b .pp-zeile{margin-top:auto;padding-top:calc(var(--u) * 5)}
+.pp-b .bildkopf .pp-logo{position:absolute;left:calc(var(--rand) + 3mm);top:calc(var(--rand) + 3mm);width:calc(var(--u) * 15);color:var(--nacht)}
+.pp-b .bildkopf .pp-ort--bild{position:absolute;right:calc(var(--rand) + 3mm);top:calc(var(--rand) + 3mm);color:var(--nacht)}
+
+/* ---------- Kochbücher ---------- */
+.s-kochbuecher{--rand:calc(var(--u) * 6)}
+.zwei{display:grid;grid-template-columns:1.75fr 1fr;gap:calc(var(--u) * 7);height:100%}
+.zwei>div:first-child{display:flex;flex-direction:column}
+.zwei .ruf--hoch{margin:0;height:100%;justify-content:flex-start;padding-left:calc(var(--u) * 6);border-left:.25mm solid rgba(11,12,16,.25)}
+.zwei .ruf--hoch .wm{margin-top:auto;height:calc(var(--u) * 2.7)}
+.titel{margin-top:auto}
+.titel li{display:flex;align-items:baseline;gap:calc(var(--u) * 2.2);font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 3.5);line-height:1;padding:calc(var(--u) * 1.7) 0;border-top:.25mm solid rgba(11,12,16,.22)}
+.s-kochbuecher svg.qr{width:calc(var(--u) * 21)}
+.s-kochbuecher .t--xl{font-size:calc(var(--u) * 10)}
+.s-kochbuecher .t--l{font-size:calc(var(--u) * 7.4)}
+
+/* ---------- Tischaufsteller ---------- */
+.s-tischaufsteller{--u:1.2mm;--rand:9mm}
+.s-tischaufsteller .t--xl{font-size:calc(var(--u) * 15)}
+.s-tischaufsteller .lauf{margin-top:calc(var(--u) * 3.6);font-size:calc(var(--u) * 2.6)}
+.s-tischaufsteller svg.qr{width:calc(var(--u) * 21)}
+.s-tischaufsteller .z--kopf{width:calc(var(--u) * 15);margin-bottom:calc(var(--u) * 3)}
+
+/* ---------- Jobs ---------- */
+.s-jobs .bildkopf{height:41%}
+.s-jobs .bildkopf .kopf{position:absolute;left:calc(var(--rand) + 3mm);right:calc(var(--rand) + 3mm);top:calc(var(--rand) + 3mm);color:var(--papier)}
+.s-jobs .bildkopf h1{position:absolute;left:calc(var(--rand) + 3mm);bottom:calc(var(--u) * 5);color:var(--papier);font-size:calc(var(--u) * 15)}
+.s-jobs .bildkopf h1 em{color:var(--creme)}
+.stellen{display:grid;grid-template-columns:1fr 1fr .8fr;gap:calc(var(--u) * 4.5);padding-bottom:calc(var(--u) * 4.4)}
+.stellen .mono{font-size:calc(var(--u) * 1.25);color:#6f6858}
+.stellen b{display:block;font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 5);line-height:1;margin:calc(var(--u) * 1) 0 calc(var(--u) * 1.6)}
+.stellen p{font-size:calc(var(--u) * 1.66);line-height:1.45}
+.stellen .wo b{font-size:calc(var(--u) * 3.4);line-height:1.12}
+.bieten .kap{font-size:calc(var(--u) * 1.9);margin-bottom:calc(var(--u) * 1.6)}
+.bieten ul{columns:2;column-gap:calc(var(--u) * 6);font-size:calc(var(--u) * 1.72);line-height:1.4}
+.bieten li{padding:calc(var(--u) * 1.15) 0;border-bottom:.25mm solid rgba(11,12,16,.18);break-inside:avoid}
+.s-jobs .ruf{justify-content:flex-start;gap:calc(var(--u) * 5);padding:calc(var(--u) * 2.8) calc(var(--u) * 3.4)}
+.s-jobs svg.qr{width:calc(var(--u) * 12)}
+.s-jobs .t--m{font-size:calc(var(--u) * 4.2)}
+.s-jobs .ruf .mail{font-size:calc(var(--u) * 2.6)}
+.s-jobs .ruf .mono{font-size:calc(var(--u) * 1.25)}
+
+/* ---------- Postkarten ---------- */
+.s-postkarten{--rand:calc(var(--u) * 6)}
+.s-postkarten .t--xl{font-size:calc(var(--u) * 9.4)}
+.pk{display:grid;grid-template-columns:1fr 1fr;height:100%}
+.pk__l{display:flex;flex-direction:column;justify-content:space-between;padding-right:calc(var(--u) * 6);border-right:.25mm solid rgba(11,12,16,.35)}
+.pk__l .mono{font-size:calc(var(--u) * 1.32);color:#6f6858;line-height:1.5}
+.pk__r{padding-left:calc(var(--u) * 6);display:flex;flex-direction:column;justify-content:flex-end;gap:calc(var(--u) * 6.4);position:relative;padding-bottom:calc(var(--u) * 3)}
+.pk__r i{display:block;border-bottom:.25mm solid rgba(11,12,16,.4)}
+.briefmarke{position:absolute;top:0;right:0;width:calc(var(--u) * 15);height:calc(var(--u) * 18.5);border:.3mm dashed rgba(11,12,16,.45);display:grid;place-items:center}
+.briefmarke svg{width:62%;height:auto;color:var(--nacht);opacity:.85}
+
+/* ================= Neue Stücke 10.10.2026 ================= */
+svg.em{display:block;width:100%;height:auto}
+svg.ps{display:block;color:var(--tinte)}
+/* Umschlag */
+.luft{position:absolute;inset:-3mm;background:repeating-linear-gradient(-45deg,var(--rot) 0 5mm,var(--papier) 5mm 7.5mm,var(--navy) 7.5mm 12.5mm,var(--papier) 12.5mm 15mm)}
+.luft__i{position:absolute;inset:4.5mm;background:var(--papier)}
+.s-umschlag .satz{padding:calc(var(--u) * 5.4) calc(var(--u) * 5.6)}
+.um-v{position:relative;flex:1;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;gap:0 calc(var(--u) * 4)}
+.um-abs svg.wm{height:calc(var(--u) * 2.5);margin-bottom:calc(var(--u) * 1.4)}
+.um-abs .mono{font-size:calc(var(--u) * 1.05);color:#5d574a;max-width:calc(var(--u) * 40)}
+.um-marke{display:flex;align-items:flex-start;gap:0;flex-direction:row-reverse}
+.bm{width:calc(var(--u) * 10.5);height:calc(var(--u) * 13);background:var(--creme);display:grid;place-items:center;align-content:center;gap:calc(var(--u) * .8);padding:calc(var(--u) * 1.3);
+  -webkit-mask:radial-gradient(circle at 50% 50%,#000 60%,transparent 61%) 0 0/calc(var(--u) * 1.3) calc(var(--u) * 1.3) round,linear-gradient(#000,#000) center/calc(100% - var(--u) * 1.3) calc(100% - var(--u) * 1.3) no-repeat;
+  mask:radial-gradient(circle at 50% 50%,#000 60%,transparent 61%) 0 0/calc(var(--u) * 1.3) calc(var(--u) * 1.3) round,linear-gradient(#000,#000) center/calc(100% - var(--u) * 1.3) calc(100% - var(--u) * 1.3) no-repeat}
+.bm svg{width:78%;height:auto;color:var(--navy)}
+.bm .mono{font-size:calc(var(--u) * .8);letter-spacing:.12em}
+.um-marke svg.ps{width:calc(var(--u) * 20);margin-right:calc(var(--u) * -6);margin-top:calc(var(--u) * 3.4);opacity:.78;transform:rotate(-8deg);position:relative;z-index:1}
+.um-an{grid-column:1/-1;justify-self:end;align-self:end;width:calc(var(--u) * 46);display:grid;gap:calc(var(--u) * 3.6);margin-bottom:calc(var(--u) * 2)}
+.um-an .mono{font-size:calc(var(--u) * 1.05);color:var(--taupe)}
+.um-an i{display:block;border-bottom:.25mm solid rgba(11,12,16,.42)}
+.um-par{grid-column:1/-1;font-size:calc(var(--u) * 1);color:var(--rot);letter-spacing:.2em}
+.um-klappe{position:absolute;inset:-3mm;width:calc(100% + 6mm);height:calc(100% + 6mm);color:rgba(245,238,230,.35)}
+.um-siegel{position:absolute;left:50%;top:calc(56% - var(--u) * 6);width:calc(var(--u) * 12);height:calc(var(--u) * 12);translate:-50% 0;border-radius:50%;background:var(--rot);display:grid;place-items:center;
+  box-shadow:inset 0 0 0 calc(var(--u) * .6) #d92627,inset 0 0 0 calc(var(--u) * .9) rgba(255,255,255,.25)}
+.um-siegel svg.em{width:64%;color:#fff}
+.um-h{margin-top:auto;display:grid;gap:calc(var(--u) * .9)}
+.um-satz{font-size:calc(var(--u) * 4.2);margin-bottom:calc(var(--u) * 1)}
+.um-h .mono{font-size:calc(var(--u) * 1.05);color:var(--taupe)}
+/* Briefbogen */
+.falz{position:absolute;left:calc(var(--rand) * -1 + 2mm);width:4mm;border-top:.25mm solid rgba(11,12,16,.4)}
+.falz--1{top:calc(105mm - 3mm - var(--rand))}.falz--2{top:calc(210mm - 3mm - var(--rand))}.falz--l{top:calc(148.5mm - 3mm - var(--rand));width:6mm}
+.falz{top:0}
+.s-briefbogen .falz--1{top:calc(102mm - var(--rand))}.s-briefbogen .falz--2{top:calc(207mm - var(--rand))}.s-briefbogen .falz--l{top:calc(145.5mm - var(--rand))}
+.bb-sonne{position:absolute;opacity:.03 !important;right:calc(var(--rand) * -1 - 14mm);bottom:calc(var(--rand) * -1 - 10mm);width:calc(var(--u) * 62);color:var(--navy);opacity:.045}
+.bb-kopf{display:flex;justify-content:space-between;align-items:flex-start;gap:calc(var(--u) * 6)}
+.bb-kopf svg.wm{height:calc(var(--u) * 4.6)}
+.bb-haeuser{display:grid;gap:calc(var(--u) * 1.2);font-size:calc(var(--u) * 1.05);color:#5d574a;text-align:right}
+.bb-haeuser b{display:block;font-family:'Antonio',sans-serif;font-weight:700;font-size:calc(var(--u) * 1.75);letter-spacing:.04em;color:var(--tinte)}
+.bb-an{margin-top:calc(var(--u) * 13);width:calc(var(--u) * 42);display:grid;gap:calc(var(--u) * 3.4)}
+.bb-abs{font-size:calc(var(--u) * .95);color:var(--taupe);padding-bottom:calc(var(--u) * .6);border-bottom:.2mm solid rgba(11,12,16,.25)}
+.bb-an i{display:block;border-bottom:.2mm solid rgba(11,12,16,.18)}
+.bb-datum{align-self:flex-end;margin-top:calc(var(--u) * 4);font-size:calc(var(--u) * 1.2);color:#5d574a}
+.bb-text{margin-top:calc(var(--u) * 6);display:grid;gap:calc(var(--u) * 2.3)}
+.bb-moin{font-size:calc(var(--u) * 4);margin-bottom:calc(var(--u) * 1.2)}
+.bb-text i{display:block;height:calc(var(--u) * .9);border-radius:2px;background:rgba(11,12,16,.08)}
+.bb-fuss{margin-top:auto;padding-top:calc(var(--u) * 2.6);border-top:.25mm solid rgba(11,12,16,.2);display:grid;gap:calc(var(--u) * .8)}
+.bb-fuss .mono{font-size:calc(var(--u) * 1.02);color:#5d574a}
+/* Rechnungsmappe */
+.s-rechnungsmappe .satz{padding:0}
+.rm{display:grid;grid-template-columns:1fr 1fr;height:100%}
+.rm-h{position:relative;display:flex;flex-direction:column;padding:calc(var(--u) * 5.4)}
+.rm-rueck{justify-content:flex-end;align-items:flex-start;border-right:.25mm dashed rgba(245,238,230,.18)}
+.rm-palme{width:calc(var(--u) * 20);color:var(--creme);opacity:.9;margin-bottom:calc(var(--u) * 3)}
+.rm-rueck .mono{color:var(--taupe);font-size:calc(var(--u) * 1.15)}
+.rm-skelett{width:calc(var(--u) * 26);color:var(--creme);margin-bottom:auto}
+.rm-titel{font-size:calc(var(--u) * 7.6);line-height:1.04;margin:calc(var(--u) * 4) 0}
+.rm-vorn svg.wm{height:calc(var(--u) * 2.2)}
+.rm-links{border-right:.25mm dashed rgba(11,12,16,.25)}
+.rm-danke{font-size:calc(var(--u) * 7.4);line-height:1.04}
+.rm-wege{margin-top:auto;display:grid;gap:calc(var(--u) * 3.6)}
+.rm-wege>div{display:flex;align-items:center;gap:calc(var(--u) * 2.6)}
+svg.rm-qr{width:calc(var(--u) * 10)}
+.rm-wege .mono{font-size:calc(var(--u) * 1.15)}
+.rm-tasche{margin-top:auto;height:58%;border:.3mm solid rgba(11,12,16,.5);border-radius:calc(var(--u) * 1.4) calc(var(--u) * 1.4) 0 0;position:relative;display:flex;align-items:flex-start;justify-content:center;padding-top:calc(var(--u) * 3);
+  background:linear-gradient(170deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%)}
+.rm-tasche::before{content:"";position:absolute;left:50%;top:-1px;width:calc(var(--u) * 9);height:calc(var(--u) * 3);translate:-50% 0;border:.3mm solid rgba(11,12,16,.5);border-top:0;border-radius:0 0 999px 999px;background:var(--creme)}
+.rm-tasche .mono{font-size:calc(var(--u) * 1.1);color:var(--taupe);margin-top:calc(var(--u) * 2)}
+.rm-hin{margin-top:calc(var(--u) * 2.6);font-size:calc(var(--u) * 1.1);color:#5d574a;text-align:center}
+/* Reisepass */
+.rp-v{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;border:.3mm solid rgba(235,219,206,.35);border-radius:calc(var(--u) * 2.4);padding:calc(var(--u) * 10) calc(var(--u) * 6) calc(var(--u) * 6);
+  box-shadow:inset 0 0 0 calc(var(--u) * 1.6) var(--nacht),inset 0 0 0 calc(var(--u) * 1.9) rgba(235,219,206,.2)}
+.rp-emblem{width:calc(var(--u) * 40) !important;color:var(--creme);margin-bottom:calc(var(--u) * 8)}
+.rp-titel{font-size:calc(var(--u) * 14);letter-spacing:.08em;color:var(--creme)}
+.rp-v>.mono{font-size:calc(var(--u) * 3.1);color:var(--taupe);margin-top:calc(var(--u) * 2)}
+.rp-fuss{margin-top:auto;display:grid;justify-items:center;gap:calc(var(--u) * 2.4)}
+.rp-fuss svg.wm{height:calc(var(--u) * 5);color:var(--papier)}
+.rp-fuss .mono{font-size:calc(var(--u) * 2.4);color:var(--taupe)}
+.s-reisepass .kap{font-size:calc(var(--u) * 4.2)}
+.rp-p,.rp-s{flex:1;display:flex;flex-direction:column}
+.rp-foto{width:calc(var(--u) * 36);aspect-ratio:35/45;border:.3mm dashed rgba(11,12,16,.4);display:grid;place-items:center;text-align:center;margin-bottom:calc(var(--u) * 5)}
+.rp-foto .mono{font-size:calc(var(--u) * 2.2);color:var(--taupe)}
+.rp-feld{display:grid;gap:calc(var(--u) * 1.6);margin-bottom:calc(var(--u) * 4.4)}
+.rp-feld .mono{font-size:calc(var(--u) * 2.2);color:var(--taupe)}
+.rp-feld i{display:block;border-bottom:.25mm solid rgba(11,12,16,.4)}
+.rp-mrz{margin-top:auto;font-size:calc(var(--u) * 2.35);letter-spacing:.06em;line-height:1.5;color:#3d3a33;word-break:break-all}
+.rp-raster{display:grid;grid-template-columns:repeat(2,calc(var(--u) * 33));justify-content:space-around;gap:calc(var(--u) * 3.4) 0;margin-top:calc(var(--u) * 1)}
+.rp-st{aspect-ratio:1;border:.3mm dashed rgba(11,12,16,.35);border-radius:50%;display:grid;place-items:center;align-content:center;text-align:center;padding:calc(var(--u) * 2)}
+.rp-st svg.z{width:46%;height:auto;color:var(--navy);opacity:.14;margin-bottom:calc(var(--u) * 1)}
+.rp-st b{font-family:'Antonio',sans-serif;font-weight:700;text-transform:uppercase;font-size:calc(var(--u) * 3.8);line-height:1}
+.rp-st .mono{font-size:calc(var(--u) * 1.9);color:var(--taupe);margin-top:calc(var(--u) * .6)}
+.rp-hin{margin-top:auto;font-size:calc(var(--u) * 2.1);color:#5d574a;text-transform:none;letter-spacing:.02em}
+/* Tischset */
+.ts{display:grid;grid-template-columns:1.05fr 1fr;gap:calc(var(--u) * 5);height:100%}
+.ts-l{display:flex;flex-direction:column}
+.ts-titel{font-size:calc(var(--u) * 6.4);line-height:1.04}
+.ts-kurs{width:100%;height:auto;margin:calc(var(--u) * 2) 0;color:var(--tinte);fill:var(--tinte)}
+.ts-kurs .ts-weg{fill:none;stroke:var(--rot);stroke-width:2.2;stroke-dasharray:8 7}
+.ts-kurs circle{fill:var(--rot)}
+.ts-l .lauf{margin-top:auto;margin-bottom:calc(var(--u) * 2.6);font-size:calc(var(--u) * 1.5);max-width:calc(var(--u) * 40)}
+.ts-l svg.wm{height:calc(var(--u) * 2.4)}
+.ts-r{display:flex}
+.ts-mal{flex:1;border:.35mm dashed rgba(11,12,16,.32);border-radius:calc(var(--u) * 1.8);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:calc(var(--u) * 3);position:relative;overflow:hidden}
+.ts-pfahl{position:absolute;left:50%;top:44%;width:66%;height:auto;translate:-50% -50%;color:var(--tinte);opacity:.16}
+.ts-mal .mono{font-size:calc(var(--u) * 1.15);text-align:center;color:#5d574a}
+/* Streichholzbriefchen */
+.s-zuendhoelzer .satz{padding:0}
+.zh{display:grid;grid-template-rows:.55fr .08fr 1fr;height:100%}
+.zh-r,.zh-v{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u) * 3.4);padding:calc(var(--u) * 7);text-align:center}
+.zh-r{transform:rotate(180deg)}
+.zh-feuer{width:calc(var(--u) * 34);color:var(--creme)}
+.zh-feuer--gross{width:calc(var(--u) * 32)}
+.zh-r .mono{font-size:calc(var(--u) * 4.4);color:var(--taupe)}
+.zh-k{background:repeating-linear-gradient(90deg,#5b3a2c 0 1.1mm,#6f4635 1.1mm 1.9mm);border-block:.4mm solid var(--rot)}
+.zh-t{font-size:calc(var(--u) * 11);line-height:1.02}
+.zh-v svg.wm{height:calc(var(--u) * 6);color:var(--papier)}
+/* Zucker */
+.s-zucker .satz{padding:0}
+.zks{display:grid;grid-template-columns:repeat(3,1fr);height:100%}
+.zk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u) * 3);text-align:center;padding:calc(var(--u) * 4);border-right:.25mm dashed rgba(11,12,16,.25)}
+.zk:last-child{border-right:0}
+.zk--1{background:var(--nacht);color:var(--papier)}.zk--2{background:var(--creme)}
+.zk svg.z{width:60%;height:auto}
+.zk .t{font-size:calc(var(--u) * 5.6);line-height:1.04}
+.zk .mono{font-size:calc(var(--u) * 1.9);color:var(--taupe)}
+/* Reserviert */
+.s-reserviert .satz{padding:0}
+.rs{display:grid;grid-template-rows:1fr 1fr;height:100%}
+.rs-h{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:calc(var(--u) * 3);padding:calc(var(--u) * 6)}
+.rs-oben{transform:rotate(180deg);border-bottom:.25mm dashed rgba(11,12,16,.3);background:var(--nacht);color:var(--papier)}
+.rs-oben{border-top:.25mm dashed rgba(11,12,16,.3);border-bottom:0}
+.rs-t{font-size:calc(var(--u) * 9);line-height:1.04}
+.rs-oben .rs-t{letter-spacing:.14em;font-size:calc(var(--u) * 8)}
+.rs-herz{width:calc(var(--u) * 13);color:var(--rot)}
+.rs-unten .mono{font-size:calc(var(--u) * 2);color:#5d574a}
+/* Serviettenband */
+.s-serviette .satz{padding:0 calc(var(--u) * 3)}
+.sv{display:flex;align-items:center;justify-content:space-between;gap:calc(var(--u) * 3);height:100%}
+.sv svg.z{height:62%;width:auto;color:var(--creme)}
+.sv .t{font-size:calc(var(--u) * 3.1);white-space:nowrap}
+.sv svg.wm{height:calc(var(--u) * 1.8);color:var(--papier)}
+.sv .mono{font-size:calc(var(--u) * .95);color:var(--taupe);white-space:nowrap}
+/* Versandaufkleber */
+.s-versand .satz{padding:calc(var(--u) * 5)}
+.vs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;gap:calc(var(--u) * 3) calc(var(--u) * 5);height:100%}
+.vs-k{display:grid;gap:calc(var(--u) * 1.3);align-content:start}
+.vs-k>.mono:first-child,.vs-an>.mono{font-size:calc(var(--u) * 1.8);color:var(--taupe)}
+.vs-k svg.wm{height:calc(var(--u) * 3.4)}
+.vs-k p.mono{font-size:calc(var(--u) * 1.6);color:#5d574a}
+.vs-m{display:grid;justify-items:end;gap:calc(var(--u) * 1)}
+svg.vs-ps{width:calc(var(--u) * 34);color:var(--rot);transform:rotate(-6deg)}
+.vs-t{font-size:calc(var(--u) * 6.4);line-height:1.02;text-align:right}
+.vs-an{grid-column:1/-1;align-self:end;display:grid;gap:calc(var(--u) * 5.4);border-top:.25mm solid rgba(11,12,16,.2);padding-top:calc(var(--u) * 2.6)}
+.vs-an i{display:block;border-bottom:.25mm solid rgba(11,12,16,.4)}
+/* Lesezeichen */
+.lz{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between}
+.lz-z{width:calc(var(--u) * 62);color:var(--creme)}
+.lz-t{font-size:calc(var(--u) * 17);line-height:1.02}
+.lz-l{display:grid;gap:calc(var(--u) * 6);font-size:calc(var(--u) * 5.6);line-height:1.35;color:var(--creme)}
+.lz-l i{display:block;font-style:normal;color:var(--taupe)}
+.lz-f{display:grid;gap:calc(var(--u) * 3)}
+.lz-f svg.wm{height:calc(var(--u) * 6.4);color:var(--papier)}
+.lz-f .mono{font-size:calc(var(--u) * 3.6);color:var(--taupe)}

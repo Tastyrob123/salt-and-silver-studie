@@ -1,0 +1,33 @@
+/* Salt & Silver · der Feed als Handy-Bildschirm (liegt im Handy der Werkbank, 393 × 851). Oben bleibt Platz für die Insel des Geräts. */
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#fff;color:#111;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.ig__lauf{height:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+.ig__lauf::-webkit-scrollbar{display:none}
+.ig-oben{position:sticky;top:0;z-index:2;display:flex;justify-content:center;align-items:flex-end;height:88px;padding-bottom:9px;background:#fff;font-size:16px}
+.ig-kopf{display:flex;align-items:center;gap:22px;padding:8px 18px 0}
+.ig-av{width:90px;height:90px;border-radius:50%;flex:none;box-shadow:0 0 0 2px #fff,0 0 0 3.5px #d9c6b0}
+.ig-z{flex:1;display:flex;justify-content:space-around;font-size:13.5px;text-align:center;color:#333}
+.ig-z b{display:block;font-size:17.5px;color:#111}
+.ig-bio{padding:13px 18px 0;font-size:14px;line-height:1.38}
+.ig-bio b{display:block}.ig-bio small{display:block;color:#737373;font-size:14px}.ig-bio span{display:block}.ig-bio em{display:block;font-style:normal;color:#00376b;font-weight:600}
+.ig-kn{display:flex;gap:6px;padding:13px 18px 0}
+.ig-kn span{flex:1;text-align:center;font-size:14px;font-weight:600;padding:8px 0;border-radius:10px;background:#efefef}
+.ig-kn span:first-child{background:#151929;color:#fff}
+.ig-hls{display:flex;gap:16px;padding:16px 18px 13px;overflow:hidden}
+.ig-hl{flex:none;width:64px;text-align:center}
+.ig-hl img{width:64px;height:64px;border-radius:50%;display:block;box-shadow:0 0 0 2px #fff,0 0 0 3px #dbdbdb}
+.ig-hl small{display:block;font-size:12px;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ig-raster{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border-top:1px solid #efefef;padding-bottom:26px}
+.ig-p{display:block;aspect-ratio:4/5;overflow:hidden;background:#eee}
+.ig-p img{display:block;width:100%;height:100%;object-fit:cover}
+.ig-post{position:fixed;z-index:3;inset:0;background:#fff;overflow-y:auto;scrollbar-width:none;transform:translateX(100%);transition:transform .5s cubic-bezier(.32,.72,0,1)}
+.ig-post[hidden]{display:block;visibility:hidden}
+.ig-post.da{transform:none;visibility:visible}
+.ig-post__kopf{position:sticky;top:0;z-index:1;display:flex;align-items:flex-end;gap:10px;height:106px;padding:0 12px 10px;background:#fff;font-size:14px;line-height:1.25}
+.ig-post__kopf button{width:32px;height:32px;display:grid;place-items:center}
+.ig-post__kopf button svg{width:19px;height:19px;stroke:#111;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ig-post__kopf img{width:34px;height:34px;border-radius:50%}
+.ig-post__kopf small{display:block;color:#555;font-size:12px}
+.ig-post>img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#eee}
+.ig-post__t{padding:12px 14px 40px;margin:0;font-size:14.5px;line-height:1.45}

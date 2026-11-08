@@ -1,0 +1,248 @@
+/* Seite «Salt & Silver im Chat» (gast/landing.py). Aus der Vorlage der Hotel-Seiten «Rezeption im Chat» (Familie Maeder, _gast_landing/rezeption.css)
+   in den Farben und Schriften von Salt & Silver. Bewegt wird nur über transform und opacity. */
+.rz{--rz-dunkel:var(--nacht);--rz-zwei:var(--schiefer);--rz-tief:#0b0c10;--rz-karte:#1f213b;--rz-akzent:var(--creme);--rz-akzent-hell:#978c77;--rz-linie:235,219,206;
+  --rz-blase:#2a2d4d;--rz-antwort:#1f212c;--rz-gold:var(--rot);--rz-tapete:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%236b5f4a' stroke-width='1.1'%3E %3Cpath d='M0 0L150 150L300 0M0 300L150 150L300 300' stroke-width='.7'/%3E %3Ccircle cx='150' cy='150' r='40'/%3E%3Ccircle cx='150' cy='150' r='35' stroke-width='.6'/%3E %3Cpath d='M150 118C163 134 163 166 150 182C137 166 137 134 150 118Z'/%3E%3Cpath d='M150 122V178' stroke-width='.6'/%3E %3Cpath d='M0 -9L9 0L0 9L-9 0ZM300 -9L309 0L300 9L291 0ZM0 291L9 300L0 309L-9 300ZM300 291L309 300L300 309L291 300Z' fill='%236b5f4a' stroke='none'/%3E %3Cpath d='M150 -6L156 0L150 6L144 0ZM150 294L156 300L150 306L144 300ZM-6 150L0 156L6 150L0 144ZM294 150L300 156L306 150L300 144Z' fill='%236b5f4a' stroke='none'/%3E %3C/g%3E%3C/svg%3E");--rz-tapete-gr:300px;--rz-tapete-op:.09;
+  --blatt:#fbf7f1;--titel:var(--serif);--lh:255,255,255;--ld:11,12,16;--wrap:1}
+
+body.rz{background:var(--rz-dunkel);color:var(--papier)}
+.rz em{font-style:normal;color:var(--rz-akzent)}
+.rz .fl--papier em,.rz .fl--creme em,.rz-tel em{color:var(--rz-akzent-hell)}
+.rz .lauf{max-width:64ch}
+.rz .lauf p+p{margin-top:14px}
+
+/* Leiste: schmale Insel oben, deckend (nichts Durchscheinendes über bewegten Flächen) */
+.rz-leiste{position:fixed;z-index:60;top:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:22px;padding:7px 7px 7px 20px;border-radius:999px;
+  background:var(--rz-tief);box-shadow:0 0 0 1px rgba(var(--rz-linie),.28),0 14px 30px -16px rgba(0,0,0,.7)}
+.rz-leiste__marke{display:flex;align-items:center;gap:10px;color:var(--rz-akzent);text-decoration:none}
+.rz-leiste__marke svg{height:30px;width:auto}
+.rz-leiste__marke b{font-family:var(--titel);font-size:18px;letter-spacing:.02em;color:var(--blatt)}
+
+/* Auftakt */
+.rz-auftakt{min-height:100svh;display:flex;align-items:center;padding:140px var(--rand) 90px;text-align:center;background-color:var(--rz-dunkel)}
+.rz-auftakt .in{display:flex;flex-direction:column;align-items:center;width:100%}
+.rz-auftakt__z{height:92px;width:auto;opacity:.95;color:var(--rz-akzent);margin-bottom:28px}
+.rz-auftakt .lauf{margin:30px auto 0;color:rgba(var(--lh),.86)}
+.rz-kn{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+
+/* Telefon (Bewegung aus dem Showcase, Farben des Hauses) */
+.rz-tel{background:radial-gradient(120% 80% at 36% 50%,var(--blatt) 50%,var(--papier) 100%);color:var(--tinte)}
+/* Tapete des Hauses (Robert 10.10.2026): Gitter mit Medaillon aus dem Zeichen (Ring und Brett), Ton in Ton, nur hinter dem Handy, sehr leise. Steht still (keine Bewegung, nichts darüber durchscheinend gerechnet). */
+.rz-tel{position:relative;isolation:isolate}
+.rz-tel::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:var(--rz-tapete);background-size:var(--rz-tapete-gr);background-position:50% 0;opacity:var(--rz-tapete-op)}
+.s-telefon3d{height:100vh;height:100svh;position:relative;overflow:hidden}
+.s-telefon3d .tel-pin{position:absolute;inset:0;overflow:hidden}
+.s-telefon3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#telefon3d-text{position:absolute;top:50%;right:7vw;transform:translateY(-50%);z-index:3;width:clamp(360px,38vw,600px);display:flex;flex-direction:column;gap:22px;
+  opacity:0;transition:opacity .9s var(--e1),transform .9s var(--e1)}
+#telefon3d-text.da{opacity:1}
+#telefon3d-text h2{margin:0;color:var(--tinte)}
+.tel-vor{font-size:clamp(1.05rem,1.2vw,1.2rem);line-height:1.6;margin:0}
+.tel-liste{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.tel-liste li{position:relative;padding-left:28px;font-size:clamp(.98rem,1.08vw,1.08rem);line-height:1.6;color:rgba(var(--ld),.82)}
+.tel-liste li::before{content:"";position:absolute;left:3px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--rz-gold)}
+#telefon3d-laden{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ld),.5)}
+.nur-mobil{display:none}
+@media (max-width:900px) and (orientation:portrait),(max-width:700px){
+  .s-telefon3d{height:auto;overflow:visible;padding:70px var(--rand) 60px}
+  .s-telefon3d .tel-pin{position:static;display:flex;flex-direction:column;gap:34px;overflow:visible}
+  .s-telefon3d canvas,#telefon3d-laden{display:none}
+  .nur-mobil{display:block}
+  #telefon3d-text{position:static;transform:none;width:auto;opacity:1;order:2}
+  .m-telefon{order:1;margin:0 auto;width:min(300px,76vw)}
+  .m-tel-rahmen{padding:10px;border-radius:44px;background:linear-gradient(160deg,#2b2d33,#0d0e11 45%,#1b1c20);box-shadow:0 0 0 1.5px #3a3c42,0 40px 70px -36px rgba(0,0,0,.7)}
+  .m-tel-film{display:block;width:100%;height:auto;border-radius:34px;background:var(--rz-dunkel)}
+}
+
+/* Flächen im Wechsel */
+.rz-fragen,.rz-tal{background-color:var(--rz-zwei)}
+.rz-buchen,.rz-vier,.rz-schluss{background-color:var(--rz-dunkel)}
+.rz-zahlen{background-color:var(--rz-tief)}
+.rz .fl .lauf{margin-top:20px}
+.rz .fl--nacht .lauf,.rz .fl--schiefer .lauf{color:rgba(var(--lh),.86)}
+.rz .fl--papier .lauf,.rz .fl--creme .lauf{color:rgba(var(--ld),.86)}
+
+/* Was Gäste wissen wollen: Paare aus Frage und Antwort */
+/* Handys in einer Reihe (Robert 10.10.2026: gerade, frontal, groß, mit Luft dazwischen, versetzt wie bei txtme, Tapete dahinter,
+   gegenläufig beim Scrollen (galerie.js), beim Überfahren wird eins etwas größer, die anderen und der Abschnitt dunkler) */
+.rz-fragen{position:relative;isolation:isolate;overflow-x:clip}
+.rz-fragen::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23ebdbce' stroke-width='1.1'%3E %3Cpath d='M0 0L150 150L300 0M0 300L150 150L300 300' stroke-width='.7'/%3E %3Ccircle cx='150' cy='150' r='40'/%3E%3Ccircle cx='150' cy='150' r='35' stroke-width='.6'/%3E %3Cpath d='M150 118C163 134 163 166 150 182C137 166 137 134 150 118Z'/%3E%3Cpath d='M150 122V178' stroke-width='.6'/%3E %3Cpath d='M0 -9L9 0L0 9L-9 0ZM300 -9L309 0L300 9L291 0ZM0 291L9 300L0 309L-9 300ZM300 291L309 300L300 309L291 300Z' fill='%23ebdbce' stroke='none'/%3E %3Cpath d='M150 -6L156 0L150 6L144 0ZM150 294L156 300L150 306L144 300ZM-6 150L0 156L6 150L0 144ZM294 150L300 156L306 150L300 144Z' fill='%23ebdbce' stroke='none'/%3E %3C/g%3E%3C/svg%3E");background-size:300px;background-position:50% 0;opacity:.07}
+.hg{display:flex;justify-content:center;align-items:flex-start;margin-top:clamp(36px,5vw,72px)}
+.hg__h{position:relative;flex:0 0 auto;width:clamp(210px,21.5vw,380px);margin:0 0 0 clamp(14px,2vw,34px);z-index:1}
+.hg__h:first-child{margin-left:0}
+.hg__h:nth-child(even){margin-top:clamp(40px,6vw,96px)}
+.hg__geraet-box{position:relative;width:100%;transition:transform 1.1s cubic-bezier(.19,1,.22,1),filter .9s cubic-bezier(.19,1,.22,1)}
+.hg__h figcaption{transition:opacity .9s cubic-bezier(.19,1,.22,1)}
+.rz-fragen>.in{position:relative;z-index:1}
+.rz-fragen::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:#07080d;opacity:0;transition:opacity 1s cubic-bezier(.19,1,.22,1)}
+@media (hover:hover) and (pointer:fine){
+  .hg__h:hover{z-index:2}
+  .hg__h:hover .hg__geraet-box{transform:scale(1.055)}
+  .hg:has(.hg__h:hover) .hg__h:not(:hover) .hg__geraet-box{filter:brightness(.38) saturate(.7)}
+  .hg:has(.hg__h:hover) .hg__h:not(:hover) figcaption{opacity:.3}
+  .rz-fragen:has(.hg__h:hover)::after{opacity:.42}
+}
+.hg__schirm{position:absolute;inset:0;-webkit-mask:url(../img/im-chat/handy-maske.png?h=c684f8fed5) 0 0/100% 100% no-repeat;mask:url(../img/im-chat/handy-maske.png?h=c684f8fed5) 0 0/100% 100% no-repeat}
+.hg__bild{position:absolute;display:block;max-width:none;background:#10141b}
+.hg__geraet{position:relative;display:block;width:100%;height:auto;pointer-events:none;filter:drop-shadow(-18px 34px 40px rgba(0,0,0,.5))}
+.hg__h figcaption{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:22px;padding:0 9%;text-align:center}
+.hg__f{margin:0;padding:10px 16px;border-radius:18px 18px 6px 18px;background:var(--rz-blase);color:#fff;font-size:14.5px;line-height:1.45}
+.hg__s{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rz-akzent)}
+@media (max-width:760px){.hg{flex-wrap:wrap;gap:34px 0}.hg__h{width:47%;margin:0 0 0 6%}.hg__h:nth-child(odd){margin-left:0}.hg__h:nth-child(even){margin-top:44px}.hg__h figcaption{padding:0 4%}.hg__f{font-size:13px}}
+.rz-gespraeche{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:44px}
+.rz-g{position:relative;padding:26px 26px 22px;border-radius:var(--r-l);background:var(--rz-karte);box-shadow:inset 0 0 0 1px rgba(var(--rz-linie),.2),0 24px 40px -30px rgba(0,0,0,.8)}
+.rz-g__f{margin:0 0 16px auto;max-width:82%;width:fit-content;padding:11px 16px;border-radius:18px 18px 6px 18px;background:var(--rz-blase);color:var(--blatt);font-size:15.5px;line-height:1.45}
+.rz-g__a{margin:0;max-width:92%;padding:14px 17px;border-radius:18px 18px 18px 6px;background:var(--rz-antwort);color:rgba(var(--lh),.92);font-size:15.5px;line-height:1.6;box-shadow:inset 0 0 0 1px rgba(var(--rz-linie),.14)}
+.rz-g__s{display:block;margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rz-akzent)}
+
+/* Mehrwert des Hauses: Bild und Text */
+.rz-wert__in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px);align-items:center}
+.rz-wert__b{margin:0;border-radius:var(--r-xl);overflow:hidden;box-shadow:0 40px 70px -44px rgba(var(--ld),.7)}
+.rz-wert__b img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+
+/* Zwei Spalten mit Text und Notiz */
+.rz-zwei{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end}
+.rz-notiz{margin:0;font-size:14px;line-height:1.6;color:rgba(var(--lh),.6);max-width:44ch;justify-self:end}
+.rz-buchen .rz-zwei{grid-template-columns:minmax(0,1fr)}
+.rz-schirm{margin:40px 0 0;padding:8px;border-radius:var(--r-xl);background:var(--blatt);box-shadow:inset 0 0 0 1px rgba(var(--rz-linie),.35),0 40px 80px -46px rgba(0,0,0,.6)}
+.rz-schirm img{display:block;width:100%;height:auto;border-radius:calc(var(--r-xl) - 8px)}
+
+/* Für das Haus: Bildschirm und Brief */
+.rz-brief{margin:40px 0 0;padding:28px 28px 24px;border-radius:var(--r-l);background:var(--blatt);color:var(--tinte);box-shadow:inset 0 0 0 1px rgba(var(--ld),.14),0 30px 60px -40px rgba(var(--ld),.5);font-size:14.5px;line-height:1.6}
+.rz-brief p{margin:0 0 8px}
+.rz-brief__k{display:block;margin-bottom:14px;font-family:var(--titel);font-size:18px;color:var(--rz-akzent-hell)}
+
+/* Tal und Wetter */
+.rz-tal__in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(30px,6vw,100px);align-items:center}
+.rz-tal__b{margin:0;border-radius:var(--r-xl);overflow:hidden;box-shadow:0 40px 70px -44px rgba(0,0,0,.8)}
+.rz-tal__b img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+
+/* Vier Häuser */
+.rz-haeuser{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px}
+.rz-h{display:flex;flex-direction:column;border-radius:var(--r-l);overflow:hidden;background:var(--rz-karte);box-shadow:inset 0 0 0 1px rgba(var(--rz-linie),.22);text-decoration:none;transition:transform .6s var(--e2)}
+.rz-h:hover{transform:translateY(-3px)}
+.rz-h__b{display:block;aspect-ratio:4/3;overflow:hidden}.rz-h__b img{width:100%;height:100%;object-fit:cover;display:block}
+.rz-h__t{display:flex;flex-direction:column;gap:3px;padding:16px 18px 18px}
+.rz-h__t b{font-family:var(--titel);font-size:19px;color:var(--blatt)}
+.rz-h__t i{font-style:normal;font-size:13.5px;color:rgba(var(--lh),.7)}
+.rz-h__t u{display:flex;align-items:center;gap:6px;margin-top:10px;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rz-akzent)}
+.rz-h__t u svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.4}
+
+/* Grosse Zahlen */
+.rz-zahlen{padding-block:clamp(56px,7vw,100px);border-block:1px solid rgba(var(--rz-linie),.25)}
+.rz-zahlen__in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;text-align:center}
+.rz-zahlen b{display:block;font-family:var(--titel);font-size:clamp(3.4rem,7.4vw,7rem);line-height:1;color:var(--rz-akzent)}
+.rz-zahlen span{display:block;margin-top:10px;font-size:14px;color:rgba(var(--lh),.75)}
+
+/* Grenzen */
+.rz-grenzen .rz-zwei{align-items:start}
+.rz-liste{list-style:none;margin:0;padding:0}
+.rz-liste li{padding:16px 0;border-top:1px solid rgba(var(--ld),.18);font-size:clamp(1rem,1.1vw,1.1rem);line-height:1.6}
+.rz-liste li:last-child{border-bottom:1px solid rgba(var(--ld),.18)}
+.rz-liste a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* Schluss */
+.rz-schluss{text-align:center;padding-top:clamp(90px,11vw,170px);padding-bottom:60px}
+.rz-schluss .in{display:flex;flex-direction:column;align-items:center}
+.rz-studie{margin-top:70px;font-size:12px;color:rgba(var(--lh),.5)}
+
+/* Einblenden von unten */
+.js [data-r]{opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--e1),transform 1.3s var(--e1)}
+.js [data-r="schweb"]{transform:translateY(70px) scale(.97)}
+.js [data-r].da{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js [data-r]{opacity:1;transform:none;transition:none}}
+
+@media (max-width:900px){
+  .rz-zwei,.rz-wert__in,.rz-tal__in{grid-template-columns:1fr}
+  .rz-notiz{justify-self:start}
+  .rz-haeuser{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rz-zahlen__in{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .rz-gespraeche{grid-template-columns:1fr}
+  .rz-brief{margin-top:0}
+  .rz-wert__b img{aspect-ratio:4/3}
+}
+@media (max-width:520px){
+  .rz-haeuser{grid-template-columns:1fr}
+  .rz-g{padding:20px 16px 18px}.rz-g__f,.rz-g__a{max-width:100%}
+  .rz-leiste{left:12px;right:12px;transform:none;justify-content:space-between;gap:12px;padding-left:14px}
+  .rz-leiste__marke b{display:none}
+  .rz-leiste .kn{height:42px}
+  .rz-auftakt__z{height:72px}
+}
+html,body.rz{overflow-x:clip}
+
+/* Salt & Silver */
+.rz-leiste__marke img{height:30px;width:auto}
+.rz-leiste__marke .rz-leiste__wort{height:17px}
+.rz-fragen .rz-g__f{color:#fff}
+.rz-wert .rz-zwei{align-items:center}
+.rz-wert .rz-haeuser{grid-template-columns:1fr;gap:12px;margin-top:0}
+.rz-wert .rz-h{flex-direction:row;align-items:center;background:var(--blatt);box-shadow:inset 0 0 0 1px rgba(11,12,16,.1)}
+.rz-wert .rz-h__b{width:38%;flex:none;aspect-ratio:4/3}
+.rz-wert .rz-h__t b{color:var(--tinte);font-weight:400;text-transform:uppercase;font-size:21px}
+.rz-wert .rz-h__t i{color:#6f6757}
+.rz-zahlen__in{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rz-zahlen b{font-weight:400}
+.rz-fund{margin:34px 0 0;max-width:72ch;padding:18px 20px;border-radius:var(--r-m);background:var(--creme);font-size:15px;line-height:1.6;color:var(--tinte)}
+.rz-brief__k{text-transform:uppercase}
+.rz-h__t b{font-weight:400;text-transform:uppercase}
+.rz-tel .d2,#telefon3d-text h2{color:var(--tinte)}
+@media (max-width:900px){.rz-zahlen__in{grid-template-columns:repeat(3,minmax(0,1fr))}.rz-wert .rz-h__b{width:34%}}
+@media (max-width:520px){.rz-zahlen__in{grid-template-columns:1fr}.rz-leiste__marke .rz-leiste__wort{display:none}}
+
+/* Knöpfe wie in der Werkbank: Pfeil dreht sich, Knopf kommt der Maus entgegen (knopf.js) */
+.kn{translate:var(--mx,0px) var(--my,0px);transition:transform .55s var(--e2),box-shadow .55s var(--e2),translate .5s var(--e1)}
+.kn:hover i{transform:translateX(2px) scale(1.06) rotate(45deg)}
+.kn:hover svg{transform:none}
+
+/* Studio: im Wechsel (Robert 10.10.2026, dritte Fassung). Text links, Laptop aus Blender rechts (frontal, gast/landing/laptop/render.py);
+   darunter der Entwurf als Blatt auf einer dunklen Platte mit Tapete, Text rechts. */
+.rz-haus__reihe{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4.5vw,72px);align-items:center;margin-top:clamp(44px,5.5vw,84px)}
+.rz-haus__reihe--brief{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.rz-haus__t h3{margin:0 0 14px;font-family:var(--titel);font-weight:700;font-size:clamp(22px,2vw,28px);letter-spacing:.01em;text-transform:uppercase;color:var(--tinte)}
+.rz-haus__t .lauf{max-width:none}
+.rz-haus .rz-schirm{margin:0}
+.rz-platte{position:relative;padding:clamp(26px,4.2vw,64px) clamp(26px,5vw,80px);border-radius:28px;background-color:var(--rz-dunkel);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23ebdbce' stroke-width='1.1'%3E %3Cpath d='M0 0L150 150L300 0M0 300L150 150L300 300' stroke-width='.7'/%3E %3Ccircle cx='150' cy='150' r='40'/%3E%3Ccircle cx='150' cy='150' r='35' stroke-width='.6'/%3E %3Cpath d='M150 118C163 134 163 166 150 182C137 166 137 134 150 118Z'/%3E%3Cpath d='M150 122V178' stroke-width='.6'/%3E %3Cpath d='M0 -9L9 0L0 9L-9 0ZM300 -9L309 0L300 9L291 0ZM0 291L9 300L0 309L-9 300ZM300 291L309 300L300 309L291 300Z' fill='%23ebdbce' stroke='none'/%3E %3Cpath d='M150 -6L156 0L150 6L144 0ZM150 294L156 300L150 306L144 300ZM-6 150L0 156L6 150L0 144ZM294 150L300 156L306 150L300 144Z' fill='%23ebdbce' stroke='none'/%3E %3C/g%3E%3C/svg%3E");background-size:300px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(var(--rz-linie),.16),0 50px 80px -50px rgba(var(--ld),.55)}
+.rz-platte::before{content:'';position:absolute;inset:0;border-radius:28px;background:var(--rz-dunkel);opacity:.9;pointer-events:none}
+.rz-haus .rz-brief{position:relative;margin:0;padding:clamp(24px,2.6vw,36px) clamp(24px,2.8vw,40px) clamp(22px,2.4vw,30px);border-radius:6px;background:#fffdf9;color:var(--tinte);
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 0 0 1px rgba(var(--ld),.06),0 2px 3px rgba(var(--ld),.1),0 40px 60px -30px rgba(0,0,0,.7)}
+.rz-brief__kopf{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid rgba(var(--ld),.12)}
+.rz-brief__kopf img{height:18px;width:auto}
+.rz-brief__fuss{display:block;margin-top:16px;padding-top:12px;border-top:1px dashed rgba(var(--ld),.2);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ld),.5)}
+.rz-haus .rz-fund{margin-top:24px;max-width:none}
+@media (max-width:900px){.rz-haus__reihe,.rz-haus__reihe--brief{grid-template-columns:1fr;gap:26px}.rz-haus__reihe--brief .rz-platte{order:2}.rz-laptop{margin:0 -4%}}
+
+/* Reservieren: Website im Browserfenster auf der dunklen Fläche, davor das Handy mit derselben Tischmaske (Robert 10.10.2026: «Abschnitt geiler machen») */
+.rz-buehne{position:relative;margin-top:clamp(40px,5vw,72px);padding:0 0 clamp(60px,8vw,120px) clamp(0px,9vw,140px)}
+.rz-fenster{margin:0;border-radius:18px;overflow:hidden;background:#0b0c14;box-shadow:inset 0 0 0 1px rgba(var(--rz-linie),.22),0 60px 90px -50px rgba(0,0,0,.9),0 24px 40px -30px rgba(0,0,0,.7)}
+.rz-fenster__kopf{display:flex;align-items:center;gap:8px;height:46px;padding:0 18px;background:#141627;border-bottom:1px solid rgba(255,255,255,.06)}
+.rz-fenster__kopf i{width:11px;height:11px;border-radius:50%;background:rgba(var(--rz-linie),.22)}
+.rz-fenster__adr{margin:0 auto;padding:7px 20px;border-radius:999px;background:rgba(255,255,255,.06);font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:rgba(var(--lh),.6)}
+.rz-fenster img{display:block;width:100%;height:auto}
+.rz-handy{position:absolute;left:0;bottom:0;width:clamp(170px,23%,300px);margin:0;z-index:2}
+.rz-handy .hg__geraet{filter:drop-shadow(-10px 40px 44px rgba(0,0,0,.6))}
+.rz-buchen .rz-notiz{position:absolute;right:0;bottom:clamp(10px,2vw,30px);max-width:40ch;text-align:right}
+@media (max-width:900px){.rz-buehne{padding:0 0 60px 0}.rz-handy{position:relative;width:46%;margin:-30% 0 0 4%}.rz-buchen .rz-notiz{position:static;text-align:left;margin-top:24px}}
+
+/* Studio, vierte Fassung (Robert 10.10.2026 abends, «Abschnitt komplett neu designen»): zwei Bühnen wie «Der Hamburger Hafen» auf der Website.
+   Bildschirmfoto groß auf der dunklen Platte mit Tapete, die helle Texttafel liegt unten darüber, daneben drei Angaben in großer Schrift.
+   Zweite Bühne: der Entwurf als Blatt links, Texttafel und Angaben rechts. Bewegt wird nur das Hochschweben der Platte. */
+.rz-haus .rz-studio{padding:clamp(12px,1.6vw,22px) clamp(12px,1.6vw,22px) clamp(20px,2.4vw,36px);margin-top:clamp(34px,4.5vw,64px)}
+.rz-haus .rz-studio>*{position:relative}
+.rz-studio__schirm{margin:0;border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 30px 60px -40px rgba(0,0,0,.8)}
+.rz-studio__schirm img{display:block;width:100%;height:auto}
+.rz-haus .rz-studio__unten{margin-top:calc(-1*clamp(60px,9vw,140px));padding:0 clamp(8px,2vw,34px)}
+.rz-haus .ort__k h3{margin:0}
+.rz-haus .ort__k .lauf{max-width:none}
+.rz-haus .ort__k .lauf p{font-size:clamp(.98rem,1.05vw,1.08rem);line-height:1.55}
+.rz-haus .ort__koord dd{font-size:clamp(1.15rem,1.7vw,1.75rem)}
+.rz-studio--brief{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(22px,3vw,48px);align-items:center;padding:clamp(22px,2.8vw,42px)}
+.rz-studio--brief .rz-studio__brief{margin:0}
+.rz-haus .rz-studio--brief .rz-studio__unten{display:grid;grid-template-columns:1fr;gap:clamp(20px,2.4vw,34px);margin-top:0;padding:0}
+.rz-haus .rz-studio--brief .ort__koord{justify-content:start}
+@media (max-width:900px){
+  .rz-haus .rz-studio__unten{margin-top:calc(-1*clamp(24px,6vw,48px))}
+  .rz-studio--brief{grid-template-columns:1fr}
+  .rz-haus .ort__koord{grid-template-columns:repeat(3,minmax(0,1fr))}.rz-haus .ort__koord dd{white-space:normal}
+}
+@media (max-width:560px){.rz-haus .ort__koord{grid-template-columns:1fr}.rz-haus .ort__koord div{border-left:0;padding:8px 0;border-top:1px solid rgba(255,255,255,.14)}.rz-haus .ort__koord div:first-child{border-top:0}}

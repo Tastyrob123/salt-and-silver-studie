@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speisekarten · Salt & Silver</title>
+<meta name="description" content="Die drei Speisekarten von Salt & Silver: heute und als Idee im Look der neuen Seite.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#111421">
+<link rel="icon" href="../assets/logo/emblem.png?h=acabc872ca">
+<link rel="preload" href="../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts/fonts.css?h=ddfad5b4b4">
+<link rel="stylesheet" href="../werkbank/werkbank.css?v=1791446988">
+<style>
+.leiste{animation-delay:.25s}.auftakt{--vz:150ms}
+.k-auftakt h1{font-size:clamp(3.5rem,7.4vw,8.2rem)}
+@media(min-width:1080px){.k-auftakt .in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.k-auftakt .faecher{justify-self:end;max-width:720px}
+.k-auftakt .blattk span b{font-weight:400;opacity:.7}
+.vergl{position:relative}
+.vergl__wahl{display:none;gap:8px;margin-bottom:18px}
+.vergl__wahl button{height:42px;padding:0 18px;border-radius:999px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinte);background:linear-gradient(180deg,#fffdf9,#dfd0c2);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.26)}
+.vergl__wahl button[aria-pressed="true"]{color:#fff;background:linear-gradient(180deg,#2d3250,#080a12);box-shadow:inset 0 1px 0 rgba(255,255,255,.26),inset 0 -3px 0 rgba(0,0,0,.55)}
+.vergl__b{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,40px);align-items:start;max-width:1010px;margin:0 auto;perspective:1800px}
+.vergl--schmal .vergl__b{max-width:740px}
+.vergl__s{position:relative;margin:0}
+.vergl__s figcaption{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#6f6757}
+.vergl__s figcaption b{font-family:var(--titel);font-weight:700;font-size:1.5rem;letter-spacing:.02em;color:var(--tinte)}
+.vergl__r{position:relative;background:#fff;border-radius:6px;box-shadow:0 0 0 1px rgba(11,12,16,.1),0 40px 50px -34px rgba(40,30,20,.6);overflow:hidden}
+.vergl__s--alt .vergl__r{box-shadow:0 0 0 1px rgba(11,12,16,.1),0 26px 34px -28px rgba(40,30,20,.5)}
+.vergl__r img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:rotateY(var(--von,18deg)) translateX(var(--vx,3%));transform-origin:var(--achse,0) 50%;transition:opacity .5s var(--e1),transform .9s var(--e1);backface-visibility:hidden}
+.vergl__r img.an{opacity:1;transform:none}
+.vergl__r img.weg{opacity:0;transform:rotateY(var(--nach,-18deg)) translateX(calc(var(--vx,3%)*-1))}
+.vergl__p{position:absolute;top:50%;z-index:3;margin-top:-10px}
+.vergl__p--l{left:-28px}.vergl__p--r{right:-28px}
+@media(max-width:1280px){.vergl__p--l{left:-10px}.vergl__p--r{right:-10px}}
+.vergl__u{display:flex;align-items:center;gap:20px;max-width:1010px;margin:clamp(22px,2.6vw,36px) auto 0;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.vergl--schmal .vergl__u,.vergl--schmal .vergl__m{max-width:740px}
+.vergl__u .gang__b{max-width:none}
+.vergl__z{min-width:9.5em}
+.vergl__m{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;max-width:1010px;margin:18px auto 0;padding:8px 4px 14px}
+.vergl__m::-webkit-scrollbar{display:none}
+.vergl__m button{flex:none;width:74px;border-radius:4px;overflow:hidden;box-shadow:0 0 0 1px rgba(11,12,16,.14);opacity:.55;transition:opacity .3s,transform .5s var(--e3)}
+.vergl__m button:hover{transform:translateY(-4px);opacity:.9}
+.vergl__m button[aria-pressed="true"]{opacity:1;box-shadow:0 0 0 2px var(--rot)}
+.vergl__m img{width:100%}
+@media(max-width:760px){
+  .vergl__wahl{display:flex}
+  .vergl__b{grid-template-columns:1fr}
+  .vergl__s{display:none}.vergl[data-zeig="neu"] .vergl__s--neu,.vergl[data-zeig="alt"] .vergl__s--alt{display:block}
+  .vergl__p--l{left:-14px}.vergl__p--r{right:-14px}.vergl__p{width:44px;height:44px}
+  .vergl__u{flex-wrap:wrap}
+}
+.k-auftakt .blattk span{white-space:nowrap;gap:10px}
+.k-auftakt .blattk--3 span{justify-content:flex-end}
+@media(max-width:760px){
+  .vergl__p{top:auto;bottom:-22px;margin-top:0}
+  .vergl__u .gang__b{order:3;flex:1 1 100%}
+}
+@media(max-width:600px){.k-auftakt .blattk span b{display:none}.k-auftakt .blattk:not(.blattk--3) span{justify-content:center}}
+@media(max-width:420px){.k-auftakt h1{font-size:13.4vw}}
+@media(max-width:360px){.insel__m span{display:none}}
+.k-ende{display:grid;gap:14px}
+@media(min-width:860px){.k-ende{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="gang-linie" aria-hidden="true"></div>
+<header class="leiste"><div class="insel">
+  <a class="insel__m" href="#oben"><img src="../assets/logo/wortmarke-weiss.png?h=31603a5105" width="396" height="60" alt="Salt & Silver"><span>Karten</span></a>
+  <nav aria-label="Abschnitte"><a href="#restaurant">Restaurant</a><a href="#crudo">Bistro Crudo</a><a href="#meer">Am Meer</a></nav>
+  <a class="kn kn--klein" href="../werkbank/index.html#karte">Werkbank<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a>
+</div></header>
+
+<main id="oben">
+<section class="auftakt k-auftakt">
+  <span class="auftakt__stempel" style="--m:url(../assets/logo/stempel-taco.svg?h=7d45ed1e14)" aria-hidden="true"></span>
+  <div class="in">
+    <div class="auftakt__t">
+      <p class="gruss" data-a="auf">Eure drei Speisekarten</p>
+      <h1 class="t1 roll">Eure Karten,<br><em>neu aufgelegt.</em></h1>
+      <div class="lauf"><p data-a="worte" style="--vz:700ms">So könnten eure Speisekarten gedruckt aussehen, passend zur neuen Seite. Bei jeder Karte seht ihr links die heutige und rechts meine Idee dazu. Gerichte und Preise sind dieselben, insgesamt sind es 30 Seiten.</p></div>
+      <div class="kn-reihe" data-a="auf" style="--i:8"><a class="kn " href="#restaurant">Zum Restaurant<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a><a class="kn kn--linie" href="../karte.html" target="_blank" rel="noopener">Karten auf der Website<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a></div>
+    </div>
+    <div class="faecher" data-a="auf" style="--i:2"><a class="blattk blattk--1" style="--j:0" href="#crudo"><img src="img/crudo-neu-1.webp" alt="Idee für die Karte: Bistro Crudo" width="900" height="1599"><span>Bistro Crudo<b>3 Seiten</b></span></a><a class="blattk blattk--2" style="--j:1" href="#restaurant"><img src="img/restaurant-neu-1.webp" alt="Idee für die Karte: Salt &amp; Silver Restaurant" width="900" height="1274"><span>Restaurant<b>16 Seiten</b></span></a><a class="blattk blattk--3" style="--j:2" href="#meer"><img src="img/meer-neu-1.webp" alt="Idee für die Karte: Salt &amp; Silver am Meer" width="900" height="1272"><span>am Meer<b>11 Seiten</b></span></a></div>
+  </div>
+  <div class="in auftakt__fuss mono" data-a="auf" style="--i:10"><span class="runter"><i></i>Einfach runterscrollen</span><span>3 Karten · 30 Seiten</span><span>Robert Reff · Tasty Studios</span></div>
+</section>
+
+<section class="fl fl--papier blatt" id="restaurant">
+  <div class="in">
+    <div class="kopfzeile"><div><p class="kap" data-a="auf"><b>01</b><span>Salt & Silver Restaurant</span></p><h2 class="t2 zt"><span class="z"><span>Salt & Silver</span></span><span class="z"><span><em>Restaurant.</em></span></span></h2></div><div class="lauf"><p data-a="worte">Sechzehn Seiten, auf Deutsch und Englisch, mit der ganzen Weinkarte. Links seht ihr eure heutige Karte, rechts meine Idee dazu. Blättert mit den Pfeilen durch.</p></div></div>
+    <div class="vergl" data-s="restaurant" data-n="16" data-na="16" data-zeig="neu" data-a="auf" tabindex="0">
+      <div class="vergl__wahl" role="group" aria-label="Ansicht"><button type="button" data-zeig="alt" aria-pressed="false">Heute</button><button type="button" data-zeig="neu" aria-pressed="true">Idee</button></div>
+      <div class="vergl__b">
+        <figure class="vergl__s vergl__s--alt"><figcaption><b>Heute</b><span>eure Karte</span></figcaption><div class="vergl__r" style="aspect-ratio:900/1273"></div></figure>
+        <figure class="vergl__s vergl__s--neu"><figcaption><b>Idee</b><span>im Look der neuen Seite</span></figcaption><div class="vergl__r" style="aspect-ratio:900/1274"></div></figure>
+        <button class="rund vergl__p vergl__p--l" type="button" data-zur aria-label="Vorige Seite"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button class="rund vergl__p vergl__p--r" type="button" data-vor aria-label="Nächste Seite"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+      <div class="vergl__u"><span class="vergl__z"></span><div class="gang__b"><i></i></div><a class="kn kn--klein" href="../assets/karten/Salt-and-Silver-Restaurant-Karte.pdf?h=0e64655902" target="_blank" rel="noopener">Idee als PDF<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a></div>
+      <div class="vergl__m" role="group" aria-label="Seiten"><button type="button" aria-pressed="true" aria-label="Seite 1"><img src="img/restaurant-neu-1-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 2"><img src="img/restaurant-neu-2-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 3"><img src="img/restaurant-neu-3-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 4"><img src="img/restaurant-neu-4-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 5"><img src="img/restaurant-neu-5-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 6"><img src="img/restaurant-neu-6-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 7"><img src="img/restaurant-neu-7-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 8"><img src="img/restaurant-neu-8-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 9"><img src="img/restaurant-neu-9-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 10"><img src="img/restaurant-neu-10-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 11"><img src="img/restaurant-neu-11-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 12"><img src="img/restaurant-neu-12-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 13"><img src="img/restaurant-neu-13-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 14"><img src="img/restaurant-neu-14-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 15"><img src="img/restaurant-neu-15-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 16"><img src="img/restaurant-neu-16-k.webp" alt="" decoding="async"></button></div>
+    </div>
+  </div>
+</section>
+<section class="fl fl--creme blatt" id="crudo">
+  <div class="in">
+    <div class="kopfzeile"><div><p class="kap" data-a="auf"><b>02</b><span>Bistro Crudo</span></p><h2 class="t2 zt"><span class="z"><span>Bistro</span></span><span class="z"><span><em>Crudo.</em></span></span></h2></div><div class="lauf"><p data-a="worte">Drei Seiten, im schmalen Hochformat, so wie ihr sie heute zeigt. Links seht ihr eure heutige Karte, rechts meine Idee dazu. Blättert mit den Pfeilen durch.</p></div></div>
+    <div class="vergl vergl--schmal" data-s="crudo" data-n="3" data-na="3" data-zeig="neu" data-a="auf" tabindex="0">
+      <div class="vergl__wahl" role="group" aria-label="Ansicht"><button type="button" data-zeig="alt" aria-pressed="false">Heute</button><button type="button" data-zeig="neu" aria-pressed="true">Idee</button></div>
+      <div class="vergl__b">
+        <figure class="vergl__s vergl__s--alt"><figcaption><b>Heute</b><span>eure Karte</span></figcaption><div class="vergl__r" style="aspect-ratio:900/1600"></div></figure>
+        <figure class="vergl__s vergl__s--neu"><figcaption><b>Idee</b><span>im Look der neuen Seite</span></figcaption><div class="vergl__r" style="aspect-ratio:900/1599"></div></figure>
+        <button class="rund vergl__p vergl__p--l" type="button" data-zur aria-label="Vorige Seite"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button class="rund vergl__p vergl__p--r" type="button" data-vor aria-label="Nächste Seite"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+      <div class="vergl__u"><span class="vergl__z"></span><div class="gang__b"><i></i></div><a class="kn kn--klein" href="../assets/karten/Bistro-Crudo-Karte.pdf?h=7f6dc365e6" target="_blank" rel="noopener">Idee als PDF<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a></div>
+      <div class="vergl__m" role="group" aria-label="Seiten"><button type="button" aria-pressed="true" aria-label="Seite 1"><img src="img/crudo-neu-1-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 2"><img src="img/crudo-neu-2-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 3"><img src="img/crudo-neu-3-k.webp" alt="" decoding="async"></button></div>
+    </div>
+  </div>
+</section>
+<section class="fl fl--papier blatt" id="meer">
+  <div class="in">
+    <div class="kopfzeile"><div><p class="kap" data-a="auf"><b>03</b><span>Salt & Silver am Meer</span></p><h2 class="t2 zt"><span class="z"><span>Salt & Silver</span></span><span class="z"><span><em>am Meer.</em></span></span></h2></div><div class="lauf"><p data-a="worte">Elf Seiten, vom Titelblatt bis zur letzten Seite. Links seht ihr eure heutige Karte, rechts meine Idee dazu. Blättert mit den Pfeilen durch.</p></div></div>
+    <div class="vergl" data-s="meer" data-n="11" data-na="11" data-zeig="neu" data-a="auf" tabindex="0">
+      <div class="vergl__wahl" role="group" aria-label="Ansicht"><button type="button" data-zeig="alt" aria-pressed="false">Heute</button><button type="button" data-zeig="neu" aria-pressed="true">Idee</button></div>
+      <div class="vergl__b">
+        <figure class="vergl__s vergl__s--alt"><figcaption><b>Heute</b><span>eure Karte</span></figcaption><div class="vergl__r" style="aspect-ratio:900/1273"></div></figure>
+        <figure class="vergl__s vergl__s--neu"><figcaption><b>Idee</b><span>im Look der neuen Seite</span></figcaption><div class="vergl__r" style="aspect-ratio:900/1272"></div></figure>
+        <button class="rund vergl__p vergl__p--l" type="button" data-zur aria-label="Vorige Seite"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button class="rund vergl__p vergl__p--r" type="button" data-vor aria-label="Nächste Seite"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+      <div class="vergl__u"><span class="vergl__z"></span><div class="gang__b"><i></i></div><a class="kn kn--klein" href="../assets/karten/Salt-and-Silver-am-Meer-Karte.pdf?h=6ce200a351" target="_blank" rel="noopener">Idee als PDF<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a></div>
+      <div class="vergl__m" role="group" aria-label="Seiten"><button type="button" aria-pressed="true" aria-label="Seite 1"><img src="img/meer-neu-1-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 2"><img src="img/meer-neu-2-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 3"><img src="img/meer-neu-3-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 4"><img src="img/meer-neu-4-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 5"><img src="img/meer-neu-5-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 6"><img src="img/meer-neu-6-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 7"><img src="img/meer-neu-7-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 8"><img src="img/meer-neu-8-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 9"><img src="img/meer-neu-9-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 10"><img src="img/meer-neu-10-k.webp" alt="" decoding="async"></button><button type="button" aria-pressed="false" aria-label="Seite 11"><img src="img/meer-neu-11-k.webp" alt="" decoding="async"></button></div>
+    </div>
+  </div>
+</section>
+<section class="fl fl--navy blatt" id="weiter">
+  <div class="in">
+    <div class="kopfzeile"><div><p class="kap" data-a="auf"><b>04</b><span>Weiter</span></p><h2 class="t2 zt"><span class="z"><span>Und auf der</span></span><span class="z"><span><em>Website?</em></span></span></h2></div><div class="lauf"><p data-a="worte">Dort stehen dieselben Gerichte, Drinks und Weine direkt auf der Seite, zum Blättern und auch am Handy gut lesbar.</p></div></div>
+    <div class="kn-reihe" data-a="auf"><a class="kn " href="../karte.html" target="_blank" rel="noopener">Karten auf der Website<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a><a class="kn kn--linie" href="../werkbank/index.html#karte">Zurück zur Werkbank<i><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11 11 3M5 3h6v6"/></svg></i></a></div>
+  </div>
+</section>
+</main>
+
+<footer class="fuss"><div class="in">
+  <div><b>Ideen zum Entwurf</b><p>Das sind Ideen von Robert Reff, Tasty Studios, und keine offiziellen Unterlagen von Salt & Silver. Die heutigen Karten, Fotos, Logos und Texte gehören Salt & Silver.</p></div>
+  <div class="r mono"><a href="mailto:robert@tasty-studios.de">robert@tasty-studios.de</a><a href="../werkbank/index.html">Werkbank</a><span>Stand 09.10.2026</span></div>
+</div></footer>
+<script src="../werkbank/werkbank.js?v=1791409967"></script>
+<script>
+(function () {
+  var ruhig = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  [].forEach.call(document.querySelectorAll('.vergl'), function (v) {
+    var s = v.getAttribute('data-s'), n = +v.getAttribute('data-n'), na = +v.getAttribute('data-na'), i = 0;
+    var rAlt = v.querySelector('.vergl__s--alt .vergl__r'), rNeu = v.querySelector('.vergl__s--neu .vergl__r');
+    var zahl = v.querySelector('.vergl__z'), balken = v.querySelector('.gang__b i'), daumen = [].slice.call(v.querySelectorAll('.vergl__m button'));
+    var vor = v.querySelector('[data-vor]'), zur = v.querySelector('[data-zur]'), bilder = { alt: {}, neu: {} }, los = false;
+    function hol(art, k, rahmen) {
+      if (art === 'alt' && k >= na) return null;
+      if (!bilder[art][k]) { var b = new Image(); b.decoding = 'async'; b.alt = (art === 'alt' ? 'Heutige Karte' : 'Idee') + ', Seite ' + (k + 1); b.src = 'img/' + s + '-' + art + '-' + (k + 1) + '.webp'; rahmen.appendChild(b); bilder[art][k] = b; }
+      return bilder[art][k];
+    }
+    function zeig(k, richtung) {
+      k = Math.max(0, Math.min(n - 1, k));
+      [['alt', rAlt], ['neu', rNeu]].forEach(function (p) {
+        var alt = bilder[p[0]][i], da = hol(p[0], k, p[1]);
+        p[1].style.setProperty('--von', (richtung < 0 ? -18 : 18) + 'deg'); p[1].style.setProperty('--nach', (richtung < 0 ? 18 : -18) + 'deg');
+        p[1].style.setProperty('--achse', richtung < 0 ? '100%' : '0'); p[1].style.setProperty('--vx', (richtung < 0 ? -3 : 3) + '%');
+        if (alt && alt !== da) { alt.classList.remove('an'); alt.classList.add('weg'); (function (x) { setTimeout(function () { x.classList.remove('weg'); }, 700); })(alt); }
+        if (da) { void da.offsetWidth; da.classList.add('an'); }
+      });
+      i = k;
+      zahl.textContent = 'Seite ' + ('0' + (i + 1)).slice(-2) + ' / ' + ('0' + n).slice(-2);
+      balken.style.transform = 'scaleX(' + (i + 1) / n + ')';
+      zur.disabled = i === 0; vor.disabled = i === n - 1;
+      daumen.forEach(function (d, j) { d.setAttribute('aria-pressed', j === i); if (j === i && los) d.parentNode.scrollTo({ left: d.offsetLeft - d.parentNode.clientWidth / 2 + d.offsetWidth / 2, behavior: ruhig ? 'auto' : 'smooth' }); });
+      if (i + 1 < n) { hol('neu', i + 1, rNeu); hol('alt', i + 1, rAlt); }
+      if (i + 2 < n) { hol('neu', i + 2, rNeu); hol('alt', i + 2, rAlt); }
+      los = true;
+    }
+    vor.addEventListener('click', function () { zeig(i + 1, 1); });
+    zur.addEventListener('click', function () { zeig(i - 1, -1); });
+    daumen.forEach(function (d, j) { d.addEventListener('click', function () { zeig(j, j < i ? -1 : 1); }); });
+    v.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') zeig(i + 1, 1); if (e.key === 'ArrowLeft') zeig(i - 1, -1); });
+    [].forEach.call(v.querySelectorAll('.vergl__wahl button'), function (b) { b.addEventListener('click', function () { v.setAttribute('data-zeig', b.getAttribute('data-zeig')); [].forEach.call(v.querySelectorAll('.vergl__wahl button'), function (x) { x.setAttribute('aria-pressed', x === b); }); }); });
+    var x0 = null, fl = v.querySelector('.vergl__b');
+    fl.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+    fl.addEventListener('pointerup', function (e) { if (x0 !== null && Math.abs(e.clientX - x0) > 44) zeig(i + (e.clientX < x0 ? 1 : -1), e.clientX < x0 ? 1 : -1); x0 = null; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { zeig(0, 1); o.disconnect(); } }, { rootMargin: '50% 0px' }).observe(v); else zeig(0, 1);
+  });
+})();
+</script>
+</body>
+</html>
