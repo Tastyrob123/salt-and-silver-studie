@@ -80,6 +80,7 @@
   /* ---------- Liste der Seite ---------- */
   function knopf(art, titel) { var b = d.createElement('button'); b.type = 'button'; b.title = titel; b.setAttribute('aria-label', titel); b.innerHTML = PF[art]; return b; }
   function liste(nurWerte) {
+    var erstesMal = !liste.war;
     var s = seiten()[seite - 1], l = listeVon(s), box = $('#eintraege');
     var teile = $$('[data-h],.z', l).filter(function (e) { return !e.closest('.z') || e.classList.contains('z'); });
     if (nurWerte) {  // Tippen im Blatt: nur die Felder nachziehen, nichts neu aufbauen (sonst springt der Zeiger)
@@ -133,6 +134,7 @@
       });
       box.appendChild(z);
     });
+    if (erstesMal && box.children.length) { liste.war = true; if (window.wzEin) wzEin(box.children); }   // nur beim ersten Aufbau einschweben, danach sofort da
   }
 
   /* ---------- Blatt: Grösse, Seite zeigen ---------- */

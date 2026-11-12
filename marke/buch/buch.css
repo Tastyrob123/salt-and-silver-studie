@@ -1,6 +1,6 @@
 /* Salt & Silver · Markenbuch. Rahmen, Töne, Kopf: ../../hafen/wz.css */
 .bu{background:var(--papier)}
-.bu .w-insel__p{font-size:10.5px}
+.bu .w-insel__p{font-size:13px}
 .bu .w-saal{border-radius:clamp(26px,3vw,46px) clamp(26px,3vw,46px) 0 0;margin-top:calc(clamp(26px,3vw,46px)*-1)}
 .bu .w-klein{letter-spacing:.24em}
 .bu-h3{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1.05;text-align:center}
@@ -52,21 +52,21 @@
 /* 3 Zeichnungen */
 .bu-zraster{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:clamp(8px,1.1vw,16px)}
 @media (max-width:1200px){.bu-zraster{grid-template-columns:repeat(5,minmax(0,1fr))}}
-@media (max-width:640px){.bu-zraster{grid-template-columns:repeat(4,minmax(0,1fr))}.bu-z figcaption{font-size:8.5px;letter-spacing:.1em}}
+@media (max-width:640px){.bu-zraster{grid-template-columns:repeat(4,minmax(0,1fr))}.bu-z{min-width:0}.bu-z figcaption{font-family:inherit;font-size:13px;letter-spacing:0;text-transform:none;hyphens:auto}}
 .bu-z.bu-z--mehr span{display:grid;place-items:center;background:linear-gradient(180deg,#fffaf4,#e9dccd);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.3),0 22px 34px -26px rgba(0,0,0,.9)}
 .bu-z.bu-z--mehr .h-k__p{position:static;width:44%;height:auto;aspect-ratio:1;max-width:54px;grid-column:auto;grid-row:auto;align-self:center;justify-self:center}
 .bu-z--mehr{color:inherit}
-.bu-z{display:grid;gap:10px;text-align:center}
+.bu-z{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;text-align:center}
 .bu-z span{position:relative;display:block;aspect-ratio:1;border-radius:var(--r-l);background:linear-gradient(180deg,#262b45,#161a2c);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -3px 0 rgba(0,0,0,.45),0 22px 34px -26px rgba(0,0,0,.9)}
 .bu-z img{position:absolute;inset:22%;width:56%;height:56%;object-fit:contain}
-.bu-z figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(235,219,206,.72)}
+.bu-z figcaption{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(235,219,206,.72)}
 
 /* 4 Farben */
 .bu-farben{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px)}
 .bu-farbe{padding:8px;border-radius:var(--r-l);background:linear-gradient(180deg,#fffaf4,#f2e6d8);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.16),0 26px 40px -30px rgba(60,44,30,.6)}
 .bu-farbe i{display:block;aspect-ratio:4/3;border-radius:calc(var(--r-l) - 8px);background:var(--c);box-shadow:inset 0 0 0 1px rgba(11,12,16,.08)}
 .bu-farbe b{display:block;font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,1.9vw,1.75rem);padding:14px 10px 0;line-height:1.1}
-.bu-farbe span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7a705e;padding:3px 10px 0}
+.bu-farbe span{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#7a705e;padding:3px 10px 0}
 .bu-farbe small{display:block;font-size:14.5px;line-height:1.45;color:rgba(11,12,16,.66);padding:6px 10px 12px}
 .bu-herkunft{margin-top:clamp(56px,7vw,110px);display:grid;justify-items:center;gap:12px}
 .bu-her-reihe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);width:100%;margin-top:22px}
@@ -74,7 +74,7 @@
 .bu-her img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:var(--r-l) var(--r-l) 0 0}
 .bu-her__t{display:flex;height:54px;border-radius:0 0 var(--r-l) var(--r-l);overflow:hidden;box-shadow:0 22px 34px -26px rgba(60,44,30,.7)}
 .bu-her__t i{flex:1}
-.bu-her figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#7a705e;text-align:center;padding-top:12px}
+.bu-her figcaption{font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#7a705e;text-align:center;padding-top:12px}
 
 /* 5 Schrift */
 .bu-schriften{display:grid;gap:clamp(12px,1.5vw,20px)}

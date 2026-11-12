@@ -3,7 +3,8 @@
   var d = document, w = d.querySelector('.mw');
 
   /* ---------- Scrollgefühl: nur Abschnitte nahe am Bild hängen ihre Auftritte ans Scrollen (jede gekoppelte Bewegung kostet eine Ebene) ---------- */
-  if ('IntersectionObserver' in window && window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) {
+  /* 11.11.2026 (Robert: «die Seite hakt und wackelt»): aus, wie in der Werkbank-Vorlage schweben die Stücke einmal ein (werkbank.js, data-a + .da) */
+  if (false) {
     var nah = new IntersectionObserver(function (es) { es.forEach(function (x) { x.target.classList.toggle('sf-nah', x.isIntersecting); }); }, { rootMargin: '90% 0px 90% 0px' });
     Array.prototype.forEach.call(d.querySelectorAll('.fl, .schluss, .fuss'), function (x) { nah.observe(x); });
   }

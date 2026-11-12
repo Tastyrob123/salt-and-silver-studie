@@ -100,7 +100,7 @@
       t = 0;
       var max = band.scrollWidth - band.clientWidth, k = [].slice.call(band.children), x = band.scrollLeft;
       if (balken) balken.style.transform = 'scaleX(' + Math.max(0.08, max > 0 ? x / max : 1) + ')';
-      var nr = 1; k.forEach(function (el, i) { if (el.offsetLeft - band.offsetLeft - 60 <= x) nr = i + 1; });
+      var nr = 1, bl = band.getBoundingClientRect().left + (parseFloat(getComputedStyle(band).scrollPaddingLeft) || parseFloat(getComputedStyle(band).paddingLeft) || 0); k.forEach(function (el, i) { if (el.getBoundingClientRect().left - bl - 60 <= 0) nr = i + 1; });   // am Rahmen des Bands gemessen (11.11.2026: offsetLeft zählte vom falschen Bezug, die Zahl blieb bei 01)
       if (max > 0 && x >= max - 2) nr = k.length;
       if (zahl) zahl.textContent = ('0' + nr).slice(-2) + ' / ' + ('0' + k.length).slice(-2);
       if (zur) zur.disabled = x <= 2;

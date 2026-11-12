@@ -3,6 +3,7 @@
   var d = document, $ = function (s, w) { return (w || d).querySelector(s); }, $$ = function (s, w) { return Array.prototype.slice.call((w || d).querySelectorAll(s)); };
   var FRAGEN = [], live = false, filter = 'alle', wort = '';
   var SPRACHE = { en: 'Englisch', fr: 'Französisch', es: 'Spanisch', it: 'Italienisch', nl: 'Niederländisch', da: 'Dänisch' };
+  var ENTWURF_BEISPIEL = 'Hallo Jonas,\n\ndanke für deine Nachricht und schön, dass ihr den Geburtstag deiner Schwester bei uns feiern wollt. Am Samstag, 12. Dezember, haben wir für euch 14 einen langen Tisch im Restaurant an der Hafenstraße 136 frei.\n\nFür die zwei, die vegetarisch essen, gib uns gern kurz Bescheid, was sie mögen, dann stimmen wir das mit der Küche ab.\n\nSag uns noch, um wie viel Uhr ihr kommen möchtet, dann tragen wir euch fest ein.\n\nLiebe Grüße\nSalt & Silver';   // vorbereiteter Entwurf zur Beispiel-Anfrage, wenn der Assistent nicht erreichbar ist (Probe, am Rechner; keine KI, keine Kosten)
   var BEISPIEL = 'Hallo zusammen,\n\nwir möchten am Samstag, 12. Dezember, mit 14 Leuten den Geburtstag meiner Schwester bei euch feiern. Habt ihr einen langen Tisch frei? Zwei von uns essen vegetarisch.\n\nViele Grüße\nJonas';
 
   function h(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -18,7 +19,7 @@
     $$('.t-nav[data-zu]').forEach(function (n) { n.classList.toggle('an', n.getAttribute('data-zu') === name); });
     if (merken !== false) history.replaceState(null, '', '#' + name);
     window.scrollTo(0, 0);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { $$('.tr-tuer,.tr-zahlen').forEach(function (k) { k.classList.add('da'); }); }); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { $$('.tr-tuer,.tr-zahlen').forEach(function (k) { if (k.getBoundingClientRect().top < innerHeight * .92) k.classList.add('da'); }); }); });   // was weiter unten steht, schwebt beim Scrollen herein (wz.js)
   }
 
   function karte(x) {
@@ -58,11 +59,16 @@
     });
     $('#liste').innerHTML = gruppiert(liste, 'Nichts gefunden.', 'Zu dieser Auswahl gibt es keine Frage.');
     $('#luecken').innerHTML = gruppiert(luecken, 'Keine Lücken.', 'Jede Frage ließ sich aus eurer Website beantworten.');
+    // Auftritt wie in den anderen Werkzeugen: jede Frage schwebt herein, sobald sie ins Bild kommt (wz.css [data-r="schweb"])
+    var karten = document.querySelectorAll('.tr-frage:not([data-r])');
+    if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('da'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+      [].forEach.call(karten, function (k, i) { k.setAttribute('data-r', 'schweb'); k.style.setProperty('--i', i % 3); if (k.getBoundingClientRect().top < innerHeight) k.classList.add('da'); else io.observe(k); }); }
   }
 
   function lade() {
     $('#f-text').textContent = 'Die Fragen werden geladen.';
-    return fetch('/api/fragen', { cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
+    var amRechner = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);   // dort gibt es den Speicher der Fragen nicht, gleich die Probe-Fragen
+    return (amRechner ? Promise.reject(0) : fetch('/api/fragen', { cache: 'no-store' })).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
       FRAGEN = j.fragen || []; live = true;
       $('#f-titel').textContent = 'Stand von jetzt'; $('#f-text').textContent = 'Die Fragen kommen aus dem Speicher eurer Website.';
     }).catch(function () {
@@ -110,7 +116,7 @@
     fetch('/api/gast', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ modus: 'anfrage', mail: mail, hinweis: $('#hinweis').value.trim() }) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.text) throw new Error(j.fehler || (r.status === 504 ? 'Der Assistent hat zu lange gebraucht. Bitte noch einmal versuchen.' : '')); return j.text; }); })   // keine Antwort als Text (z. B. Zeitüberschreitung): verständlicher Satz statt Programmfehler
       .then(fertig)
-      .catch(function (e) { entwurf.innerHTML = '<p class="tr-leer">' + h(e && e.message ? e.message : 'Entwürfe schreibt der Tresen in der Online-Fassung. Am Rechner gibt es die Verbindung dazu nicht.') + '</p>'; })
+      .catch(function () { $('#anfrage').value = BEISPIEL; $('#hinweis').value = 'Der 12. Dezember ist frei. Langer Tisch im Restaurant geht bis 16 Personen.'; fertig(ENTWURF_BEISPIEL); sag('Probe: vorbereiteter Entwurf zur Beispiel-Anfrage'); })
       .then(function () { kn.disabled = false; });
   });
   $('#kopieren').addEventListener('click', function () {

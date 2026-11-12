@@ -43,3 +43,11 @@
 .an-andere{display:grid;justify-items:center;gap:12px;margin-top:14px}
 .an-andere .t-pille{display:inline-flex;align-items:center}
 @media (max-width:900px){.an-k,.an-k--um{grid-template-columns:1fr}.an-k--um .h-schirm{order:0}}
+/* 11.11.2026, Werkbank-Vorlage: jeder Bildschirm im Blender-Laptop (laptop/geraet.png), kleinste Schrift 13 px */
+.an-lap{margin:0;background:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;overflow:visible!important}
+.an-lap .ml-dev{position:relative;width:100%}
+.an-lap .ml-g{position:absolute;z-index:2;left:0;top:0;width:100%;height:auto;display:block;pointer-events:none;max-width:none}
+.an-lap__s{position:absolute;z-index:1;overflow:hidden;background:#efe4d6;border-radius:.4% / .6%}
+.an-lap__s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block;border-radius:0}
+.an .kn,.an .kn--klein,.an .w-klein,.an .t-pille,.an .h-gruss p,.an .w-insel__p,.an .w-insel__p .rl{font-size:13px}
+@media (max-width:430px){.an .w-oben .w-ecke{display:none}}

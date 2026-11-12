@@ -11,7 +11,7 @@
 .ma-o__t h2{font-family:var(--serif);font-weight:700;text-transform:uppercase;font-size:clamp(1.7rem,2.6vw,2.6rem);line-height:1.02}
 .ma-o__t p{font-size:16px;line-height:1.5;color:rgba(11,12,16,.72)}
 .ma-o__t .t-wahl{gap:6px;margin:2px 0 6px}
-.ma-o__t .t-pille{display:inline-flex;align-items:center;height:34px;padding:0 13px;font-size:9.5px;letter-spacing:.13em}
+.ma-o__t .t-pille{display:inline-flex;align-items:center;height:30px;padding:0 10px;font-size:13px;letter-spacing:.05em}
 .ma-f{position:relative;display:block;aspect-ratio:1;border-radius:calc(var(--r-xl) - 12px);background:rgba(104,80,58,.08);box-shadow:inset 0 2px 5px rgba(60,44,30,.14);overflow:hidden}
 .ma-f--z{display:grid;place-items:center}.ma-f--z img{width:46%;height:auto;opacity:.9}
 .ma-f__b{position:absolute;left:50%;top:50%;width:52%;aspect-ratio:3/4;margin:-35% 0 0 -26%;border:5px solid #fbf5ee;border-radius:6px;overflow:hidden;background:#fbf5ee;box-shadow:0 14px 22px -12px rgba(60,44,30,.75);
@@ -30,3 +30,5 @@
 .ma-liste--drei .ma-f{aspect-ratio:16/11}
 @media (max-width:1100px){.ma-liste,.ma-liste--drei{grid-template-columns:1fr}}
 @media (max-width:560px){.ma-o{grid-template-columns:1fr}.ma-o__t{padding:4px 10px 14px}.ma-f{aspect-ratio:16/11}}
+/* zwei Karten nebeneinander gleich hoch: der Knopf steht unten, Bild mittig (oberflaeche_pruefen Punkt 10) */
+@media (min-width:1101px){.ma-liste:not(.ma-liste--drei) .ma-o{align-items:stretch}.ma-liste:not(.ma-liste--drei) .ma-f{align-self:center}.ma-liste:not(.ma-liste--drei) .ma-o__t{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.ma-liste:not(.ma-liste--drei) .ma-o__t>.kn{margin-top:auto}}

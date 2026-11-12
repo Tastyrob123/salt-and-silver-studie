@@ -44,3 +44,12 @@
     })();
   };
 })();
+
+/* Auftritt beim Scrollen für Stücke, die ein Werkzeug selbst zeichnet (11.11.2026, Prüfung der Oberfläche: was unterhalb des ersten Bildschirms steht,
+   schwebt beim Hereinscrollen ein; was schon im Bild steht, kommt sofort). Aufruf: wzEin(Liste der Elemente) */
+window.wzEin = function (liste) {
+  var io = 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('da'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 }) : null;
+  Array.prototype.forEach.call(liste, function (k) { k.classList.add('ein'); if (!io || k.getBoundingClientRect().top < innerHeight * .92) k.classList.add('da'); else io.observe(k); });
+};

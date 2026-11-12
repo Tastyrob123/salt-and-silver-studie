@@ -2,6 +2,7 @@
 <html lang="de">
 <head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
 <meta charset="utf-8">
+<script id="wb-rueckweg">(function(){var q=new URLSearchParams(location.search),y=q.get("wb");if(!/^\d+$/.test(y||""))y=q.get("wy");try{if(y&&/^\d+$/.test(y))sessionStorage.setItem("wb-rueck",y);else y=sessionStorage.getItem("wb-rueck")}catch(e){}if(!y||!/^\d+$/.test(y))return;function setze(){[].forEach.call(document.querySelectorAll("a[href]"),function(a){try{var u=new URL(a.getAttribute("href"),location.href);if(u.origin!==location.origin||!/\/werkbank\/(index\.html)?$/.test(u.pathname))return;u.hash="";u.search="?y="+y;a.href=u.toString()}catch(e){}})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setze);else setze();addEventListener("load",setze);setTimeout(setze,1500)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Karte · Salt &amp; Silver</title>
 <meta name="description" content="Die drei Speisekarten von Salt &amp; Silver zum Ändern: Gerichte, Preise und Weine, mit Probe-PDF.">
@@ -9,7 +10,7 @@
 <meta name="theme-color" content="#f5eee6">
 <link rel="preload" href="../../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/main.css?h=ca4b285405">
-<link rel="stylesheet" href="../../hafen/wz.css?v=15">
+<link rel="stylesheet" href="../../hafen/wz.css?v=22">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="karte.css?v=4">
 </head>
@@ -45,7 +46,7 @@
   <button class="t-pille" id="vorher" disabled>Vorher ansehen</button><button class="t-pille" id="zurueckstellen" disabled>Zurücksetzen</button>
   <a class="kn kn--klein kn--hell" id="original" download>Fertige PDF<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></a><button class="kn kn--klein kn--hell" id="drucken">Probe-PDF<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button></div>
 <div class="m-kopiert" id="kopiert" aria-live="polite"></div>
-<script src="../wz.js?v=15"></script>
+<script src="../wz.js?v=22"></script>
 <script src="karte.js?v=4"></script>
 </body>
 </html>

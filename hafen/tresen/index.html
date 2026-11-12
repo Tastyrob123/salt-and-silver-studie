@@ -2,6 +2,7 @@
 <html lang="de">
 <head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
 <meta charset="utf-8">
+<script id="wb-rueckweg">(function(){var q=new URLSearchParams(location.search),y=q.get("wb");if(!/^\d+$/.test(y||""))y=q.get("wy");try{if(y&&/^\d+$/.test(y))sessionStorage.setItem("wb-rueck",y);else y=sessionStorage.getItem("wb-rueck")}catch(e){}if(!y||!/^\d+$/.test(y))return;function setze(){[].forEach.call(document.querySelectorAll("a[href]"),function(a){try{var u=new URL(a.getAttribute("href"),location.href);if(u.origin!==location.origin||!/\/werkbank\/(index\.html)?$/.test(u.pathname))return;u.hash="";u.search="?y="+y;a.href=u.toString()}catch(e){}})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setze);else setze();addEventListener("load",setze);setTimeout(setze,1500)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tresen · Salt &amp; Silver</title>
 <meta name="description" content="Der Tresen von Salt &amp; Silver: was Gäste im Chat fragen, und Antworten auf Anfragen als Entwurf.">
@@ -9,7 +10,7 @@
 <meta name="theme-color" content="#f5eee6">
 <link rel="preload" href="../../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/main.css?h=ca4b285405">
-<link rel="stylesheet" href="../../hafen/wz.css?v=15">
+<link rel="stylesheet" href="../../hafen/wz.css?v=22">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="tresen.css?v=2">
 </head>
@@ -35,11 +36,11 @@
     <section class="t-ansicht" data-ansicht="uebersicht" data-name="Übersicht">
       <div class="t-gruss"><img src="../z/wein-tinte.svg" alt=""><h1><span id="gruss">Guten Tag.</span> <em>Was war los am Tresen?</em></h1>
         <p>Der Chat unten rechts auf eurer Website antwortet Gästen Tag und Nacht. Hier lest ihr, was gefragt wurde, seht, was auf der Website noch fehlt, und lasst euch Antworten auf Anfragen vorschreiben.</p></div>
-      <div class="tr-zahlen w-platte"><div><b id="z-alle">–</b><span>Fragen gesamt</span></div><div><b id="z-luecken">–</b><span>nicht auf der Website</span></div><div><b id="z-tisch">–</b><span>mit Tischwunsch</span></div><div><b id="z-sprachen">–</b><span>in anderer Sprache</span></div></div>
+      <div class="tr-zahlen w-platte" data-r="schweb"><div><b id="z-alle">–</b><span>Fragen gesamt</span></div><div><b id="z-luecken">–</b><span>nicht auf der Website</span></div><div><b id="z-tisch">–</b><span>mit Tischwunsch</span></div><div><b id="z-sprachen">–</b><span>in anderer Sprache</span></div></div>
       <div class="tr-drei">
-        <button class="tr-tuer w-platte" data-zu="gefragt"><img src="../z/sonne-tinte.svg" alt=""><b>Das wurde gefragt</b><small>Alle Fragen der Gäste, Woche für Woche, mit der Antwort des Chats.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
-        <button class="tr-tuer w-platte" data-zu="luecken"><img src="../z/wal-tinte.svg" alt=""><b>Lücken schließen</b><small>Fragen, auf die eure Website keine Antwort hat. Daraus wird mit einem Klick eine häufige Frage.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
-        <button class="tr-tuer w-platte" data-zu="anfragen"><img src="../z/herz-tinte.svg" alt=""><b>Anfragen beantworten</b><small>Anfrage einfügen, Entwurf in eurem Ton bekommen, lesen, ändern, selbst schicken.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
+        <button class="tr-tuer w-platte" data-r="schweb" style="--i:1" data-zu="gefragt"><img src="../z/sonne-tinte.svg" alt=""><b>Das wurde gefragt</b><small>Alle Fragen der Gäste, Woche für Woche, mit der Antwort des Chats.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
+        <button class="tr-tuer w-platte" data-r="schweb" style="--i:2" data-zu="luecken"><img src="../z/wal-tinte.svg" alt=""><b>Lücken schließen</b><small>Fragen, auf die eure Website keine Antwort hat. Daraus wird mit einem Klick eine häufige Frage.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
+        <button class="tr-tuer w-platte" data-r="schweb" style="--i:3" data-zu="anfragen"><img src="../z/herz-tinte.svg" alt=""><b>Anfragen beantworten</b><small>Anfrage einfügen, Entwurf in eurem Ton bekommen, lesen, ändern, selbst schicken.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button>
       </div>
     </section>
     <section class="t-ansicht" data-ansicht="gefragt" data-name="Das wurde gefragt" hidden>
@@ -67,7 +68,7 @@
 </div>
 <div class="t-fussleiste"><p><b id="f-titel">Stand</b><span id="f-text">Die Fragen werden geladen.</span></p><button class="kn kn--klein kn--hell" id="neu">Neu laden<i><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></button></div>
 <div class="m-kopiert" id="kopiert" aria-live="polite"></div>
-<script src="../wz.js?v=15"></script>
+<script src="../wz.js?v=22"></script>
 <script src="tresen.js?v=2"></script>
 </body>
 </html>

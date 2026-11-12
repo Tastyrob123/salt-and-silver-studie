@@ -2,6 +2,7 @@
 <html lang="de">
 <head><!--demo-weiche--><script src="/_demo/karte.js"></script><script src="/_demo/shim.js"></script>
 <meta charset="utf-8">
+<script id="wb-rueckweg">(function(){var q=new URLSearchParams(location.search),y=q.get("wb");if(!/^\d+$/.test(y||""))y=q.get("wy");try{if(y&&/^\d+$/.test(y))sessionStorage.setItem("wb-rueck",y);else y=sessionStorage.getItem("wb-rueck")}catch(e){}if(!y||!/^\d+$/.test(y))return;function setze(){[].forEach.call(document.querySelectorAll("a[href]"),function(a){try{var u=new URL(a.getAttribute("href"),location.href);if(u.origin!==location.origin||!/\/werkbank\/(index\.html)?$/.test(u.pathname))return;u.hash="";u.search="?y="+y;a.href=u.toString()}catch(e){}})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",setze);else setze();addEventListener("load",setze);setTimeout(setze,1500)})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Marke · Salt &amp; Silver</title>
 <meta name="description" content="Die Marke Salt &amp; Silver zum Arbeiten: Bildarchiv, Logo, Zeichnungen, Farben und das Markenbuch.">
@@ -9,7 +10,7 @@
 <meta name="theme-color" content="#f5eee6">
 <link rel="preload" href="../assets/fonts/Antonio-normal-100_700.woff2?h=0c2848b18f" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/css/main.css?h=ca4b285405">
-<link rel="stylesheet" href="../hafen/wz.css?v=15">
+<link rel="stylesheet" href="../hafen/wz.css?v=22">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="marke.css?v=5">
 </head>
@@ -38,7 +39,7 @@
       <div class="m-drei">
         <button class="m-karte w-platte" data-zu="archiv"><span class="m-karte__b m-karte__b--fotos"><img src="mini/r-klippe.webp" alt="" loading="lazy"><img src="mini/meer-sonne.webp" alt="" loading="lazy"><img src="mini/k-tafel.webp" alt="" loading="lazy"></span><span class="m-karte__t"><span class="w-klein">134 Fotos</span><b>Bildarchiv</b><small>Alle Fotos von Hamburg bis ans Meer, nach Bereich sortiert. Jedes als Beitrag, Story oder Querformat.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></span></button>
         <button class="m-karte w-platte" data-zu="dateien"><span class="m-karte__b m-karte__b--logo"><img src="dateien/vorschau/wortmarke-creme.webp" alt="Salt &amp; Silver"><img class="m-karte__z" src="dateien/vorschau/zeichnung-brett-creme.webp" alt=""></span><span class="m-karte__t"><span class="w-klein">48 Dateien</span><b>Logo &amp; Dateien</b><small>Wortmarke, Emblem und alle Zeichnungen für helle und dunkle Flächen, einzeln oder als Paket.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></span></button>
-        <button class="m-karte w-platte" data-zu="farben"><span class="m-karte__b m-karte__b--farben"><span class="m-faecher"><i style="background:#f5eee6"></i><i style="background:#ebdbce"></i><i style="background:#9e947f"></i><i style="background:#1f213b"></i><i style="background:#151929"></i><i style="background:#111421"></i><i style="background:#0b0c10"></i><i style="background:#ff3132"></i></span></span><span class="m-karte__t"><span class="w-klein">8 Farben</span><b>Farben</b><small>Jeder Ton mit seinem Wert. Ein Klick kopiert ihn.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></span></button>
+        <button class="m-karte w-platte" data-zu="farben"><span class="m-karte__b m-karte__b--farben"><span class="m-faecher"><i style="background:#f5eee6"><span class="m-faecher__n">Papier #f5eee6</span></i><i style="background:#ebdbce"><span class="m-faecher__n">Creme #ebdbce</span></i><i style="background:#9e947f"><span class="m-faecher__n">Taupe #9e947f</span></i><i style="background:#1f213b"><span class="m-faecher__n">Navy #1f213b</span></i><i style="background:#151929"><span class="m-faecher__n">Knopf-Blau #151929</span></i><i style="background:#111421"><span class="m-faecher__n">Nacht #111421</span></i><i style="background:#0b0c10"><span class="m-faecher__n">Tinte #0b0c10</span></i><i style="background:#ff3132"><span class="m-faecher__n">Rot #ff3132</span></i></span></span><span class="m-karte__t"><span class="w-klein">8 Farben</span><b>Farben</b><small>Jeder Ton mit seinem Wert. Ein Klick kopiert ihn.</small><i class="h-k__p"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></i></span></button>
       </div>
     </section>
     <section class="t-ansicht" data-ansicht="archiv" data-name="Bildarchiv" hidden>
@@ -72,7 +73,7 @@
   </div>
 </dialog>
 <div class="m-kopiert" id="kopiert" aria-live="polite"></div>
-<script src="../hafen/wz.js?v=15"></script>
+<script src="../hafen/wz.js?v=22"></script>
 <script src="marke.js?v=5"></script>
 </body>
 </html>

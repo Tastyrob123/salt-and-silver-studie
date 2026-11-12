@@ -33,7 +33,7 @@
     });
     if (!n) z.innerHTML = '<p class="dr-leer">Dazu gibt es noch keine Vorlage.</p>';
     einpassen();
-    requestAnimationFrame(function () { requestAnimationFrame(function () { $$('.dr-stueck', z).forEach(function (k) { k.classList.add('da'); }); }); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { window.wzEin ? wzEin($$('.dr-stueck', z)) : $$('.dr-stueck', z).forEach(function (k) { k.classList.add('da'); }); }); });   // unterhalb des ersten Bildschirms schweben sie beim Scrollen ein
   }
   /* Jedes Blatt bekommt seine Grösse in Pixeln: so hoch wie das Fach oder so breit wie drei Viertel der Spalte, je nachdem, was zuerst anstösst.
      Prozent-Höhen an Bildern rechnet Safari in solchen Fächern nicht (Blätter ragten über ihren Namen). */

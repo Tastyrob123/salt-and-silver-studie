@@ -9,7 +9,7 @@
     $$('.t-nav[data-zu]').forEach(function (n) { n.classList.toggle('an', n.getAttribute('data-zu') === name); });
     if (merken !== false) history.replaceState(null, '', '#' + name);
     window.scrollTo(0, 0);
-    requestAnimationFrame(function () { requestAnimationFrame(function () { $$('[data-ansicht="' + name + '"] .m-karte, [data-ansicht="' + name + '"] .m-farbe').forEach(function (k) { k.classList.add('da'); }); }); });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { var st = $$('[data-ansicht="' + name + '"] .m-karte, [data-ansicht="' + name + '"] .m-farbe'); window.wzEin ? wzEin(st) : st.forEach(function (k) { k.classList.add('da'); }); }); });
   }
   d.addEventListener('click', function (ev) {
     var z = ev.target.closest('[data-zu]');
