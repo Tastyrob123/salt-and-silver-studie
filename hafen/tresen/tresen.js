@@ -67,14 +67,14 @@
 
   function lade() {
     $('#f-text').textContent = 'Die Fragen werden geladen.';
-    var amRechner = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);   // dort gibt es den Speicher der Fragen nicht, gleich die Probe-Fragen
+    var amRechner = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || /(^|\.)tastystudios\.ch$|github\.io$/.test(location.hostname);   // Entwurf auf GitHub Pages: kein Speicher, gleich der letzte Abruf (Prüfung 20.11.2026)   // dort gibt es den Speicher der Fragen nicht, gleich die Probe-Fragen
     return (amRechner ? Promise.reject(0) : fetch('/api/fragen', { cache: 'no-store' })).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (j) {
       FRAGEN = j.fragen || []; live = true;
       $('#f-titel').textContent = 'Stand von jetzt'; $('#f-text').textContent = 'Die Fragen kommen aus dem Speicher eurer Website.';
     }).catch(function () {
       return fetch('stand.json').then(function (r) { return r.json(); }).then(function (j) {
         FRAGEN = j.fragen || []; live = false;
-        $('#f-titel').textContent = 'Stand vom ' + j.stand; $('#f-text').textContent = 'Am Rechner zeigt der Tresen den letzten Abruf. Die Fragen von heute stehen in der Online-Fassung.';
+        $('#f-titel').textContent = 'Stand vom ' + j.stand; $('#f-text').textContent = (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'Am Rechner zeigt der Tresen den letzten Abruf. Die Fragen von heute stehen in der Online-Fassung.' : 'Der Entwurf zeigt die Fragen vom letzten Abruf.');
       });
     }).catch(function () {   // weder Speicher noch letzter Abruf erreichbar: sagen, statt still leer zu bleiben
       FRAGEN = FRAGEN || []; $('#f-titel').textContent = 'Keine Verbindung'; $('#f-text').textContent = 'Die Fragen liessen sich gerade nicht laden. Bitte die Seite neu laden.';
