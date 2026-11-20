@@ -2361,3 +2361,12 @@ html:not(#q1):not(#q2):not(#q3) .quer:hover .quer__b img{transform:scale(1.02);t
 @media (max-width:980px){.rechtfeld__inhalt ol{max-height:none;overflow:visible}}
 
 @media (max-width:600px){.rechthin{font-size:14px;letter-spacing:.08em}}
+
+/* Prüfung 20.11.2026: Titelzeilen mit Luft für Unterlängen (gleicher Abstand), Zeilen bis zum Auftritt ganz verdeckt,
+   Schatten der grossen Zeilen nicht mehr an der Kante abgeschnitten, Fuss-Zeile mit Abstand */
+.z{padding:.2em 0 .22em;margin:-.2em 0 -.22em}
+.z>span{transform:translateY(140%)}
+.bruch .z{overflow:visible;clip-path:inset(-.25em -.8em -.45em -.8em)}
+.bruch .z>span{transform:translateY(180%)}
+.bruch .da .z>span,.bruch .z.da>span,.bruch.da .z>span{transform:none}
+.fuss__marke p{line-height:1.06}
