@@ -2356,3 +2356,8 @@ html:not(#q1):not(#q2):not(#q3) .quer:hover .quer__b img{transform:scale(1.02);t
 .galerie>[class*="g-"]>figure>.rahmen{flex:1 1 auto;display:flex;flex-direction:column}
 .galerie>[class*="g-"]>figure>.rahmen>.rahmen__k{flex:1 1 auto;display:flex}
 .galerie>[class*="g-"]>figure img{flex:1 1 auto;width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+
+/* Inhaltsverzeichnis der Rechtstexte am Handy ganz ausgeklappt, keine Zeile verschwindet im Kasten (Prüfung 20.11.2026) */
+@media (max-width:980px){.rechtfeld__inhalt ol{max-height:none;overflow:visible}}
+
+@media (max-width:600px){.rechthin{font-size:14px;letter-spacing:.08em}}
