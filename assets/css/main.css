@@ -2349,3 +2349,10 @@ html:not(#q1):not(#q2):not(#q3) .quer:hover .quer__b img{transform:scale(1.02);t
 .bruch+.prunk{padding-top:clamp(36px,4vw,60px)}
 /* Durchgang 23.10.2026: Kleidung und Gutscheine fliegen von rechts ein; bis sie da sind, lag die Seite am Handy 40 px zu breit (seitlich wischbar) */
 #kleidung,#gutscheine{overflow-x:clip}
+
+/* Galerie: jedes Bild füllt seine Zelle, keine Leerfläche unter dem kürzeren Bild (Prüfung 20.11.2026) */
+.galerie>[class*="g-"]{display:flex;flex-direction:column}
+.galerie>[class*="g-"]>figure{flex:1 1 auto;display:flex;flex-direction:column;min-height:0}
+.galerie>[class*="g-"]>figure>.rahmen{flex:1 1 auto;display:flex;flex-direction:column}
+.galerie>[class*="g-"]>figure>.rahmen>.rahmen__k{flex:1 1 auto;display:flex}
+.galerie>[class*="g-"]>figure img{flex:1 1 auto;width:100%;height:100%;object-fit:cover;aspect-ratio:auto}

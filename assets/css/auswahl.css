@@ -63,7 +63,7 @@
 .zw__punkt{align-self:center;font:500 1.3rem/1 var(--serif);font-style:normal;color:#9e947f}
 @media (prefers-reduced-motion:reduce){:where([role="dialog"]).zw{transition:none}}
 
-/* Datumszeile über dem Browser-Feld (aus Grand Beau-Rivage main.css?h=ca4b285405): das Feld schreibt das Datum in der Schreibweise der Seite, nie «mm/dd/yyyy» */
+/* Datumszeile über dem Browser-Feld (aus Grand Beau-Rivage main.css?h=p20261120): das Feld schreibt das Datum in der Schreibweise der Seite, nie «mm/dd/yyyy» */
 .dt-feld{position:relative}
 .dt-nativ{color:transparent!important;-webkit-text-fill-color:transparent;caret-color:transparent}
 .dt-nativ::-webkit-datetime-edit,.dt-nativ::-webkit-datetime-edit-fields-wrapper{color:transparent;-webkit-text-fill-color:transparent}
@@ -73,7 +73,7 @@
 
 /* Salt & Silver: Beschriftungen der Felder sind «.feld>span» (Mono, Versalien). Die Hülle der Auswahl ist auch ein span direkt im Feld und darf das nicht erben. */
 .feld>span.hwahl{font:inherit;letter-spacing:normal;text-transform:none;color:inherit}
-/* Feste Feldhöhe wie die übrigen Felder (main.css?h=ca4b285405 .feld input 54 px, Tischfenster 50 px); der Rechner hat flache Felder ohne Höhe */
+/* Feste Feldhöhe wie die übrigen Felder (main.css?h=p20261120 .feld input 54 px, Tischfenster 50 px); der Rechner hat flache Felder ohne Höhe */
 .feld>.hwahl>.hwahl-knopf{height:54px!important}
 dialog.tisch .feld>.hwahl>.hwahl-knopf{height:50px!important}
 .dn-rechner .feld>.hwahl>.hwahl-knopf{height:auto!important}

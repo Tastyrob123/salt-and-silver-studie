@@ -128,3 +128,8 @@
 .kl__x{font-size:.95rem;line-height:1.5;color:rgba(11,12,16,.74)}
 .kl__p{display:inline-flex;align-items:center;gap:8px;margin:auto 22px 20px;padding-top:12px;font-size:10.5px;color:var(--tinte)}
 .kl__p svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.4}
+
+/* Sechs kleine Drucksachen: 3+3, nie eine halbe Reihe (Prüfung 20.11.2026) */
+.klein{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.klein{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.klein{grid-template-columns:minmax(0,1fr)}}

@@ -315,7 +315,7 @@
 /* Carlton-Startseite: im Auftakt ragte der Knopf unten ins Bild, war aber bis zum ersten Hochscrollen gesperrt (main.css: kommt mit der Leiste).
    Solange der Auftakt steht, ist er jetzt ganz da und anklickbar; weiter unten kommt und geht er wie bisher mit der Leiste. */
 @media (min-width:1061px){html.kopf-oben body .gast-knopf--fp{transform:none;pointer-events:auto}}
-/* Carlton-Startseite im Auftakt (Robert 18.10.2026: «Warum hast du den Button unten rechts so hochgesetzt?»): main.css?h=ca4b285405 hebt den Knopf dort auf 96 px
+/* Carlton-Startseite im Auftakt (Robert 18.10.2026: «Warum hast du den Button unten rechts so hochgesetzt?»): main.css?h=p20261120 hebt den Knopf dort auf 96 px
    über die Menüzeile. Der Fahrplan-Knopf bleibt an seiner gewohnten Stelle unten rechts, 30 px wie auf allen anderen Carlton-Seiten. */
 @media (min-width:1081px){html.kopf-oben body .gast-knopf--fp{bottom:30px}}
 
