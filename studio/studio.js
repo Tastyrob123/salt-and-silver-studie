@@ -1459,7 +1459,7 @@ async function gefragtS(filter, reiter) {
     if (!r.ok) throw new Error(r.status);
     FRAGEN = (await r.json()).fragen || [];
   } catch (e) {
-    $('.in', sicht).innerHTML = kopf(titel, '') + reiter + `<div class="leerbild">${ST('sonne')}<b>Nur online.</b><p>Die Fragen liegen im Speicher der Online-Fassung. Öffne das Studio unter salt-and-silver-studie.vercel.app/studio/.</p></div>`;
+    $('.in', sicht).innerHTML = kopf(titel, '') + reiter + `<div class="leerbild">${ST('sonne')}<b>Im Entwurf nicht verbunden.</b><p>Die Fragen der Gäste liegen im Speicher der fertigen Website. Im Entwurf ist dieser Speicher nicht angeschlossen.</p></div>`;
     return;
   }
   const alle = FRAGEN, luecken = alle.filter(x => !x.belegt && !x.erledigt);
@@ -1517,7 +1517,7 @@ function anfragenS(reiter) {
     try {
       const r = await fetch('/api/gast', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ modus: 'anfrage', mail, hinweis }) });
       const j = await r.json().catch(() => ({}));
-      if (!r.ok || !j.text) throw new Error(j.fehler || (r.status === 404 ? 'Der Assistent läuft nur in der Online-Fassung (salt-and-silver-studie.vercel.app/studio/).' : 'Das hat nicht geklappt.'));
+      if (!r.ok || !j.text) throw new Error(j.fehler || (r.status === 404 ? 'Der Assistent ist im Entwurf nicht angeschlossen.' : 'Das hat nicht geklappt.'));
       ENTWURF_A = { mail, hinweis, ...j };
       anfragenS(reiter);
       $('#an-ergebnis').scrollIntoView({ block: 'start', behavior: 'smooth' });
