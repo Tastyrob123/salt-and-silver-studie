@@ -326,7 +326,7 @@ ul,ol{list-style:none}
   background:linear-gradient(180deg,#343a56,#11141f);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -2px 0 rgba(0,0,0,.45),0 10px 16px -12px rgba(0,0,0,.8);transition:transform .4s var(--e2)}
 .wahl button:hover{transform:translateY(-2px)} .wahl button:active{transform:translateY(1px)}
 .wahl button[aria-pressed="true"]{color:var(--tinte);background:linear-gradient(180deg,#f8eee4,#d6c2b1);box-shadow:inset 0 1px 0 #fff,inset 0 -3px 0 rgba(104,80,58,.34),0 10px 16px -12px rgba(0,0,0,.8)}
-.schau{display:grid;gap:clamp(22px,3vw,44px);align-items:center}
+.schau{display:grid;gap:clamp(22px,3vw,44px);align-items:start}
 @media(min-width:1100px){.schau{grid-template-columns:minmax(0,1fr) 300px}}
 .schau__f{position:relative}
 .schau__s{position:relative;aspect-ratio:1440/900;overflow:hidden;background:#0c0e18;touch-action:pan-y}
@@ -741,3 +741,10 @@ a.cz:hover .cz__b img{transform:scale(1.04)}
 /* 11.11.2026, Prüfbericht: Titelzeilen mit Luft für Ober- und Unterlängen */
 .gpseite .zt.t1{line-height:1.08}
 .gpseite .zt .z>span{padding-bottom:.06em}
+
+/* ---------- Tapete nur punktuell (Robert 13.11.2026): das Muster steht im Auftakt, in jedem dritten Abschnitt und im Fuss, die Flächen dazwischen sind glatt in ihrem Ton (Robert 14.11.2026: «so alle 3 Abschnitte möchte ich eine Tapete haben»).
+   «Die muss punktuell eingesetzt werden, damit ein gewisser Effekt entsteht von einer edlen, luxuriösen Brand und nicht, dass sich das durch jeden Abschnitt jeder Werkbank zieht.»
+   Prüfpunkt 26 in _Werkzeuge/oberflaeche_pruefen.js (nie zwei Tapeten-Abschnitte direkt hintereinander, nie mehr als drei glatte am Stück). Steht am Ende, damit kein Haus-Stil die Tapete in die Kapitel zurückholt. ---------- */
+/* je Haus ausgezählt: Tapete nur in den genannten Abschnitten, dazwischen mindestens zwei glatte (baut das Haus neu, gilt wieder die Grundregel jedes dritten Abschnitts) */
+main>.fl:not(:nth-child(4),:nth-child(9),:nth-child(21)),main>.fl:not(:nth-child(4),:nth-child(9),:nth-child(21)) .ag-blatt,main>.fl:not(:nth-child(4),:nth-child(9),:nth-child(21)) .lu{background-image:none!important}
+main>.fl:is(:nth-child(14),:nth-child(17)){background-image:url(tapete.png)!important;background-size:168px 168px;background-repeat:repeat;background-position:50% 0}
