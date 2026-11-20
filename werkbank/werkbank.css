@@ -748,3 +748,11 @@ a.cz:hover .cz__b img{transform:scale(1.04)}
 /* je Haus ausgezählt: Tapete nur in den genannten Abschnitten, dazwischen mindestens zwei glatte (baut das Haus neu, gilt wieder die Grundregel jedes dritten Abschnitts) */
 main>.fl:not(:nth-child(4),:nth-child(9),:nth-child(21)),main>.fl:not(:nth-child(4),:nth-child(9),:nth-child(21)) .ag-blatt,main>.fl:not(:nth-child(4),:nth-child(9),:nth-child(21)) .lu{background-image:none!important}
 main>.fl:is(:nth-child(14),:nth-child(17)){background-image:url(tapete.png)!important;background-size:168px 168px;background-repeat:repeat;background-position:50% 0}
+
+/* titel-sofort aus _Werkbank-Kit (Prüfung 20.11.2026): Zeilen vor dem Auftritt ganz verdeckt, Auftakt-Titel läuft beim ersten Bild los */
+.z>span{transform:translateY(140%)}
+.da .z>span,.z.da>span{transform:none}
+.auftakt .zt .z>span{animation:zt-sofort 1.3s var(--e1) both;animation-delay:calc(var(--n,0)*120ms)}
+@keyframes zt-sofort{from{transform:translateY(140%)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.auftakt .zt .z>span{animation:none;transform:none}}
+@media print{.auftakt .zt .z>span{animation:none;transform:none}}
