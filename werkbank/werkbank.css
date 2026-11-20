@@ -756,3 +756,6 @@ main>.fl:is(:nth-child(14),:nth-child(17)){background-image:url(tapete.png)!impo
 @keyframes zt-sofort{from{transform:translateY(140%)}to{transform:none}}
 @media(prefers-reduced-motion:reduce){.auftakt .zt .z>span{animation:none;transform:none}}
 @media print{.auftakt .zt .z>span{animation:none;transform:none}}
+
+/* Bildzeilen der Abzüge ganz lesbar (Prüfung 20.11.2026) */
+.abzug>span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
